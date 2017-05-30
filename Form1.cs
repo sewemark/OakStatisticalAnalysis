@@ -1,4 +1,5 @@
-﻿using System;
+﻿using OakStatisticalAnalysis.Models;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -13,7 +14,9 @@ namespace OakStatisticalAnalysis
 {
     public partial class Form1 : Form
     {
-        string[] databaseLines;
+        string[] databaseContent;
+        DatabaseContentParser dbContentParser;
+
         public Form1()
         {
             InitializeComponent();
@@ -22,6 +25,8 @@ namespace OakStatisticalAnalysis
         private void ReadFromFileButtonClick(object sender, EventArgs e)
         {
             GetDatabaseFilePath();
+            dbContentParser = new DatabaseContentParser(databaseContent);
+            List<Sample> dbContent = dbContentParser.ParseContent();
         }
 
         private void GetDatabaseFilePath()
@@ -32,7 +37,7 @@ namespace OakStatisticalAnalysis
                 string file = selectDatabaseFileDialog.FileName;
                 try
                 {
-                     databaseLines = File.ReadAllLines(file);
+                    databaseContent = File.ReadAllLines(file);
                 }
                 catch (IOException ioException)
                 {
