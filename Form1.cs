@@ -29,6 +29,11 @@ namespace OakStatisticalAnalysis
             List<Sample> dbContent = dbContentParser.ParseContent();
         }
 
+        private void ExtractFeaturesButtonClick(object sender, EventArgs e)
+        {
+
+        }
+
         private void GetDatabaseFilePath()
         {
             DialogResult result = selectDatabaseFileDialog.ShowDialog();
@@ -45,6 +50,7 @@ namespace OakStatisticalAnalysis
                 }
             }
         }
+
         
     }
 }
