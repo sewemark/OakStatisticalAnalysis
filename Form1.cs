@@ -16,10 +16,11 @@ namespace OakStatisticalAnalysis
     {
         string[] databaseContent;
         DatabaseContentParser dbContentParser;
-
+        IFeatureExtractor featureExtractor;
         public Form1()
         {
             InitializeComponent();
+            
         }
 
         private void ReadFromFileButtonClick(object sender, EventArgs e)
@@ -27,11 +28,14 @@ namespace OakStatisticalAnalysis
             GetDatabaseFilePath();
             dbContentParser = new DatabaseContentParser(databaseContent);
             List<Sample> dbContent = dbContentParser.ParseContent();
+            featureExtractor = new FeatureExtractor(dbContent);
         }
 
         private void ExtractFeaturesButtonClick(object sender, EventArgs e)
         {
-
+            int numOfFeatures = (int)featureNumberComboBox.SelectedIndex+1;
+            var features = featureExtractor.Extract(numOfFeatures);
+            featureNumberLabel.Text += String.Join(", ", features);
         }
 
         private void GetDatabaseFilePath()

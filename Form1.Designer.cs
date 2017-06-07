@@ -36,6 +36,7 @@
             this.featureNumberLabel = new System.Windows.Forms.Label();
             this.featureNumberComboBox = new System.Windows.Forms.ComboBox();
             this.ekstractFeaturesButton = new System.Windows.Forms.Button();
+            this.featureExtractionResultLabel = new System.Windows.Forms.Label();
             this.menuStrip2.SuspendLayout();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
@@ -72,6 +73,7 @@
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.featureExtractionResultLabel);
             this.panel1.Controls.Add(this.ekstractFeaturesButton);
             this.panel1.Controls.Add(this.featureNumberLabel);
             this.panel1.Controls.Add(this.featureNumberComboBox);
@@ -116,6 +118,15 @@
             this.ekstractFeaturesButton.UseVisualStyleBackColor = true;
             this.ekstractFeaturesButton.Click += new System.EventHandler(this.ExtractFeaturesButtonClick);
             // 
+            // featureExtractionResultLabel
+            // 
+            this.featureExtractionResultLabel.AutoSize = true;
+            this.featureExtractionResultLabel.Location = new System.Drawing.Point(6, 120);
+            this.featureExtractionResultLabel.Name = "featureExtractionResultLabel";
+            this.featureExtractionResultLabel.Size = new System.Drawing.Size(43, 13);
+            this.featureExtractionResultLabel.TabIndex = 3;
+            this.featureExtractionResultLabel.Text = "Result: ";
+            // 
             // Form1
             // 
             this.ClientSize = new System.Drawing.Size(521, 261);
@@ -147,6 +158,7 @@
         private System.Windows.Forms.Label featureNumberLabel;
         private System.Windows.Forms.ComboBox featureNumberComboBox;
         private System.Windows.Forms.Button ekstractFeaturesButton;
+        private System.Windows.Forms.Label featureExtractionResultLabel;
     }
 }
 
