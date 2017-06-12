@@ -27,13 +27,14 @@ namespace OakStatisticalAnalysis
             }
             else
             {
-                return HandleManyDimensions();
+                return HandleManyDimensions(numOfFeatures);
             }
         }
 
-        private List<int> HandleManyDimensions()
+        private List<int> HandleManyDimensions(int numOfFeatures)
         {
-            return new List<int>();
+            FeatureSelector selector = new FeatureSelector(samples);
+            return selector.HandleManyDimensions(numOfFeatures);
         }
 
         private List<int> HandleOneDimension()
@@ -42,7 +43,7 @@ namespace OakStatisticalAnalysis
             int max_ind = -1;
             for (int i = 0; i < samples.ElementAt(0).Features.Count; i++)
             {
-                if ((tmp = computeFisherLD(i)) > FLD)
+                if ((tmp = ComputeFisherFor1D(i)) > FLD)
                 {
                     FLD = tmp;
                     max_ind = i;
@@ -51,7 +52,7 @@ namespace OakStatisticalAnalysis
             return new List<int>() { max_ind };
         }
 
-        private double computeFisherLD(int index)
+        private double ComputeFisherFor1D(int index)
         {
             double mA = 0, mB = 0, sA = 0, sB = 0;
             for (int i = 0; i < samples.Count; i++)
