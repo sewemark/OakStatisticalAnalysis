@@ -49,6 +49,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ContentReader.cs" />
     <Compile Include="DatabaseContentParser.cs" />
     <Compile Include="FeatureExtractor.cs" />
     <Compile Include="FeatureSelector.cs" />

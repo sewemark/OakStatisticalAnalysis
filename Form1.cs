@@ -1,44 +1,53 @@
 ﻿using OakStatisticalAnalysis.Models;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace OakStatisticalAnalysis
 {
-    public partial class Form1 : Form
+    public partial class OakStatisticalAnalisysisForm : Form
     {
-        string[] databaseContent;
-        DatabaseContentParser dbContentParser;
-        IFeatureExtractor featureExtractor;
-        public Form1()
+        private string[] databaseContent;
+        private IDatabaseContentParser dbContentParser;
+        private IFeatureExtractor featureExtractor;
+        private List<Sample> parsedDatabaseContent;
+        private List<int> featuresUI = new List<int>();
+        public OakStatisticalAnalisysisForm()
         {
             InitializeComponent();
-            
         }
 
         private void ReadFromFileButtonClick(object sender, EventArgs e)
         {
-            GetDatabaseFilePath();
+            ReadFromFile();
+            ParseContent();
+        }
+
+        private void ParseContent()
+        {
             dbContentParser = new DatabaseContentParser(databaseContent);
-            List<Sample> dbContent = dbContentParser.ParseContent();
-            featureExtractor = new FeatureExtractor(dbContent);
+            parsedDatabaseContent = dbContentParser.ParseContent();
         }
 
         private void ExtractFeaturesButtonClick(object sender, EventArgs e)
         {
-            int numOfFeatures = (int)featureNumberComboBox.SelectedIndex+1;
-            var features = featureExtractor.Extract(numOfFeatures);
-            featureNumberLabel.Text += String.Join(", ", features);
+            ExtractFeatures((int)featureNumberComboBox.SelectedIndex + 1);
+            UpdateUI();
+        }
+        
+        private void ExtractFeatures(int numOfFeatures)
+        {
+            featureExtractor = new FeatureExtractor(parsedDatabaseContent);
+            featuresUI = featureExtractor.Extract(numOfFeatures);
         }
 
-        private void GetDatabaseFilePath()
+        private void UpdateUI()
+        {
+            featureNumberLabel.Text += String.Join(", ", featuresUI);
+        }
+
+        private void ReadFromFile()
         {
             DialogResult result = selectDatabaseFileDialog.ShowDialog();
             if (result == DialogResult.OK)
@@ -54,7 +63,5 @@ namespace OakStatisticalAnalysis
                 }
             }
         }
-
-        
     }
 }

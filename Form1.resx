@@ -120,7 +120,222 @@
   <metadata name="menuStrip2.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 17</value>
   </metadata>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="readFromFile.Size" type="System.Drawing.Size, System.Drawing">
+    <value>121, 22</value>
+  </data>
+  <data name="readFromFile.Text" xml:space="preserve">
+    <value>From file</value>
+  </data>
+  <data name="readDatabaseToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>96, 20</value>
+  </data>
+  <data name="readDatabaseToolStripMenuItem.Text" xml:space="preserve">
+    <value>Read Database</value>
+  </data>
+  <data name="menuStrip2.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <data name="menuStrip2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>521, 24</value>
+  </data>
+  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="menuStrip2.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="menuStrip2.Text" xml:space="preserve">
+    <value>menuStrip2</value>
+  </data>
+  <data name="&gt;&gt;menuStrip2.Name" xml:space="preserve">
+    <value>menuStrip2</value>
+  </data>
+  <data name="&gt;&gt;menuStrip2.Type" xml:space="preserve">
+    <value>System.Windows.Forms.MenuStrip, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;menuStrip2.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;menuStrip2.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
   <metadata name="selectDatabaseFileDialog.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>132, 17</value>
   </metadata>
+  <data name="selectDatabaseFileDialog.Filter" xml:space="preserve">
+    <value>Text|*.txt;</value>
+  </data>
+  <data name="featureExtractionResultLabel.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="featureExtractionResultLabel.Location" type="System.Drawing.Point, System.Drawing">
+    <value>6, 120</value>
+  </data>
+  <data name="featureExtractionResultLabel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>43, 13</value>
+  </data>
+  <data name="featureExtractionResultLabel.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+  <data name="featureExtractionResultLabel.Text" xml:space="preserve">
+    <value>Result: </value>
+  </data>
+  <data name="&gt;&gt;featureExtractionResultLabel.Name" xml:space="preserve">
+    <value>featureExtractionResultLabel</value>
+  </data>
+  <data name="&gt;&gt;featureExtractionResultLabel.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;featureExtractionResultLabel.Parent" xml:space="preserve">
+    <value>panel1</value>
+  </data>
+  <data name="&gt;&gt;featureExtractionResultLabel.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="ekstractFeaturesButton.Location" type="System.Drawing.Point, System.Drawing">
+    <value>6, 51</value>
+  </data>
+  <data name="ekstractFeaturesButton.Size" type="System.Drawing.Size, System.Drawing">
+    <value>75, 23</value>
+  </data>
+  <data name="ekstractFeaturesButton.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="ekstractFeaturesButton.Text" xml:space="preserve">
+    <value>Extract</value>
+  </data>
+  <data name="&gt;&gt;ekstractFeaturesButton.Name" xml:space="preserve">
+    <value>ekstractFeaturesButton</value>
+  </data>
+  <data name="&gt;&gt;ekstractFeaturesButton.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;ekstractFeaturesButton.Parent" xml:space="preserve">
+    <value>panel1</value>
+  </data>
+  <data name="&gt;&gt;ekstractFeaturesButton.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="featureNumberLabel.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="featureNumberLabel.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 20</value>
+  </data>
+  <data name="featureNumberLabel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>82, 13</value>
+  </data>
+  <data name="featureNumberLabel.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="featureNumberLabel.Text" xml:space="preserve">
+    <value>Num of features</value>
+  </data>
+  <data name="&gt;&gt;featureNumberLabel.Name" xml:space="preserve">
+    <value>featureNumberLabel</value>
+  </data>
+  <data name="&gt;&gt;featureNumberLabel.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;featureNumberLabel.Parent" xml:space="preserve">
+    <value>panel1</value>
+  </data>
+  <data name="&gt;&gt;featureNumberLabel.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="featureNumberComboBox.Items" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="featureNumberComboBox.Items1" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="featureNumberComboBox.Items2" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="featureNumberComboBox.Items3" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="featureNumberComboBox.Items4" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="featureNumberComboBox.Items5" xml:space="preserve">
+    <value>6</value>
+  </data>
+  <data name="featureNumberComboBox.Items6" xml:space="preserve">
+    <value>7</value>
+  </data>
+  <data name="featureNumberComboBox.Items7" xml:space="preserve">
+    <value>8</value>
+  </data>
+  <data name="featureNumberComboBox.Location" type="System.Drawing.Point, System.Drawing">
+    <value>126, 17</value>
+  </data>
+  <data name="featureNumberComboBox.Size" type="System.Drawing.Size, System.Drawing">
+    <value>121, 21</value>
+  </data>
+  <data name="featureNumberComboBox.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;featureNumberComboBox.Name" xml:space="preserve">
+    <value>featureNumberComboBox</value>
+  </data>
+  <data name="&gt;&gt;featureNumberComboBox.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;featureNumberComboBox.Parent" xml:space="preserve">
+    <value>panel1</value>
+  </data>
+  <data name="&gt;&gt;featureNumberComboBox.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="panel1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>12, 46</value>
+  </data>
+  <data name="panel1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>250, 149</value>
+  </data>
+  <data name="panel1.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;panel1.Name" xml:space="preserve">
+    <value>panel1</value>
+  </data>
+  <data name="&gt;&gt;panel1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;panel1.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;panel1.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
+    <value>521, 261</value>
+  </data>
+  <data name="&gt;&gt;readDatabaseToolStripMenuItem.Name" xml:space="preserve">
+    <value>readDatabaseToolStripMenuItem</value>
+  </data>
+  <data name="&gt;&gt;readDatabaseToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;readFromFile.Name" xml:space="preserve">
+    <value>readFromFile</value>
+  </data>
+  <data name="&gt;&gt;readFromFile.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;selectDatabaseFileDialog.Name" xml:space="preserve">
+    <value>selectDatabaseFileDialog</value>
+  </data>
+  <data name="&gt;&gt;selectDatabaseFileDialog.Type" xml:space="preserve">
+    <value>System.Windows.Forms.OpenFileDialog, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;$this.Name" xml:space="preserve">
+    <value>OakStatisticalAnalisysisForm</value>
+  </data>
+  <data name="&gt;&gt;$this.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Form, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
 </root>

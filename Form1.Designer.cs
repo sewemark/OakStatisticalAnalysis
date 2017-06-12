@@ -1,6 +1,6 @@
 ﻿namespace OakStatisticalAnalysis
 {
-    partial class Form1
+    partial class OakStatisticalAnalisysisForm
     {
         /// <summary>
         /// Wymagana zmienna projektanta.
@@ -28,15 +28,16 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(OakStatisticalAnalisysisForm));
             this.menuStrip2 = new System.Windows.Forms.MenuStrip();
             this.readDatabaseToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.readFromFile = new System.Windows.Forms.ToolStripMenuItem();
             this.selectDatabaseFileDialog = new System.Windows.Forms.OpenFileDialog();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.featureExtractionResultLabel = new System.Windows.Forms.Label();
+            this.ekstractFeaturesButton = new System.Windows.Forms.Button();
             this.featureNumberLabel = new System.Windows.Forms.Label();
             this.featureNumberComboBox = new System.Windows.Forms.ComboBox();
-            this.ekstractFeaturesButton = new System.Windows.Forms.Button();
-            this.featureExtractionResultLabel = new System.Windows.Forms.Label();
             this.menuStrip2.SuspendLayout();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
@@ -45,31 +46,26 @@
             // 
             this.menuStrip2.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.readDatabaseToolStripMenuItem});
-            this.menuStrip2.Location = new System.Drawing.Point(0, 0);
+            resources.ApplyResources(this.menuStrip2, "menuStrip2");
             this.menuStrip2.Name = "menuStrip2";
-            this.menuStrip2.Size = new System.Drawing.Size(521, 24);
-            this.menuStrip2.TabIndex = 0;
-            this.menuStrip2.Text = "menuStrip2";
             // 
             // readDatabaseToolStripMenuItem
             // 
             this.readDatabaseToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.readFromFile});
             this.readDatabaseToolStripMenuItem.Name = "readDatabaseToolStripMenuItem";
-            this.readDatabaseToolStripMenuItem.Size = new System.Drawing.Size(96, 20);
-            this.readDatabaseToolStripMenuItem.Text = "Read Database";
+            resources.ApplyResources(this.readDatabaseToolStripMenuItem, "readDatabaseToolStripMenuItem");
             // 
             // readFromFile
             // 
             this.readFromFile.Name = "readFromFile";
-            this.readFromFile.Size = new System.Drawing.Size(152, 22);
-            this.readFromFile.Text = "From file";
+            resources.ApplyResources(this.readFromFile, "readFromFile");
             this.readFromFile.Click += new System.EventHandler(this.ReadFromFileButtonClick);
             // 
             // selectDatabaseFileDialog
             // 
             this.selectDatabaseFileDialog.FileName = "databaseFilePath";
-            this.selectDatabaseFileDialog.Filter = "Text|*.txt;";
+            resources.ApplyResources(this.selectDatabaseFileDialog, "selectDatabaseFileDialog");
             // 
             // panel1
             // 
@@ -77,63 +73,48 @@
             this.panel1.Controls.Add(this.ekstractFeaturesButton);
             this.panel1.Controls.Add(this.featureNumberLabel);
             this.panel1.Controls.Add(this.featureNumberComboBox);
-            this.panel1.Location = new System.Drawing.Point(12, 46);
+            resources.ApplyResources(this.panel1, "panel1");
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(250, 149);
-            this.panel1.TabIndex = 1;
+            // 
+            // featureExtractionResultLabel
+            // 
+            resources.ApplyResources(this.featureExtractionResultLabel, "featureExtractionResultLabel");
+            this.featureExtractionResultLabel.Name = "featureExtractionResultLabel";
+            // 
+            // ekstractFeaturesButton
+            // 
+            resources.ApplyResources(this.ekstractFeaturesButton, "ekstractFeaturesButton");
+            this.ekstractFeaturesButton.Name = "ekstractFeaturesButton";
+            this.ekstractFeaturesButton.UseVisualStyleBackColor = true;
+            this.ekstractFeaturesButton.Click += new System.EventHandler(this.ExtractFeaturesButtonClick);
             // 
             // featureNumberLabel
             // 
-            this.featureNumberLabel.AutoSize = true;
-            this.featureNumberLabel.Location = new System.Drawing.Point(3, 20);
+            resources.ApplyResources(this.featureNumberLabel, "featureNumberLabel");
             this.featureNumberLabel.Name = "featureNumberLabel";
-            this.featureNumberLabel.Size = new System.Drawing.Size(82, 13);
-            this.featureNumberLabel.TabIndex = 1;
-            this.featureNumberLabel.Text = "Num of features";
             // 
             // featureNumberComboBox
             // 
             this.featureNumberComboBox.FormattingEnabled = true;
             this.featureNumberComboBox.Items.AddRange(new object[] {
-            "1",
-            "2",
-            "3",
-            "4",
-            "5",
-            "6",
-            "7",
-            "8"});
-            this.featureNumberComboBox.Location = new System.Drawing.Point(126, 17);
+            resources.GetString("featureNumberComboBox.Items"),
+            resources.GetString("featureNumberComboBox.Items1"),
+            resources.GetString("featureNumberComboBox.Items2"),
+            resources.GetString("featureNumberComboBox.Items3"),
+            resources.GetString("featureNumberComboBox.Items4"),
+            resources.GetString("featureNumberComboBox.Items5"),
+            resources.GetString("featureNumberComboBox.Items6"),
+            resources.GetString("featureNumberComboBox.Items7")});
+            resources.ApplyResources(this.featureNumberComboBox, "featureNumberComboBox");
             this.featureNumberComboBox.Name = "featureNumberComboBox";
-            this.featureNumberComboBox.Size = new System.Drawing.Size(121, 21);
-            this.featureNumberComboBox.TabIndex = 0;
             // 
-            // ekstractFeaturesButton
+            // OakStatisticalAnalisysisForm
             // 
-            this.ekstractFeaturesButton.Location = new System.Drawing.Point(6, 51);
-            this.ekstractFeaturesButton.Name = "ekstractFeaturesButton";
-            this.ekstractFeaturesButton.Size = new System.Drawing.Size(75, 23);
-            this.ekstractFeaturesButton.TabIndex = 2;
-            this.ekstractFeaturesButton.Text = "Extract";
-            this.ekstractFeaturesButton.UseVisualStyleBackColor = true;
-            this.ekstractFeaturesButton.Click += new System.EventHandler(this.ExtractFeaturesButtonClick);
-            // 
-            // featureExtractionResultLabel
-            // 
-            this.featureExtractionResultLabel.AutoSize = true;
-            this.featureExtractionResultLabel.Location = new System.Drawing.Point(6, 120);
-            this.featureExtractionResultLabel.Name = "featureExtractionResultLabel";
-            this.featureExtractionResultLabel.Size = new System.Drawing.Size(43, 13);
-            this.featureExtractionResultLabel.TabIndex = 3;
-            this.featureExtractionResultLabel.Text = "Result: ";
-            // 
-            // Form1
-            // 
-            this.ClientSize = new System.Drawing.Size(521, 261);
+            resources.ApplyResources(this, "$this");
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.menuStrip2);
             this.MainMenuStrip = this.menuStrip2;
-            this.Name = "Form1";
+            this.Name = "OakStatisticalAnalisysisForm";
             this.menuStrip2.ResumeLayout(false);
             this.menuStrip2.PerformLayout();
             this.panel1.ResumeLayout(false);
