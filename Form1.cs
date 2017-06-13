@@ -10,12 +10,19 @@ namespace OakStatisticalAnalysis
     {
         private string[] databaseContent;
         private IDatabaseContentParser dbContentParser;
-        private IFeatureExtractor featureExtractor;
+        private IFeatureSelector featureExtractor;
+        private IFeaturesSelectingRules featureSelectingRules;
         private List<Sample> parsedDatabaseContent;
         private List<int> featuresUI = new List<int>();
+
         public OakStatisticalAnalisysisForm()
         {
             InitializeComponent();
+        }
+
+        public void InitDependencies()
+        {
+            featureSelectingRules = new FeaturesSelectingRules(RulesFactory.GetRules());
         }
 
         private void ReadFromFileButtonClick(object sender, EventArgs e)
@@ -38,7 +45,7 @@ namespace OakStatisticalAnalysis
         
         private void ExtractFeatures(int numOfFeatures)
         {
-            featureExtractor = new FeatureExtractor(parsedDatabaseContent);
+            featureExtractor = new FeatureSelector(parsedDatabaseContent, featureSelectingRules);
             featuresUI = featureExtractor.Extract(numOfFeatures);
         }
 

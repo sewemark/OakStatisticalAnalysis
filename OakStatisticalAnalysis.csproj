@@ -51,8 +51,8 @@
   <ItemGroup>
     <Compile Include="ContentReader.cs" />
     <Compile Include="DatabaseContentParser.cs" />
-    <Compile Include="FeatureExtractor.cs" />
     <Compile Include="FeatureSelector.cs" />
+    <Compile Include="FeatureSelector3.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>

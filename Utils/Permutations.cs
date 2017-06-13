@@ -10,7 +10,7 @@ namespace OakStatisticalAnalysis.Utils
     {
        
 
-        public static List<int[]> get(int size,int numOfDimensions)
+        public static List<int[]> Get(int size,int numOfDimensions)
         {
             int [] featuresCount =  Enumerable.Range(0, numOfDimensions).ToArray();
             if (size < 1)

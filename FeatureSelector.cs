@@ -1,126 +1,128 @@
-﻿using MathNet.Numerics.LinearAlgebra;
-using MathNet.Numerics.LinearAlgebra.Double;
-using OakStatisticalAnalysis.Models;
-using OakStatisticalAnalysis.Utils;
+﻿using OakStatisticalAnalysis.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 
 namespace OakStatisticalAnalysis
 {
-    public class FeatureSelector
+    public interface IFeatureSelector
+    {
+        List<int> Extract(int numOfFeatures);
+    }
+
+    public class FeatureSelector : IFeatureSelector
     {
         private List<Sample> samples;
-        int dimensions;
-        public  FeatureSelector(List<Sample> _samples)
+        private IFeaturesSelectingRules featuresSelectorRules;
+        public FeatureSelector(List<Sample> _samples, IFeaturesSelectingRules _featuresSelectorRules)
         {
             samples = _samples;
+            featuresSelectorRules = _featuresSelectorRules;
+        }
+        public List<int> Extract(int numOfFeatures)
+        {
+           return featuresSelectorRules.GetRuleForNumberOfFeatures(numOfFeatures)
+                .Select(samples);
+        }
+    }
+
+    public interface IFeaturesSelectingRules
+    {
+        IFeaturesSelectingRule GetRuleForNumberOfFeatures(int numOfFeatures);
+    }
+    public class FeaturesSelectingRules : IFeaturesSelectingRules
+    {
+        private Dictionary<int, IFeaturesSelectingRule> rules;
+
+        public FeaturesSelectingRules(Dictionary<int, IFeaturesSelectingRule> _rules)
+        {
+            rules = _rules;
+        }
+        public IFeaturesSelectingRule GetRuleForNumberOfFeatures( int numOfFeatures)
+        {
+            return rules[numOfFeatures];
+        }
+    }
+
+    public interface IFeaturesSelectingRule
+    {
+        List<int> Select(List<Sample> samples);
+    }
+
+    public class RulesFactory
+    {
+        public static Dictionary<int, IFeaturesSelectingRule> GetRules()
+        {
+            var rules = new Dictionary<int, IFeaturesSelectingRule>();
+            rules.Add(1, new OneDimensionFeaturesSelectingRule());
+            rules.Add(2, new ManyDimensionsFeaturesSelectingRule());
+            rules.Add(3, new ManyDimensionsFeaturesSelectingRule());
+            rules.Add(4, new ManyDimensionsFeaturesSelectingRule());
+            rules.Add(5, new ManyDimensionsFeaturesSelectingRule());
+            rules.Add(6, new ManyDimensionsFeaturesSelectingRule());
+            rules.Add(7, new ManyDimensionsFeaturesSelectingRule());
+            rules.Add(8, new ManyDimensionsFeaturesSelectingRule());
+            rules.Add(9, new ManyDimensionsFeaturesSelectingRule());
+            return rules;
+        }
+    }
+
+    public class OneDimensionFeaturesSelectingRule : IFeaturesSelectingRule
+    {
+        private List<Sample> samples;
+        public List<int> Select(List<Sample> _samples)
+        {
+            samples = _samples;
+            double FLD = 0, tmp;
+            int max_ind = -1;
+            for (int i = 0; i < samples.ElementAt(0).Features.Count; i++)
+            {
+                if ((tmp = ComputeFisherFor1D(i)) > FLD)
+                {
+                    FLD = tmp;
+                    max_ind = i;
+                }
+            }
+            return new List<int>() { max_ind };
+        }
+        private double ComputeFisherFor1D(int index)
+        {
+            double mA = 0, mB = 0, sA = 0, sB = 0;
+            for (int i = 0; i < samples.Count; i++)
+            {
+                double currenValue = (double)samples.ElementAt(i).Features.ElementAt(index);
+                var currentSample = samples.ElementAt(i);
+                if (currentSample.Class == "Acer")
+                {
+                    mA += currenValue;
+                    sA += currenValue * currenValue;
+                }
+                else
+                {
+                    mB += currenValue;
+                    sB += currenValue * currenValue;
+                }
+            }
+            int countA = samples.Where(x => x.Class == "Acer").Count();
+            int countB = samples.Where(x => x.Class == "Quercus").Count();
+            mA /= countA;
+            mB /= countB;
+            sA = sA / countA - mA * mA;
+            sB = sB / countB - mB * mB;
+            double sASqrt = Math.Sqrt(sA);
+            double sBSqrt = Math.Sqrt(sB);
+            double res = Math.Abs(mA - mB) / sASqrt + sBSqrt;
+            return res;
         }
 
-        public List<int> HandleManyDimensions(int dimensions)
+    }
+
+    public class ManyDimensionsFeaturesSelectingRule : IFeaturesSelectingRule
+    {
+        public List<int> Select(List<Sample> samples)
         {
-            this.dimensions = dimensions;
-            var permutations =Permutations.get(dimensions,samples.ElementAt(0).Features.Count());
-            int permIndex = 0;
-            double LD = 0;
-            for (int currentPermutation =0; currentPermutation < permutations.Count; currentPermutation++)
-            {
-                var permArray = permutations.ElementAt(currentPermutation);
-                double tmpLD = Calc(permArray);
-                if (tmpLD > LD)
-                {
-                    LD = tmpLD;
-                    permIndex = currentPermutation;
-                }
-            }
-            return permutations.ElementAt(permIndex).ToList();
-        }
-
-        private double Calc(int [] permArray)
-        {
-            Matrix<double> classAFeatures = DenseMatrix.OfArray(new double[dimensions, 176]);
-            Matrix<double> classBFeatures = DenseMatrix.OfArray(new double[dimensions, 608]);
-            List<Double> modA = new List<double>();
-            List<Double> modB = new List<Double>();
-            for (int featrureIndex = 0; featrureIndex < permArray.Count(); featrureIndex++)
-            {
-
-                double mA = 0, mB = 0;
-
-                for (int j = 0; j < 176; j++)
-                {
-                    double tmp = (double)samples.ElementAt(j).Features.ElementAt(permArray[featrureIndex]);
-                    mA += tmp;
-                    classAFeatures[featrureIndex, j] = tmp;
-                }
-                for (int j = 176; j < 784; j++)
-                {
-                        double tmp = (double)samples.ElementAt(j).Features.ElementAt(permArray[featrureIndex]);
-                    mB += tmp;
-                    classBFeatures[featrureIndex, j - 176] = tmp;
-                }
-                Double mATruncate = (mA / 176);
-                modA.Add(mATruncate);
-                Double mBTruncate = mB / 608;
-                modB.Add(mBTruncate);
-            }
-            Matrix modAMatrix = DenseMatrix.OfArray(new double[dimensions, 176]);
-            for (int i = 0; i < 176; i++)
-            {
-                for (int k = 0; k < dimensions; k++)
-                {
-                    modAMatrix[k, i] = modA.ElementAt(k);
-                }
-            }
-            Matrix modBMatrix = DenseMatrix.OfArray(new double[dimensions, 608]);
-            for (int i = 0; i < 608; i++)
-            {
-                for (int z = 0; z < dimensions; z++)
-                {
-                    modBMatrix[z, i] = modB.ElementAt(z);
-                }
-            }
-            Matrix classABeforeTranspose = DenseMatrix.OfArray(new double[dimensions, 176]);
-            classAFeatures.Subtract(modAMatrix, classABeforeTranspose);
-            // Matrix test = this.computeCovarianceMatrix(classABeforeTranspose.getArray());
-            Matrix<double> classBBeforeTranspose = DenseMatrix.OfArray(new double[dimensions, 608]);
-            classBFeatures.Subtract(modBMatrix, classBBeforeTranspose);
-            // BigMatrix m matrix = new BigMatrix();
-
-
-            Matrix<double> classAS = this.computeCovarianceMatrix(classABeforeTranspose);
-            Matrix<double> classBS = this.computeCovarianceMatrix(classBBeforeTranspose);
-
-            Matrix<double> resultTODeterminant = classAS.Add(classBS);
-            double fisherUpperRes = 0;
-            List<double> fisherUpper = MinusTwoList(modA, modB).ToList();
-            for (int i = 0; i < fisherUpper.Count(); i++)
-            {
-                fisherUpperRes += Math.Pow(fisherUpper.ElementAt(i), 2);
-              
-            }
-            double fiherUpperResult = Math.Sqrt(fisherUpperRes);
-            double fisherDownResult = resultTODeterminant.Determinant();
-            if (fisherDownResult == 0)
-                return 0;
-            double finalRes = fiherUpperResult / fisherDownResult;
-
-            return finalRes;
-        }
-        public IEnumerable<double> MinusTwoList(List<double> first, List<double> second)
-        {
-            for(int i = 0; i < first.Count; i++)
-            {
-                yield return first.ElementAt(i) - second.ElementAt(i);
-            }
-        }
-        private Matrix<double> computeCovarianceMatrix(Matrix<double> matrix)
-        {
-
-
-            Matrix<double> MT = matrix.Transpose();
-            Matrix<double> C = matrix.Multiply(MT);
-            return C;
+            FeatureSelector3 selector = new FeatureSelector3(samples);
+            return selector.HandleManyDimensions(numOfFeatures);
         }
     }
 }
