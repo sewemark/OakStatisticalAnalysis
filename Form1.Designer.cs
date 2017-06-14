@@ -38,6 +38,7 @@
             this.ekstractFeaturesButton = new System.Windows.Forms.Button();
             this.featureNumberLabel = new System.Windows.Forms.Label();
             this.featureNumberComboBox = new System.Windows.Forms.ComboBox();
+            this.extractFeaturesSFSButton = new System.Windows.Forms.Button();
             this.menuStrip2.SuspendLayout();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
@@ -69,6 +70,7 @@
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.extractFeaturesSFSButton);
             this.panel1.Controls.Add(this.featureExtractionResultLabel);
             this.panel1.Controls.Add(this.ekstractFeaturesButton);
             this.panel1.Controls.Add(this.featureNumberLabel);
@@ -108,6 +110,13 @@
             resources.ApplyResources(this.featureNumberComboBox, "featureNumberComboBox");
             this.featureNumberComboBox.Name = "featureNumberComboBox";
             // 
+            // extractFeaturesSFSButton
+            // 
+            resources.ApplyResources(this.extractFeaturesSFSButton, "extractFeaturesSFSButton");
+            this.extractFeaturesSFSButton.Name = "extractFeaturesSFSButton";
+            this.extractFeaturesSFSButton.UseVisualStyleBackColor = true;
+            this.extractFeaturesSFSButton.Click += new System.EventHandler(this.ExtractFeaturesSFSButtonClick);
+            // 
             // OakStatisticalAnalisysisForm
             // 
             resources.ApplyResources(this, "$this");
@@ -140,6 +149,7 @@
         private System.Windows.Forms.ComboBox featureNumberComboBox;
         private System.Windows.Forms.Button ekstractFeaturesButton;
         private System.Windows.Forms.Label featureExtractionResultLabel;
+        private System.Windows.Forms.Button extractFeaturesSFSButton;
     }
 }
 

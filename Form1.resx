@@ -164,6 +164,30 @@
   <data name="selectDatabaseFileDialog.Filter" xml:space="preserve">
     <value>Text|*.txt;</value>
   </data>
+  <data name="extractFeaturesSFSButton.Location" type="System.Drawing.Point, System.Drawing">
+    <value>88, 51</value>
+  </data>
+  <data name="extractFeaturesSFSButton.Size" type="System.Drawing.Size, System.Drawing">
+    <value>75, 23</value>
+  </data>
+  <data name="extractFeaturesSFSButton.TabIndex" type="System.Int32, mscorlib">
+    <value>4</value>
+  </data>
+  <data name="extractFeaturesSFSButton.Text" xml:space="preserve">
+    <value>Extract SFS</value>
+  </data>
+  <data name="&gt;&gt;extractFeaturesSFSButton.Name" xml:space="preserve">
+    <value>extractFeaturesSFSButton</value>
+  </data>
+  <data name="&gt;&gt;extractFeaturesSFSButton.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;extractFeaturesSFSButton.Parent" xml:space="preserve">
+    <value>panel1</value>
+  </data>
+  <data name="&gt;&gt;extractFeaturesSFSButton.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
   <data name="featureExtractionResultLabel.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -189,7 +213,7 @@
     <value>panel1</value>
   </data>
   <data name="&gt;&gt;featureExtractionResultLabel.ZOrder" xml:space="preserve">
-    <value>0</value>
+    <value>1</value>
   </data>
   <data name="ekstractFeaturesButton.Location" type="System.Drawing.Point, System.Drawing">
     <value>6, 51</value>
@@ -213,7 +237,7 @@
     <value>panel1</value>
   </data>
   <data name="&gt;&gt;ekstractFeaturesButton.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>2</value>
   </data>
   <data name="featureNumberLabel.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -240,7 +264,7 @@
     <value>panel1</value>
   </data>
   <data name="&gt;&gt;featureNumberLabel.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>3</value>
   </data>
   <data name="featureNumberComboBox.Items" xml:space="preserve">
     <value>1</value>
@@ -285,7 +309,7 @@
     <value>panel1</value>
   </data>
   <data name="&gt;&gt;featureNumberComboBox.ZOrder" xml:space="preserve">
-    <value>3</value>
+    <value>4</value>
   </data>
   <data name="panel1.Location" type="System.Drawing.Point, System.Drawing">
     <value>12, 46</value>

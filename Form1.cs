@@ -1,4 +1,5 @@
 ﻿using OakStatisticalAnalysis.Models;
+using OakStatisticalAnalysis.Rules;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -8,16 +9,17 @@ namespace OakStatisticalAnalysis
 {
     public partial class OakStatisticalAnalisysisForm : Form
     {
-        private string[] databaseContent;
         private IDatabaseContentParser dbContentParser;
         private IFeatureSelector featureExtractor;
         private IFeaturesSelectingRules featureSelectingRules;
         private List<Sample> parsedDatabaseContent;
         private List<int> featuresUI = new List<int>();
+        private string[] databaseContent;
 
         public OakStatisticalAnalisysisForm()
         {
             InitializeComponent();
+            InitDependencies();
         }
 
         public void InitDependencies()
@@ -42,10 +44,22 @@ namespace OakStatisticalAnalysis
             ExtractFeatures((int)featureNumberComboBox.SelectedIndex + 1);
             UpdateUI();
         }
-        
+
+        private void ExtractFeaturesSFSButtonClick(object sender, EventArgs e)
+        {
+            ExtractFeaturesSFS((int)featureNumberComboBox.SelectedIndex + 1);
+            UpdateUI();
+        }
+
         private void ExtractFeatures(int numOfFeatures)
         {
             featureExtractor = new FeatureSelector(parsedDatabaseContent, featureSelectingRules);
+            featuresUI = featureExtractor.Extract(numOfFeatures);
+        }
+
+        private void ExtractFeaturesSFS(int numOfFeatures)
+        {
+            featureExtractor = new SFSFeatureSelector(parsedDatabaseContent, featureSelectingRules);
             featuresUI = featureExtractor.Extract(numOfFeatures);
         }
 

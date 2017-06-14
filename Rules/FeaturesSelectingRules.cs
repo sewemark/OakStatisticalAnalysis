@@ -1,12 +1,22 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 
 namespace OakStatisticalAnalysis.Rules
 {
-    class FeaturesSelectingRules
+    public interface IFeaturesSelectingRules
     {
+        IFeaturesSelectingRule GetRuleForNumberOfFeatures(int numOfFeatures);
+    }
+    public class FeaturesSelectingRules : IFeaturesSelectingRules
+    {
+        private Dictionary<int, IFeaturesSelectingRule> rules;
+
+        public FeaturesSelectingRules(Dictionary<int, IFeaturesSelectingRule> _rules)
+        {
+            rules = _rules;
+        }
+        public IFeaturesSelectingRule GetRuleForNumberOfFeatures(int numOfFeatures)
+        {
+            return rules[numOfFeatures];
+        }
     }
 }
