@@ -34,13 +34,17 @@
             this.readFromFile = new System.Windows.Forms.ToolStripMenuItem();
             this.selectDatabaseFileDialog = new System.Windows.Forms.OpenFileDialog();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.extractFeaturesSFSButton = new System.Windows.Forms.Button();
             this.featureExtractionResultLabel = new System.Windows.Forms.Label();
             this.ekstractFeaturesButton = new System.Windows.Forms.Button();
             this.featureNumberLabel = new System.Windows.Forms.Label();
             this.featureNumberComboBox = new System.Windows.Forms.ComboBox();
-            this.extractFeaturesSFSButton = new System.Windows.Forms.Button();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.trainButton = new System.Windows.Forms.Button();
             this.menuStrip2.SuspendLayout();
             this.panel1.SuspendLayout();
+            this.panel2.SuspendLayout();
             this.SuspendLayout();
             // 
             // menuStrip2
@@ -78,6 +82,13 @@
             resources.ApplyResources(this.panel1, "panel1");
             this.panel1.Name = "panel1";
             // 
+            // extractFeaturesSFSButton
+            // 
+            resources.ApplyResources(this.extractFeaturesSFSButton, "extractFeaturesSFSButton");
+            this.extractFeaturesSFSButton.Name = "extractFeaturesSFSButton";
+            this.extractFeaturesSFSButton.UseVisualStyleBackColor = true;
+            this.extractFeaturesSFSButton.Click += new System.EventHandler(this.ExtractFeaturesSFSButtonClick);
+            // 
             // featureExtractionResultLabel
             // 
             resources.ApplyResources(this.featureExtractionResultLabel, "featureExtractionResultLabel");
@@ -110,16 +121,29 @@
             resources.ApplyResources(this.featureNumberComboBox, "featureNumberComboBox");
             this.featureNumberComboBox.Name = "featureNumberComboBox";
             // 
-            // extractFeaturesSFSButton
+            // panel2
             // 
-            resources.ApplyResources(this.extractFeaturesSFSButton, "extractFeaturesSFSButton");
-            this.extractFeaturesSFSButton.Name = "extractFeaturesSFSButton";
-            this.extractFeaturesSFSButton.UseVisualStyleBackColor = true;
-            this.extractFeaturesSFSButton.Click += new System.EventHandler(this.ExtractFeaturesSFSButtonClick);
+            this.panel2.Controls.Add(this.trainButton);
+            this.panel2.Controls.Add(this.textBox1);
+            resources.ApplyResources(this.panel2, "panel2");
+            this.panel2.Name = "panel2";
+            // 
+            // textBox1
+            // 
+            resources.ApplyResources(this.textBox1, "textBox1");
+            this.textBox1.Name = "textBox1";
+            // 
+            // trainButton
+            // 
+            resources.ApplyResources(this.trainButton, "trainButton");
+            this.trainButton.Name = "trainButton";
+            this.trainButton.UseVisualStyleBackColor = true;
+            this.trainButton.Click += new System.EventHandler(this.TrainButtonClick);
             // 
             // OakStatisticalAnalisysisForm
             // 
             resources.ApplyResources(this, "$this");
+            this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.menuStrip2);
             this.MainMenuStrip = this.menuStrip2;
@@ -128,6 +152,8 @@
             this.menuStrip2.PerformLayout();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            this.panel2.ResumeLayout(false);
+            this.panel2.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -150,6 +176,9 @@
         private System.Windows.Forms.Button ekstractFeaturesButton;
         private System.Windows.Forms.Label featureExtractionResultLabel;
         private System.Windows.Forms.Button extractFeaturesSFSButton;
+        private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.Button trainButton;
+        private System.Windows.Forms.TextBox textBox1;
     }
 }
 

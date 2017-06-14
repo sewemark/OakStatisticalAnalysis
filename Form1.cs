@@ -84,5 +84,16 @@ namespace OakStatisticalAnalysis
                 }
             }
         }
+
+        private void TrainButtonClick(object sender, EventArgs e)
+        {
+            TrainTestSetsSplitter splitter = new TrainTestSetsSplitter();
+            splitter.Split(parsedDatabaseContent, 0.40);
+        }
+
+        private void ExecuteButtonClick(object sender, EventArgs e)
+        {
+
+        }
     }
 }

@@ -66,6 +66,7 @@
     <Compile Include="Rules\OneDimensionFeaturesSelectingRule.cs" />
     <Compile Include="Rules\RulesFactory.cs" />
     <Compile Include="SFSFeatureSelector.cs" />
+    <Compile Include="TrainTestSetsSplitter.cs" />
     <Compile Include="Utils\Extensions.cs" />
     <Compile Include="Utils\Permutations.cs" />
     <EmbeddedResource Include="Form1.resx">
