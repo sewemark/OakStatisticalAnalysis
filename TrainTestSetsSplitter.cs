@@ -1,26 +1,24 @@
-﻿using OakStatisticalAnalysis.Models;
-using System;
-using System.Collections.Generic;
+﻿using System;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using OakStatisticalAnalysis.Models;
+using System.Collections.Generic;
+
 
 namespace OakStatisticalAnalysis
 {
     public class TrainTestSetsSplitter
     {
-        public void Split(List<Sample> database,double ratio)
+        public TrainTestStruct Split(List<Sample> database,double ratio)
         {
-            var ddd = database.GroupBy(x => x.Class)
-                .Select(y => y.Take(Convert.ToInt32(y.Count() * ratio)));
-
-
-            var aa = 10;
-
-            for (int i = 0; i < ddd.Count(); i++)
+            var train = database.GroupBy(x => x.Class)
+                .Select(y => y.Take(Convert.ToInt32(Math.Floor(y.Count() * ratio))));
+            var test = database.GroupBy(x => x.Class)
+                .Select(y => y.Skip(Convert.ToInt32(Math.Floor(y.Count() * ratio))));
+            return new TrainTestStruct
             {
-
-            }
+                TrainingSet = train.SelectMany(x => x).ToList(),
+                TestSet = test.SelectMany(x => x).ToList()
+            };
         }
     }
 

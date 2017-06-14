@@ -392,6 +392,39 @@
   <data name="&gt;&gt;featureNumberComboBox.ZOrder" xml:space="preserve">
     <value>4</value>
   </data>
+  <data name="comboBox1.Items" xml:space="preserve">
+    <value>NN</value>
+  </data>
+  <data name="comboBox1.Items1" xml:space="preserve">
+    <value>NM</value>
+  </data>
+  <data name="comboBox1.Items2" xml:space="preserve">
+    <value>kNN</value>
+  </data>
+  <data name="comboBox1.Items3" xml:space="preserve">
+    <value>kNM</value>
+  </data>
+  <data name="comboBox1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>159, 14</value>
+  </data>
+  <data name="comboBox1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>82, 21</value>
+  </data>
+  <data name="comboBox1.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="&gt;&gt;comboBox1.Name" xml:space="preserve">
+    <value>comboBox1</value>
+  </data>
+  <data name="&gt;&gt;comboBox1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;comboBox1.Parent" xml:space="preserve">
+    <value>panel2</value>
+  </data>
+  <data name="&gt;&gt;comboBox1.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
   <data name="trainButton.Location" type="System.Drawing.Point, System.Drawing">
     <value>17, 49</value>
   </data>
@@ -414,28 +447,31 @@
     <value>panel2</value>
   </data>
   <data name="&gt;&gt;trainButton.ZOrder" xml:space="preserve">
-    <value>0</value>
+    <value>1</value>
   </data>
-  <data name="textBox1.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="trainTestRatioTextBox.Location" type="System.Drawing.Point, System.Drawing">
     <value>82, 14</value>
   </data>
-  <data name="textBox1.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="trainTestRatioTextBox.Size" type="System.Drawing.Size, System.Drawing">
     <value>44, 20</value>
   </data>
-  <data name="textBox1.TabIndex" type="System.Int32, mscorlib">
+  <data name="trainTestRatioTextBox.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
   </data>
-  <data name="&gt;&gt;textBox1.Name" xml:space="preserve">
-    <value>textBox1</value>
+  <data name="trainTestRatioTextBox.Text" xml:space="preserve">
+    <value>0.80</value>
   </data>
-  <data name="&gt;&gt;textBox1.Type" xml:space="preserve">
+  <data name="&gt;&gt;trainTestRatioTextBox.Name" xml:space="preserve">
+    <value>trainTestRatioTextBox</value>
+  </data>
+  <data name="&gt;&gt;trainTestRatioTextBox.Type" xml:space="preserve">
     <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;textBox1.Parent" xml:space="preserve">
+  <data name="&gt;&gt;trainTestRatioTextBox.Parent" xml:space="preserve">
     <value>panel2</value>
   </data>
-  <data name="&gt;&gt;textBox1.ZOrder" xml:space="preserve">
-    <value>1</value>
+  <data name="&gt;&gt;trainTestRatioTextBox.ZOrder" xml:space="preserve">
+    <value>2</value>
   </data>
   <data name="panel2.Location" type="System.Drawing.Point, System.Drawing">
     <value>18, 190</value>

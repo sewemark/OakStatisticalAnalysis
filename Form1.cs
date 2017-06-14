@@ -88,7 +88,8 @@ namespace OakStatisticalAnalysis
         private void TrainButtonClick(object sender, EventArgs e)
         {
             TrainTestSetsSplitter splitter = new TrainTestSetsSplitter();
-            splitter.Split(parsedDatabaseContent, 0.40);
+            double ration = Convert.ToDouble(trainTestRatioTextBox.Text);
+            var result =  splitter.Split(parsedDatabaseContent, ration);
         }
 
         private void ExecuteButtonClick(object sender, EventArgs e)

@@ -40,8 +40,9 @@
             this.featureNumberLabel = new System.Windows.Forms.Label();
             this.featureNumberComboBox = new System.Windows.Forms.ComboBox();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.trainTestRatioTextBox = new System.Windows.Forms.TextBox();
             this.trainButton = new System.Windows.Forms.Button();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.menuStrip2.SuspendLayout();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -123,15 +124,16 @@
             // 
             // panel2
             // 
+            this.panel2.Controls.Add(this.comboBox1);
             this.panel2.Controls.Add(this.trainButton);
-            this.panel2.Controls.Add(this.textBox1);
+            this.panel2.Controls.Add(this.trainTestRatioTextBox);
             resources.ApplyResources(this.panel2, "panel2");
             this.panel2.Name = "panel2";
             // 
-            // textBox1
+            // trainTestRatioTextBox
             // 
-            resources.ApplyResources(this.textBox1, "textBox1");
-            this.textBox1.Name = "textBox1";
+            resources.ApplyResources(this.trainTestRatioTextBox, "trainTestRatioTextBox");
+            this.trainTestRatioTextBox.Name = "trainTestRatioTextBox";
             // 
             // trainButton
             // 
@@ -139,6 +141,17 @@
             this.trainButton.Name = "trainButton";
             this.trainButton.UseVisualStyleBackColor = true;
             this.trainButton.Click += new System.EventHandler(this.TrainButtonClick);
+            // 
+            // comboBox1
+            // 
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Items.AddRange(new object[] {
+            resources.GetString("comboBox1.Items"),
+            resources.GetString("comboBox1.Items1"),
+            resources.GetString("comboBox1.Items2"),
+            resources.GetString("comboBox1.Items3")});
+            resources.ApplyResources(this.comboBox1, "comboBox1");
+            this.comboBox1.Name = "comboBox1";
             // 
             // OakStatisticalAnalisysisForm
             // 
@@ -178,7 +191,8 @@
         private System.Windows.Forms.Button extractFeaturesSFSButton;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Button trainButton;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox trainTestRatioTextBox;
+        private System.Windows.Forms.ComboBox comboBox1;
     }
 }
 
