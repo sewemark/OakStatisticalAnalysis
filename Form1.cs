@@ -90,10 +90,14 @@ namespace OakStatisticalAnalysis
             TrainTestSetsSplitter splitter = new TrainTestSetsSplitter();
             double ration = Convert.ToDouble(trainTestRatioTextBox.Text);
             var result =  splitter.Split(parsedDatabaseContent, ration);
+            ClassifierFactory factory = new ClassifierFactory();
+            factory.Select(selectClassifierComboBox.SelectedText)
+                    .Train(result.TrainingSet);
         }
 
-        private void ExecuteButtonClick(object sender, EventArgs e)
+        private void ExecuteTestButtonClick(object sender, EventArgs e)
         {
+
 
         }
     }

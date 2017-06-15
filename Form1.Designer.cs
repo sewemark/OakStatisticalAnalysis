@@ -42,7 +42,8 @@
             this.panel2 = new System.Windows.Forms.Panel();
             this.trainTestRatioTextBox = new System.Windows.Forms.TextBox();
             this.trainButton = new System.Windows.Forms.Button();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.selectClassifierComboBox = new System.Windows.Forms.ComboBox();
+            this.executeTestButton = new System.Windows.Forms.Button();
             this.menuStrip2.SuspendLayout();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -124,7 +125,8 @@
             // 
             // panel2
             // 
-            this.panel2.Controls.Add(this.comboBox1);
+            this.panel2.Controls.Add(this.executeTestButton);
+            this.panel2.Controls.Add(this.selectClassifierComboBox);
             this.panel2.Controls.Add(this.trainButton);
             this.panel2.Controls.Add(this.trainTestRatioTextBox);
             resources.ApplyResources(this.panel2, "panel2");
@@ -142,16 +144,23 @@
             this.trainButton.UseVisualStyleBackColor = true;
             this.trainButton.Click += new System.EventHandler(this.TrainButtonClick);
             // 
-            // comboBox1
+            // selectClassifierComboBox
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Items.AddRange(new object[] {
-            resources.GetString("comboBox1.Items"),
-            resources.GetString("comboBox1.Items1"),
-            resources.GetString("comboBox1.Items2"),
-            resources.GetString("comboBox1.Items3")});
-            resources.ApplyResources(this.comboBox1, "comboBox1");
-            this.comboBox1.Name = "comboBox1";
+            this.selectClassifierComboBox.FormattingEnabled = true;
+            this.selectClassifierComboBox.Items.AddRange(new object[] {
+            resources.GetString("selectClassifierComboBox.Items"),
+            resources.GetString("selectClassifierComboBox.Items1"),
+            resources.GetString("selectClassifierComboBox.Items2"),
+            resources.GetString("selectClassifierComboBox.Items3")});
+            resources.ApplyResources(this.selectClassifierComboBox, "selectClassifierComboBox");
+            this.selectClassifierComboBox.Name = "selectClassifierComboBox";
+            // 
+            // executeTestButton
+            // 
+            resources.ApplyResources(this.executeTestButton, "executeTestButton");
+            this.executeTestButton.Name = "executeTestButton";
+            this.executeTestButton.UseVisualStyleBackColor = true;
+            this.executeTestButton.Click += new System.EventHandler(this.ExecuteTestButtonClick);
             // 
             // OakStatisticalAnalisysisForm
             // 
@@ -192,7 +201,8 @@
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Button trainButton;
         private System.Windows.Forms.TextBox trainTestRatioTextBox;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.ComboBox selectClassifierComboBox;
+        private System.Windows.Forms.Button executeTestButton;
     }
 }
 
