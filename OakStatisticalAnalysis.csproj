@@ -49,6 +49,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ClassifierFactory.cs" />
     <Compile Include="DatabaseContentParser.cs" />
     <Compile Include="FeatureSelector.cs" />
     <Compile Include="Form1.cs">
@@ -57,7 +58,12 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="IClassifier.cs" />
+    <Compile Include="ITestClassifier.cs" />
+    <Compile Include="KNNClassifier.cs" />
     <Compile Include="Models\Sample.cs" />
+    <Compile Include="NMClassifier.cs" />
+    <Compile Include="NNClassifier.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Rules\FeaturesSelectingRules.cs" />
@@ -66,6 +72,10 @@
     <Compile Include="Rules\OneDimensionFeaturesSelectingRule.cs" />
     <Compile Include="Rules\RulesFactory.cs" />
     <Compile Include="SFSFeatureSelector.cs" />
+    <Compile Include="TestClassifierFactory.cs" />
+    <Compile Include="TestKNNClassifier.cs" />
+    <Compile Include="TestNMClassifier.cs" />
+    <Compile Include="TestNNClassifier.cs" />
     <Compile Include="TrainTestSetsSplitter.cs" />
     <Compile Include="Utils\Extensions.cs" />
     <Compile Include="Utils\Permutations.cs" />

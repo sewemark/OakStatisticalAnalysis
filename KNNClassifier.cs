@@ -1,6 +1,19 @@
-﻿namespace OakStatisticalAnalysis
+﻿using System;
+using System.Collections.Generic;
+using OakStatisticalAnalysis.Models;
+
+namespace OakStatisticalAnalysis
 {
-    internal class KNNClassifier : IClassifier
+    public class KNNClassifier : IClassifier
     {
+        public void Classify()
+        {
+
+        }
+
+        public void Train(List<Sample> trainingSet)
+        {
+
+        }
     }
 }

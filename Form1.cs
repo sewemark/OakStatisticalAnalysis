@@ -97,7 +97,8 @@ namespace OakStatisticalAnalysis
 
         private void ExecuteTestButtonClick(object sender, EventArgs e)
         {
-
+            TestClassifierFactory factory = new TestClassifierFactory();
+            factory.Select(selectClassifierComboBox.SelectedText);
 
         }
     }

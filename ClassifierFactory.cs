@@ -10,6 +10,8 @@ namespace OakStatisticalAnalysis
         public ClassifierFactory()
         {
             classifierSelectingRules.Add("NN", new NNClassifier());
+            classifierSelectingRules.Add("NM", new NMClassifier());
+            classifierSelectingRules.Add("kNN", new KNNClassifier());
         }
         public IClassifier Select(string classifierName)
         {
