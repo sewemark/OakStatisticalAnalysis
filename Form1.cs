@@ -12,10 +12,11 @@ namespace OakStatisticalAnalysis
         private IDatabaseContentParser dbContentParser;
         private IFeatureSelector featureExtractor;
         private IFeaturesSelectingRules featureSelectingRules;
+        private IClassifier currentClassifier;
         private List<Sample> parsedDatabaseContent;
         private List<int> featuresUI = new List<int>();
-        private string[] databaseContent;
         private TrainTestStruct trainTestStruct;
+        private string[] databaseContent;
 
         public OakStatisticalAnalisysisForm()
         {
@@ -92,15 +93,16 @@ namespace OakStatisticalAnalysis
             double ration = Convert.ToDouble(trainTestRatioTextBox.Text);
             trainTestStruct =  splitter.Split(parsedDatabaseContent, ration);
             ClassifierFactory factory = new ClassifierFactory();
-            factory.Select(selectClassifierComboBox.SelectedItem.ToString())
-                    .Train(trainTestStruct.TrainingSet);
+
+            currentClassifier = factory.Select(selectClassifierComboBox.SelectedItem.ToString());
+            currentClassifier.Train(trainTestStruct.TrainingSet);
         }
 
         private void ExecuteTestButtonClick(object sender, EventArgs e)
         {
             TestClassifierFactory factory = new TestClassifierFactory();
             var testClassifier = factory.Select(selectClassifierComboBox.SelectedItem.ToString());
-            testClassifier.Test(trainTestStruct.TestSet,trainTestStruct.TrainingSet);
+            testClassifier.Test(currentClassifier,trainTestStruct.TestSet);
 
         }
     }

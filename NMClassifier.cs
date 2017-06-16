@@ -8,8 +8,10 @@ namespace OakStatisticalAnalysis
     {
         private List<Sample> trainingSet;
         private double[][] means;
+
         public void Classify()
         {
+
         }
 
         public void Train(List<Sample> _trainingSet)
@@ -17,7 +19,10 @@ namespace OakStatisticalAnalysis
             trainingSet = _trainingSet;
             CalculateMenasForClass();
         }
-        
+        public double[][] GetMeans()
+        {
+            return means;
+        }
         public void CalculateMenasForClass()
         {
             double[] modA = new double[trainingSet.Count];
@@ -45,6 +50,11 @@ namespace OakStatisticalAnalysis
                 modB[i] = (_modB / numOfBMod);
             }
             means = new double[][] { modA, modB };
+        }
+
+        public List<Sample> GetTrainingSet()
+        {
+            return trainingSet;
         }
     }
 }

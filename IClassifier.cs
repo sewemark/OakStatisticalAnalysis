@@ -7,5 +7,6 @@ namespace OakStatisticalAnalysis
     {
         void Classify();
         void Train(List<Sample> trainingSet);
+        List<Sample> GetTrainingSet();
     }
 }

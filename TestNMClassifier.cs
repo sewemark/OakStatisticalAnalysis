@@ -1,6 +1,7 @@
 ﻿using OakStatisticalAnalysis.Models;
+using OakStatisticalAnalysis.Utils;
 using System.Collections.Generic;
-using System;
+using System.Linq;
 
 namespace OakStatisticalAnalysis
 {
@@ -8,11 +9,28 @@ namespace OakStatisticalAnalysis
     {
         private List<Sample> testSet;
 
-        public double Test(List<Sample> _testSet, List<Sample> _trainingSet)
-        {
-            testSet = _testSet;
+        private IClassifier classifier;
 
-            return 0;
+        public TestNMClassifier()
+        {
+
+        }
+
+        public double Test(IClassifier _classifier, List<Sample> _testSet)
+        {
+            classifier = _classifier;
+            var trainingSet = classifier.GetTrainingSet();
+            return _testSet.Count(x => GetNearestMean(x) == x.Class)
+            / _testSet.Count;
+        }
+
+        private string GetNearestMean(Sample x)
+        {
+            var currentclassfier  = classifier as NMClassifier;
+            var means = currentclassfier.GetMeans();
+            return MathUtil.CalculateDistnace(means[0].ToList(), x.Features)
+                >= MathUtil.CalculateDistnace(means[0].ToList(), x.Features) ?
+                "Acer" : "Quercus";
         }
     }
 }

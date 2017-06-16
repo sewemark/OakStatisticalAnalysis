@@ -1,20 +1,25 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using OakStatisticalAnalysis.Models;
 
 namespace OakStatisticalAnalysis
 {
     public class NNClassifier : IClassifier
     {
+        private List<Sample> trainingSet;
         public void Classify()
         {
         }
 
-        public void Train(List<Sample> trainingSet)
+        public List<Sample> GetTrainingSet()
         {
+            return trainingSet;
+        }
+
+        public void Train(List<Sample> _trainingSet)
+        {
+            trainingSet = _trainingSet;
         }
     }
 

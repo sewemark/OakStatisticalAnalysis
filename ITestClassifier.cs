@@ -5,6 +5,6 @@ namespace OakStatisticalAnalysis
 {
     public  interface ITestClassifier
     {
-        double Test(List<Sample> _testSet, List<Sample> _trainingSet);
+        double Test(IClassifier classifier, List<Sample> _testSet);
     }
 }
