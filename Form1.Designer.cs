@@ -40,10 +40,10 @@
             this.featureNumberLabel = new System.Windows.Forms.Label();
             this.featureNumberComboBox = new System.Windows.Forms.ComboBox();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.trainTestRatioTextBox = new System.Windows.Forms.TextBox();
-            this.trainButton = new System.Windows.Forms.Button();
-            this.selectClassifierComboBox = new System.Windows.Forms.ComboBox();
             this.executeTestButton = new System.Windows.Forms.Button();
+            this.selectClassifierComboBox = new System.Windows.Forms.ComboBox();
+            this.trainButton = new System.Windows.Forms.Button();
+            this.trainTestRatioTextBox = new System.Windows.Forms.TextBox();
             this.menuStrip2.SuspendLayout();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -132,17 +132,12 @@
             resources.ApplyResources(this.panel2, "panel2");
             this.panel2.Name = "panel2";
             // 
-            // trainTestRatioTextBox
+            // executeTestButton
             // 
-            resources.ApplyResources(this.trainTestRatioTextBox, "trainTestRatioTextBox");
-            this.trainTestRatioTextBox.Name = "trainTestRatioTextBox";
-            // 
-            // trainButton
-            // 
-            resources.ApplyResources(this.trainButton, "trainButton");
-            this.trainButton.Name = "trainButton";
-            this.trainButton.UseVisualStyleBackColor = true;
-            this.trainButton.Click += new System.EventHandler(this.TrainButtonClick);
+            resources.ApplyResources(this.executeTestButton, "executeTestButton");
+            this.executeTestButton.Name = "executeTestButton";
+            this.executeTestButton.UseVisualStyleBackColor = true;
+            this.executeTestButton.Click += new System.EventHandler(this.ExecuteTestButtonClick);
             // 
             // selectClassifierComboBox
             // 
@@ -155,12 +150,17 @@
             resources.ApplyResources(this.selectClassifierComboBox, "selectClassifierComboBox");
             this.selectClassifierComboBox.Name = "selectClassifierComboBox";
             // 
-            // executeTestButton
+            // trainButton
             // 
-            resources.ApplyResources(this.executeTestButton, "executeTestButton");
-            this.executeTestButton.Name = "executeTestButton";
-            this.executeTestButton.UseVisualStyleBackColor = true;
-            this.executeTestButton.Click += new System.EventHandler(this.ExecuteTestButtonClick);
+            resources.ApplyResources(this.trainButton, "trainButton");
+            this.trainButton.Name = "trainButton";
+            this.trainButton.UseVisualStyleBackColor = true;
+            this.trainButton.Click += new System.EventHandler(this.TrainButtonClick);
+            // 
+            // trainTestRatioTextBox
+            // 
+            resources.ApplyResources(this.trainTestRatioTextBox, "trainTestRatioTextBox");
+            this.trainTestRatioTextBox.Name = "trainTestRatioTextBox";
             // 
             // OakStatisticalAnalisysisForm
             // 

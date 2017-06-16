@@ -13,15 +13,17 @@ namespace OakStatisticalAnalysis
     {
         private List<Sample> samples;
         private IFeaturesSelectingRules featuresSelectorRules;
+
         public FeatureSelector(List<Sample> _samples, IFeaturesSelectingRules _featuresSelectorRules)
         {
             samples = _samples;
             featuresSelectorRules = _featuresSelectorRules;
         }
+
         public List<int> Extract(int numOfFeatures)
         {
             return featuresSelectorRules.GetRuleForNumberOfFeatures(numOfFeatures)
-                                       .Select(samples);
+                                        .Select(samples);
         }
     }
    

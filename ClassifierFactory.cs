@@ -1,12 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 
 namespace OakStatisticalAnalysis
 {
     public class ClassifierFactory
     {
-        private Dictionary<string, IClassifier> classifierSelectingRules
-            = new Dictionary<string, IClassifier>();
+        private Dictionary<string, IClassifier> classifierSelectingRules = new Dictionary<string, IClassifier>();
+
         public ClassifierFactory()
         {
             classifierSelectingRules.Add("NN", new NNClassifier());

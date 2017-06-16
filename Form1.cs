@@ -15,6 +15,7 @@ namespace OakStatisticalAnalysis
         private List<Sample> parsedDatabaseContent;
         private List<int> featuresUI = new List<int>();
         private string[] databaseContent;
+        private TrainTestStruct trainTestStruct;
 
         public OakStatisticalAnalisysisForm()
         {
@@ -89,16 +90,17 @@ namespace OakStatisticalAnalysis
         {
             TrainTestSetsSplitter splitter = new TrainTestSetsSplitter();
             double ration = Convert.ToDouble(trainTestRatioTextBox.Text);
-            var result =  splitter.Split(parsedDatabaseContent, ration);
+            trainTestStruct =  splitter.Split(parsedDatabaseContent, ration);
             ClassifierFactory factory = new ClassifierFactory();
-            factory.Select(selectClassifierComboBox.SelectedText)
-                    .Train(result.TrainingSet);
+            factory.Select(selectClassifierComboBox.SelectedItem.ToString())
+                    .Train(trainTestStruct.TrainingSet);
         }
 
         private void ExecuteTestButtonClick(object sender, EventArgs e)
         {
             TestClassifierFactory factory = new TestClassifierFactory();
-            factory.Select(selectClassifierComboBox.SelectedText);
+            var testClassifier = factory.Select(selectClassifierComboBox.SelectedItem.ToString());
+            testClassifier.Test(trainTestStruct.TestSet,trainTestStruct.TrainingSet);
 
         }
     }

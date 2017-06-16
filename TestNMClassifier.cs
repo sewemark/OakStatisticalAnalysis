@@ -1,6 +1,18 @@
-﻿namespace OakStatisticalAnalysis
+﻿using OakStatisticalAnalysis.Models;
+using System.Collections.Generic;
+using System;
+
+namespace OakStatisticalAnalysis
 {
-    internal class TestNMClassifier : ITestClassifier
+    public class TestNMClassifier : ITestClassifier
     {
+        private List<Sample> testSet;
+
+        public double Test(List<Sample> _testSet, List<Sample> _trainingSet)
+        {
+            testSet = _testSet;
+
+            return 0;
+        }
     }
 }
