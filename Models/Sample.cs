@@ -16,5 +16,6 @@ namespace OakStatisticalAnalysis.Models
         public List<decimal> Features { get; set; }
         public string Class { get; set; }
         public string Label { get; set; }
+        public int CentoridNumber { get; set; }
     }
 }

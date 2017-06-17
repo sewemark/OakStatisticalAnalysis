@@ -60,6 +60,7 @@
     </Compile>
     <Compile Include="IClassifier.cs" />
     <Compile Include="ITestClassifier.cs" />
+    <Compile Include="KNMClassifier.cs" />
     <Compile Include="KNNClassifier.cs" />
     <Compile Include="Models\Sample.cs" />
     <Compile Include="NMClassifier.cs" />
