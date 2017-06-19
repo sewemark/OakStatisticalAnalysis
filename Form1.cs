@@ -13,6 +13,7 @@ namespace OakStatisticalAnalysis
         private IFeatureSelector featureExtractor;
         private IFeaturesSelectingRules featureSelectingRules;
         private IClassifier currentClassifier;
+
         private List<Sample> parsedDatabaseContent;
         private List<int> featuresUI = new List<int>();
         private TrainTestStruct trainTestStruct;

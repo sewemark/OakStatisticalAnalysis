@@ -11,7 +11,7 @@ namespace OakStatisticalAnalysis
         private List<Sample> trainingSet;
         private List<Sample> adjuctesTrainingSet = new List<Sample>();
         private List<Centroid> centroids;
-        private const int kParam = 5;
+        private const int kParam = 3;
         private double[][] oldCentroids = new double[kParam][];
         public void Classify()
         {
@@ -63,7 +63,7 @@ namespace OakStatisticalAnalysis
 
             centroids.ForEach(x =>
             {
-                x.InitValues();
+            x.InitValues(trainingSet[0].Features.Count);
             });
         }
 
@@ -72,7 +72,7 @@ namespace OakStatisticalAnalysis
             centroids = new List<Centroid>(kParam);
             for(int i=0;i<kParam;i++)
             {
-                Centroid c = new Centroid(i);
+                Centroid c = new Centroid(i,trainingSet[0].Features.Count);
                 centroids.Add(c);
             }
             
@@ -82,10 +82,9 @@ namespace OakStatisticalAnalysis
         {
             adjuctesTrainingSet.Clear();
             trainingSet.ForEach(y => {
-                var centroid = centroids.OrderByDescending(x =>
-                 MathUtil.CalculateDistnace(x.Mod.ToList(), y.Features)).FirstOrDefault();
-                adjuctesTrainingSet.Add(new Sample() { Label = y.Label, Class = centroid.Number.ToString(), CentoridNumber= centroid.Number, Features = y.Features });
-
+                var centroid = centroids.Select(x=>MathUtil.CalculateDistnace(x.Mod.ToList(), y.Features)).ToList();
+                var min = Array.IndexOf(centroid.ToArray(), centroid.Min());
+                adjuctesTrainingSet.Add(new Sample() { Label = y.Label, Class = min.ToString(), CentoridNumber= min, Features = y.Features });
             });
         }
         public bool CheckChanged()
@@ -164,15 +163,15 @@ namespace OakStatisticalAnalysis
         public int AcerNum = 0;
         public int QNum = 0;
 
-        public Centroid(int _number)
+        public Centroid(int _number,int numOfFeatures)
         {
             Number = _number;
-            InitValues();
+            InitValues(numOfFeatures);
         }
-        public void InitValues()
+        public void InitValues(int numOfFeatures)
         {
-            Mod = Enumerable.Repeat<double>(0, 64).ToArray();
-            ModOccurencies  = Enumerable.Repeat<double>(0, 64).ToArray();
+            Mod = Enumerable.Repeat<double>(0, numOfFeatures).ToArray();
+            ModOccurencies  = Enumerable.Repeat<double>(0, numOfFeatures).ToArray();
             ClassLables = new List<string>();
     }
         public void ZippValues()

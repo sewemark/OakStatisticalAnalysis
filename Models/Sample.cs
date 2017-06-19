@@ -10,10 +10,10 @@ namespace OakStatisticalAnalysis.Models
     {
         public Sample()
         {
-            Features = new List<decimal>();
+            Features = new List<double>();
         }
 
-        public List<decimal> Features { get; set; }
+        public List<double> Features { get; set; }
         public string Class { get; set; }
         public string Label { get; set; }
         public int CentoridNumber { get; set; }
