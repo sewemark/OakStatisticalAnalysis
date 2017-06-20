@@ -106,5 +106,16 @@ namespace OakStatisticalAnalysis
             testClassifier.Test(currentClassifier,trainTestStruct.TestSet);
 
         }
+
+        private void BootstrapTrainButtonClick(object sender, EventArgs e)
+        {
+            int k = Convert.ToInt32(bootstrapBagsNumberTextBox.Text);
+            double percentage = Convert.ToDouble(bootstrapPercentageTextBox.Text);
+             TrainTestSetsSplitter splitter = new TrainTestSetsSplitter();
+            double ration = Convert.ToDouble(trainTestRatioTextBox.Text);
+            trainTestStruct = splitter.Split(parsedDatabaseContent, ration);
+            BootstrapTrainTestSetsSplitter bootstrap = new BootstrapTrainTestSetsSplitter(k, 30, percentage,parsedDatabaseContent);
+            
+        }
     }
 }

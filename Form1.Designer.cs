@@ -40,13 +40,27 @@
             this.featureNumberLabel = new System.Windows.Forms.Label();
             this.featureNumberComboBox = new System.Windows.Forms.ComboBox();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.button1 = new System.Windows.Forms.Button();
             this.executeTestButton = new System.Windows.Forms.Button();
             this.selectClassifierComboBox = new System.Windows.Forms.ComboBox();
             this.trainButton = new System.Windows.Forms.Button();
             this.trainTestRatioTextBox = new System.Windows.Forms.TextBox();
+            this.panel3 = new System.Windows.Forms.Panel();
+            this.bootstrapBagsNumberTextBox = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.bootstrapPercentageTextBox = new System.Windows.Forms.TextBox();
+            this.panel4 = new System.Windows.Forms.Panel();
+            this.label4 = new System.Windows.Forms.Label();
+            this.crossvalidationNumOfPartsTextBox = new System.Windows.Forms.TextBox();
+            this.radioButton1 = new System.Windows.Forms.RadioButton();
+            this.radioButton2 = new System.Windows.Forms.RadioButton();
+            this.radioButton3 = new System.Windows.Forms.RadioButton();
             this.menuStrip2.SuspendLayout();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
+            this.panel3.SuspendLayout();
+            this.panel4.SuspendLayout();
             this.SuspendLayout();
             // 
             // menuStrip2
@@ -125,12 +139,20 @@
             // 
             // panel2
             // 
+            this.panel2.Controls.Add(this.button1);
             this.panel2.Controls.Add(this.executeTestButton);
             this.panel2.Controls.Add(this.selectClassifierComboBox);
             this.panel2.Controls.Add(this.trainButton);
             this.panel2.Controls.Add(this.trainTestRatioTextBox);
             resources.ApplyResources(this.panel2, "panel2");
             this.panel2.Name = "panel2";
+            // 
+            // button1
+            // 
+            resources.ApplyResources(this.button1, "button1");
+            this.button1.Name = "button1";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.BootstrapTrainButtonClick);
             // 
             // executeTestButton
             // 
@@ -162,9 +184,81 @@
             resources.ApplyResources(this.trainTestRatioTextBox, "trainTestRatioTextBox");
             this.trainTestRatioTextBox.Name = "trainTestRatioTextBox";
             // 
+            // panel3
+            // 
+            this.panel3.Controls.Add(this.bootstrapBagsNumberTextBox);
+            this.panel3.Controls.Add(this.label2);
+            this.panel3.Controls.Add(this.label1);
+            this.panel3.Controls.Add(this.bootstrapPercentageTextBox);
+            resources.ApplyResources(this.panel3, "panel3");
+            this.panel3.Name = "panel3";
+            // 
+            // bootstrapBagsNumberTextBox
+            // 
+            resources.ApplyResources(this.bootstrapBagsNumberTextBox, "bootstrapBagsNumberTextBox");
+            this.bootstrapBagsNumberTextBox.Name = "bootstrapBagsNumberTextBox";
+            // 
+            // label2
+            // 
+            resources.ApplyResources(this.label2, "label2");
+            this.label2.Name = "label2";
+            // 
+            // label1
+            // 
+            resources.ApplyResources(this.label1, "label1");
+            this.label1.Name = "label1";
+            // 
+            // bootstrapPercentageTextBox
+            // 
+            resources.ApplyResources(this.bootstrapPercentageTextBox, "bootstrapPercentageTextBox");
+            this.bootstrapPercentageTextBox.Name = "bootstrapPercentageTextBox";
+            // 
+            // panel4
+            // 
+            this.panel4.Controls.Add(this.crossvalidationNumOfPartsTextBox);
+            this.panel4.Controls.Add(this.label4);
+            resources.ApplyResources(this.panel4, "panel4");
+            this.panel4.Name = "panel4";
+            // 
+            // label4
+            // 
+            resources.ApplyResources(this.label4, "label4");
+            this.label4.Name = "label4";
+            // 
+            // crossvalidationNumOfPartsTextBox
+            // 
+            resources.ApplyResources(this.crossvalidationNumOfPartsTextBox, "crossvalidationNumOfPartsTextBox");
+            this.crossvalidationNumOfPartsTextBox.Name = "crossvalidationNumOfPartsTextBox";
+            // 
+            // radioButton1
+            // 
+            resources.ApplyResources(this.radioButton1, "radioButton1");
+            this.radioButton1.Name = "radioButton1";
+            this.radioButton1.TabStop = true;
+            this.radioButton1.UseVisualStyleBackColor = true;
+            // 
+            // radioButton2
+            // 
+            resources.ApplyResources(this.radioButton2, "radioButton2");
+            this.radioButton2.Name = "radioButton2";
+            this.radioButton2.TabStop = true;
+            this.radioButton2.UseVisualStyleBackColor = true;
+            // 
+            // radioButton3
+            // 
+            resources.ApplyResources(this.radioButton3, "radioButton3");
+            this.radioButton3.Name = "radioButton3";
+            this.radioButton3.TabStop = true;
+            this.radioButton3.UseVisualStyleBackColor = true;
+            // 
             // OakStatisticalAnalisysisForm
             // 
             resources.ApplyResources(this, "$this");
+            this.Controls.Add(this.radioButton3);
+            this.Controls.Add(this.radioButton2);
+            this.Controls.Add(this.radioButton1);
+            this.Controls.Add(this.panel4);
+            this.Controls.Add(this.panel3);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.menuStrip2);
@@ -176,6 +270,10 @@
             this.panel1.PerformLayout();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
+            this.panel3.ResumeLayout(false);
+            this.panel3.PerformLayout();
+            this.panel4.ResumeLayout(false);
+            this.panel4.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -203,6 +301,18 @@
         private System.Windows.Forms.TextBox trainTestRatioTextBox;
         private System.Windows.Forms.ComboBox selectClassifierComboBox;
         private System.Windows.Forms.Button executeTestButton;
+        private System.Windows.Forms.Panel panel3;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.TextBox bootstrapPercentageTextBox;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.TextBox bootstrapBagsNumberTextBox;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Panel panel4;
+        private System.Windows.Forms.TextBox crossvalidationNumOfPartsTextBox;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.RadioButton radioButton1;
+        private System.Windows.Forms.RadioButton radioButton2;
+        private System.Windows.Forms.RadioButton radioButton3;
     }
 }
 

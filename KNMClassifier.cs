@@ -23,6 +23,11 @@ namespace OakStatisticalAnalysis
             return trainingSet;
         }
 
+        public List<Centroid> GetCentroid()
+        {
+            return centroids;
+        }
+
         public void Train(List<Sample> _trainingSet)
         {
             trainingSet = _trainingSet;

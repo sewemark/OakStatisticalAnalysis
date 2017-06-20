@@ -12,6 +12,7 @@ namespace OakStatisticalAnalysis
             classifierSelectingRules.Add("NN", new TestNNClassifier());
             classifierSelectingRules.Add("NM", new TestNMClassifier());
             classifierSelectingRules.Add("kNN", new TestKNNClassifier());
+            classifierSelectingRules.Add("kNM", new TestKNMClassifier());
         }
 
         public ITestClassifier Select(string classifierName)

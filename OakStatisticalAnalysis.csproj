@@ -49,6 +49,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BootstrapTrainTestSetsSplitter.cs" />
     <Compile Include="ClassifierFactory.cs" />
     <Compile Include="DatabaseContentParser.cs" />
     <Compile Include="FeatureSelector.cs" />
@@ -74,6 +75,7 @@
     <Compile Include="Rules\RulesFactory.cs" />
     <Compile Include="SFSFeatureSelector.cs" />
     <Compile Include="TestClassifierFactory.cs" />
+    <Compile Include="TestKNMClassifier.cs" />
     <Compile Include="TestKNNClassifier.cs" />
     <Compile Include="TestNMClassifier.cs" />
     <Compile Include="TestNNClassifier.cs" />
