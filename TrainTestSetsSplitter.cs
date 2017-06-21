@@ -6,7 +6,12 @@ using System.Collections.Generic;
 
 namespace OakStatisticalAnalysis
 {
-    public class TrainTestSetsSplitter
+    public interface ITrainTestSetsSplitter
+    {
+        TrainTestStruct Split(List<Sample> database, double ratio);
+    }
+
+    public class BasicTrainTestSetsSplitter : ITrainTestSetsSplitter
     {
         public TrainTestStruct Split(List<Sample> database,double ratio)
         {

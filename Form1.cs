@@ -3,6 +3,7 @@ using OakStatisticalAnalysis.Rules;
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Windows.Forms;
 
 namespace OakStatisticalAnalysis
@@ -90,11 +91,13 @@ namespace OakStatisticalAnalysis
 
         private void TrainButtonClick(object sender, EventArgs e)
         {
-            TrainTestSetsSplitter splitter = new TrainTestSetsSplitter();
+            BasicTrainTestSetsSplitter splitter = new BasicTrainTestSetsSplitter();
             double ration = Convert.ToDouble(trainTestRatioTextBox.Text);
             trainTestStruct =  splitter.Split(parsedDatabaseContent, ration);
             ClassifierFactory factory = new ClassifierFactory();
-
+            var selectedRadioButton =this.Controls.OfType<RadioButton>()
+                                        .FirstOrDefault(r => r.Checked);
+            TrainTestSetsSplitterFactory.Get(selectedRadioButton.Text);
             currentClassifier = factory.Select(selectClassifierComboBox.SelectedItem.ToString());
             currentClassifier.Train(trainTestStruct.TrainingSet);
         }
@@ -111,7 +114,7 @@ namespace OakStatisticalAnalysis
         {
             int k = Convert.ToInt32(bootstrapBagsNumberTextBox.Text);
             double percentage = Convert.ToDouble(bootstrapPercentageTextBox.Text);
-             TrainTestSetsSplitter splitter = new TrainTestSetsSplitter();
+             BasicTrainTestSetsSplitter splitter = new BasicTrainTestSetsSplitter();
             double ration = Convert.ToDouble(trainTestRatioTextBox.Text);
             trainTestStruct = splitter.Split(parsedDatabaseContent, ration);
             BootstrapTrainTestSetsSplitter bootstrap = new BootstrapTrainTestSetsSplitter(k, 30, percentage,parsedDatabaseContent);

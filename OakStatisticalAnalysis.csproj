@@ -80,6 +80,7 @@
     <Compile Include="TestNMClassifier.cs" />
     <Compile Include="TestNNClassifier.cs" />
     <Compile Include="TrainTestSetsSplitter.cs" />
+    <Compile Include="TrainTestSetsSplitterFactory.cs" />
     <Compile Include="Utils\Extensions.cs" />
     <Compile Include="Utils\MathUtil.cs" />
     <Compile Include="Utils\Permutations.cs" />
