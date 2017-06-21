@@ -6,7 +6,7 @@ namespace OakStatisticalAnalysis
 {
     public interface IFeatureSelector
     {
-        List<int> Extract(int numOfFeatures);
+        List<int> Select(int numOfFeatures);
     }
 
     public class FeatureSelector : IFeatureSelector
@@ -20,7 +20,7 @@ namespace OakStatisticalAnalysis
             featuresSelectorRules = _featuresSelectorRules;
         }
 
-        public List<int> Extract(int numOfFeatures)
+        public List<int> Select(int numOfFeatures)
         {
             return featuresSelectorRules.GetRuleForNumberOfFeatures(numOfFeatures)
                                         .Select(samples);

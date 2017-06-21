@@ -41,6 +41,7 @@ namespace OakStatisticalAnalysis
         {
             dbContentParser = new DatabaseContentParser(databaseContent);
             parsedDatabaseContent = dbContentParser.ParseContent();
+            SampleInfo.Init(parsedDatabaseContent);
         }
 
         private void ExtractFeaturesButtonClick(object sender, EventArgs e)
@@ -58,13 +59,13 @@ namespace OakStatisticalAnalysis
         private void ExtractFeatures(int numOfFeatures)
         {
             featureExtractor = new FeatureSelector(parsedDatabaseContent, featureSelectingRules);
-            featuresUI = featureExtractor.Extract(numOfFeatures);
+            featuresUI = featureExtractor.Select(numOfFeatures);
         }
 
         private void ExtractFeaturesSFS(int numOfFeatures)
         {
             featureExtractor = new SFSFeatureSelector(parsedDatabaseContent, featureSelectingRules);
-            featuresUI = featureExtractor.Extract(numOfFeatures);
+            featuresUI = featureExtractor.Select(numOfFeatures);
         }
 
         private void UpdateUI()

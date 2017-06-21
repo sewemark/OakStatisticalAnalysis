@@ -19,7 +19,7 @@ namespace OakStatisticalAnalysis
             featuresSelectorRules = _featuresSelectorRules;
         }
 
-        public List<int> Extract(int numOfFeatures)
+        public List<int> Select(int numOfFeatures)
         {
 
             List<int> initialPerm = new List<int>();

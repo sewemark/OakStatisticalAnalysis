@@ -21,7 +21,7 @@ namespace OakStatisticalAnalysis.Rules
 
         public double Calc(int[] permArray)
         {
-            Matrix<double> classAFeatures = DenseMatrix.OfArray(new double[numOfFeatures, 176]);
+            Matrix<double> classAFeatures = DenseMatrix.OfArray(new double[numOfFeatures, SampleInfo.]);
             Matrix<double> classBFeatures = DenseMatrix.OfArray(new double[numOfFeatures, 608]);
             List<double> modA = new List<double>();
             List<double> modB = new List<double>();

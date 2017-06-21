@@ -39,7 +39,7 @@ namespace OakStatisticalAnalysis
                 sample.Label = String.Join(String.Empty, textColumns.Skip(1));
                 records.Add(sample);
             }
-
+       
             return records;
         }
     }
