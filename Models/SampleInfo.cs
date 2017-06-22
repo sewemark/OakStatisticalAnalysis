@@ -6,10 +6,10 @@ namespace OakStatisticalAnalysis.Models
 {
     public class SampleInfo
     {
-        public static string[] ClassNames;
+        public  string[] ClassNames;
         public int[] ClassElements;
         private static SampleInfo sampleInfo;
-        public SampleInfo Get()
+        public  static SampleInfo Get()
         {
             if (sampleInfo == null)
                 throw new NullReferenceException();

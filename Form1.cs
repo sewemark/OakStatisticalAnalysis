@@ -98,7 +98,7 @@ namespace OakStatisticalAnalysis
             ClassifierFactory factory = new ClassifierFactory();
             var selectedRadioButton =this.Controls.OfType<RadioButton>()
                                         .FirstOrDefault(r => r.Checked);
-            TrainTestSetsSplitterFactory.Get(selectedRadioButton.Text);
+            //TrainTestSetsSplitterFactory.Get(selectedRadioButton.Text);
             currentClassifier = factory.Select(selectClassifierComboBox.SelectedItem.ToString());
             currentClassifier.Train(trainTestStruct.TrainingSet);
         }

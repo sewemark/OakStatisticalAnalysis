@@ -12,63 +12,44 @@ namespace OakStatisticalAnalysis.Rules
     {
         private int numOfFeatures;
         private List<Sample> samples;
-      
+        private Matrix<double> classAFeatures;
+        private Matrix<double> classBFeatures;
+        private List<double> modA;
+        private List<double> modB;
+        private List<Matrix<double>> projetctedClassFateures;
+        private List<List<double>> mods;
+        private List<Matrix> normalizedMods;
         public TwoDimensionsFisherCalculator(int _numOfFeatures, List<Sample> samples)
         {
             numOfFeatures = _numOfFeatures;
             this.samples = samples;
+            projetctedClassFateures = new List<Matrix<double>>();
+            mods = new List<List<double>>();
+            normalizedMods = new List<Matrix>();
         }
 
-        public double Calc(int[] permArray)
+        public double Calc(int[] currentTestingFeatures)
         {
-            Matrix<double> classAFeatures = DenseMatrix.OfArray(new double[numOfFeatures, SampleInfo.]);
-            Matrix<double> classBFeatures = DenseMatrix.OfArray(new double[numOfFeatures, 608]);
-            List<double> modA = new List<double>();
-            List<double> modB = new List<double>();
-            for (int featrureIndex = 0; featrureIndex < permArray.Count(); featrureIndex++)
+            projetctedClassFateures.Clear();
+            InitMatrix();
+            var lookup = ProjectFeatureSpace(currentTestingFeatures);
+            for(int i=0; i<lookup.Count;i++)
             {
+                var values =lookup.ElementAt(i).Value;
+                var matrix = DenseMatrix.OfArray(values.Select(x => x.ToArray()).ToArray().To2DArray<double>());
+                projetctedClassFateures.Add(matrix);
+            }
+            projetctedClassFateures.ForEach(x =>
+            {
+                var currentMod = x.ColumnSums().Select(y => y / x.RowCount);
+                mods.Add(currentMod.ToList());
+            });
 
-                double mA = 0, mB = 0;
-
-                for (int j = 0; j < 176; j++)
-                {
-                    double tmp = (double)samples.ElementAt(j).Features.ElementAt(permArray[featrureIndex]);
-                    mA += tmp;
-                    classAFeatures[featrureIndex, j] = tmp;
-                }
-                for (int j = 176; j < 784; j++)
-                {
-                    double tmp = (double)samples.ElementAt(j).Features.ElementAt(permArray[featrureIndex]);
-                    mB += tmp;
-                    classBFeatures[featrureIndex, j - 176] = tmp;
-                }
-                double mATruncate = (mA / 176);
-                modA.Add(mATruncate);
-                double mBTruncate = mB / 608;
-                modB.Add(mBTruncate);
-            }
-            Matrix modAMatrix = DenseMatrix.OfArray(new double[numOfFeatures, 176]);
-            for (int i = 0; i < 176; i++)
-            {
-                for (int k = 0; k < numOfFeatures; k++)
-                {
-                    modAMatrix[k, i] = modA.ElementAt(k);
-                }
-            }
-            Matrix modBMatrix = DenseMatrix.OfArray(new double[numOfFeatures, 608]);
-            for (int i = 0; i < 608; i++)
-            {
-                for (int z = 0; z < numOfFeatures; z++)
-                {
-                    modBMatrix[z, i] = modB.ElementAt(z);
-                }
-            }
+            NormalizeMods();
             Matrix classABeforeTranspose = DenseMatrix.OfArray(new double[numOfFeatures, 176]);
             classAFeatures.Subtract(modAMatrix, classABeforeTranspose);
-            // Matrix test = this.computeCovarianceMatrix(classABeforeTranspose.getArray());
             Matrix<double> classBBeforeTranspose = DenseMatrix.OfArray(new double[numOfFeatures, 608]);
             classBFeatures.Subtract(modBMatrix, classBBeforeTranspose);
-            // BigMatrix m matrix = new BigMatrix();
 
 
             Matrix<double> classAS = classABeforeTranspose.ComputeCovarianceMatrix();
@@ -90,6 +71,35 @@ namespace OakStatisticalAnalysis.Rules
 
             return finalRes;
         }
+
+        private void InitMatrix()
+        {
+            classAFeatures = DenseMatrix.OfArray(new double[numOfFeatures, SampleInfo.Get().ClassElements[0]]);
+            classBFeatures = DenseMatrix.OfArray(new double[numOfFeatures, SampleInfo.Get().ClassElements[0]]);
+            modA = new List<double>();
+            modB = new List<double>();
+        }
+
+        public void NormalizeMods()
+        {
+            for(int i =0;i<mods.Count;i++)
+            {
+                var x = mods[i];
+                var resutl = Enumerable.Repeat(x, projetctedClassFateures[i].RowCount);
+                var normalized = DenseMatrix.OfArray(resutl.To2DArray());
+                normalizedMods.Add(normalized);
+            }
+        }
+
+        public Dictionary<string, IEnumerable<IEnumerable<double>>> ProjectFeatureSpace(int[] currentTestingFeatures)
+        {
+            return samples
+                        .GroupBy(x => x.Class)
+                        .ToDictionary(y => y.Key, y => y
+                          .Select(x => x.Features
+                              .Where((m, index) => currentTestingFeatures
+                                      .Contains(index))));
+        }
     }
 
     public class ManyDimensionsFeaturesSelectingRule : IFeaturesSelectingRule
@@ -100,13 +110,13 @@ namespace OakStatisticalAnalysis.Rules
         public ManyDimensionsFeaturesSelectingRule(int _numOfFeatures)
         {
             numOfFeatures = _numOfFeatures;
-          
+
         }
 
         public List<int> Select(List<Sample> _samples)
         {
             samples = _samples;
-            fisherCalculator = new TwoDimensionsFisherCalculator(numOfFeatures,samples);
+            fisherCalculator = new TwoDimensionsFisherCalculator(numOfFeatures, samples);
             return this.HandleManyDimensions(numOfFeatures);
         }
 
@@ -128,6 +138,6 @@ namespace OakStatisticalAnalysis.Rules
             }
             return permutations.ElementAt(permIndex).ToList();
         }
-    
+
     }
 }

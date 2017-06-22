@@ -32,7 +32,7 @@ namespace OakStatisticalAnalysis.Rules
             {
                 double currenValue = (double)samples.ElementAt(i).Features.ElementAt(index);
                 var currentSample = samples.ElementAt(i);
-                if (currentSample.Class == SampleInfo.ClassNames[0])
+                if (currentSample.Class == SampleInfo.Get().ClassNames[0])
                 {
                     mA += currenValue;
                     sA += currenValue * currenValue;
@@ -43,8 +43,8 @@ namespace OakStatisticalAnalysis.Rules
                     sB += currenValue * currenValue;
                 }
             }
-            int countA = samples.Where(x => x.Class == SampleInfo.ClassNames[0]).Count();
-            int countB = samples.Where(x => x.Class == SampleInfo.ClassNames[0]).Count();
+            int countA = samples.Where(x => x.Class == SampleInfo.Get().ClassNames[0]).Count();
+            int countB = samples.Where(x => x.Class == SampleInfo.Get().ClassNames[0]).Count();
             mA /= countA;
             mB /= countB;
             sA = sA / countA - mA * mA;
