@@ -2,9 +2,9 @@
 
 namespace OakStatisticalAnalysis
 {
-    internal class TrainTestSetsSplitterFactory
+    public class TrainTestSetsSplitterFactory
     {
-        public static ITrainTestSetsSplitter Get(string text)
+        public  static ITrainTestSetsSplitter Get(string text)
         {
             if (text.Equals("basic"))
                 return new BasicTrainTestSetsSplitter();

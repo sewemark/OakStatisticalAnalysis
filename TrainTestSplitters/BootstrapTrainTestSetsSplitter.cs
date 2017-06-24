@@ -5,25 +5,19 @@ using System.Linq;
 
 namespace OakStatisticalAnalysis
 {
-    internal class BootstrapTrainTestSetsSplitter :ITrainTestSetsSplitter
+    public class BootstrapTrainTestSetsSplitter  : ITrainTestSetsSplitter
     {
         private int k;
         private double percentage;
         private List<Sample> bootstrapSet;
-        private List<Sample> trainningSet;
         private List<List<Sample>> lista;
-        private SpitterConfig config;
         public BootstrapTrainTestSetsSplitter()
         {
 
         }
-
-       
-
-        public void Init()
+        public BootstrapTrainTestSetsSplitter(int k,int numOfElementsInBag, double percentage, List<Sample> trainningSet)
         {
             this.k = k;
-            int numOfElementsInBag = Convert.ToInt32(Math.Floor(trainningSet.Count * percentage));
             lista = new List<List<Sample>>(k);
             lista.ForEach(x => x = new List<Sample>());
             this.percentage = percentage;
@@ -34,8 +28,8 @@ namespace OakStatisticalAnalysis
             int max = bootstrapSet.Count;
             Random random = new Random(0);
             random.Next(0, max);
-            lista.ForEach(x => {
-                for (int i = 0; i < numOfElementsInBag; i++)
+            lista.ForEach(x => { 
+                for(int i =0;i< numOfElementsInBag;i++)
                 {
                     var index = random.Next(0, max);
                     var elemnt = bootstrapSet.ElementAt(index);
@@ -49,16 +43,9 @@ namespace OakStatisticalAnalysis
            
         }
 
-        public TrainTestStruct Split(List<Sample> database, SpitterConfig _config)
+        public TrainTestStruct Split(List<Sample> database, double ratio)
         {
-            trainningSet = database;
-            config = _config;
-            Init();
-            return new TrainTestStruct()
-            {
-                TrainingSets = lista,
-                TestSet = new List<Sample>()
-            };
+            return new TrainTestStruct();
         }
     }
 }

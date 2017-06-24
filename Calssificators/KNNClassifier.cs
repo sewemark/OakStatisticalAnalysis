@@ -6,21 +6,21 @@ namespace OakStatisticalAnalysis
 {
     public class KNNClassifier : IClassifier
     {
-        private List<List<Sample>> trainingSet;
-
+        private List<Sample> trainingSet;
         public void Classify()
         {
 
         }
 
-        public List<List<Sample>> GetTrainingSet()
+        public List<Sample> GetTrainingSet()
         {
             return trainingSet;
         }
 
-        public void Train(List<List<Sample>> _trainingSet)
+        public void Train(List<Sample> _trainingSet)
         {
             trainingSet = _trainingSet;
+
         }
     }
 }

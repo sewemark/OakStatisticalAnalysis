@@ -92,15 +92,13 @@ namespace OakStatisticalAnalysis
 
         private void TrainButtonClick(object sender, EventArgs e)
         {
-            BasicTrainTestSetsSplitter splitter = new BasicTrainTestSetsSplitter();
-            double ration = Convert.ToDouble(trainTestRatioTextBox.Text);
-            trainTestStruct =  splitter.Split(parsedDatabaseContent, ration);
+            var selectedRadioButton = this.Controls.OfType<RadioButton>()
+                                    .FirstOrDefault(r => r.Checked);
+            var splitter = TrainTestSetsSplitterFactory.Get(selectedRadioButton.Text);
+            var trainTestStruct = splitter.Split(parsedDatabaseContent,GetCurrentConfig());
             ClassifierFactory factory = new ClassifierFactory();
-            var selectedRadioButton =this.Controls.OfType<RadioButton>()
-                                        .FirstOrDefault(r => r.Checked);
-            //TrainTestSetsSplitterFactory.Get(selectedRadioButton.Text);
             currentClassifier = factory.Select(selectClassifierComboBox.SelectedItem.ToString());
-            currentClassifier.Train(trainTestStruct.TrainingSet);
+            currentClassifier.Train(trainTestStruct.TrainingSets);
         }
 
         private void ExecuteTestButtonClick(object sender, EventArgs e)
@@ -109,17 +107,6 @@ namespace OakStatisticalAnalysis
             var testClassifier = factory.Select(selectClassifierComboBox.SelectedItem.ToString());
             testClassifier.Test(currentClassifier,trainTestStruct.TestSet);
 
-        }
-
-        private void BootstrapTrainButtonClick(object sender, EventArgs e)
-        {
-            int k = Convert.ToInt32(bootstrapBagsNumberTextBox.Text);
-            double percentage = Convert.ToDouble(bootstrapPercentageTextBox.Text);
-             BasicTrainTestSetsSplitter splitter = new BasicTrainTestSetsSplitter();
-            double ration = Convert.ToDouble(trainTestRatioTextBox.Text);
-            trainTestStruct = splitter.Split(parsedDatabaseContent, ration);
-            BootstrapTrainTestSetsSplitter bootstrap = new BootstrapTrainTestSetsSplitter(k, 30, percentage,parsedDatabaseContent);
-            
         }
 
         private void label3_Click(object sender, EventArgs e)
@@ -131,5 +118,19 @@ namespace OakStatisticalAnalysis
         {
 
         }
+        public SpitterConfig GetCurrentConfig()
+        {
+            return new SpitterConfig()
+            {
+                Ratio= Convert.ToDouble(trainTestRatioTextBox.Text),
+                BootstrapBags =  Convert.ToInt32(bootstrapBagsNumberTextBox.Text)
+            };
+        }
+    }
+
+    public class SpitterConfig
+    {
+        public double Ratio { get; set; }
+        public int BootstrapBags { get; set; }
     }
 }

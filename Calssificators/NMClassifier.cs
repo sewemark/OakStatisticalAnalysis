@@ -6,8 +6,7 @@ namespace OakStatisticalAnalysis
 {
     public class NMClassifier : IClassifier
     {
-        private List<List<Sample>> trainingSet;
-        private List<Sample> currentPointer;
+        private List<Sample> trainingSet;
         private double[][] means;
 
         public void Classify()
@@ -15,15 +14,10 @@ namespace OakStatisticalAnalysis
 
         }
 
-        public void Train(List<List<Sample>> _trainingSet)
+        public void Train(List<Sample> _trainingSet)
         {
-
             trainingSet = _trainingSet;
-            trainingSet.ForEach(x =>
-            {
-                currentPointer = x;
-                CalculateMenasForClass();
-            });
+            CalculateMenasForClass();
         }
         public double[][] GetMeans()
         {
@@ -39,16 +33,16 @@ namespace OakStatisticalAnalysis
                 double _modB = 0;
                 int numOfAMod = 0;
                 int numOfBMod = 0;
-                for (int j = 0; j < currentPointer[0].Features.Count; j++)
+                for (int j = 0; j < trainingSet[0].Features.Count; j++)
                 {
-                    if (currentPointer[0].Class == "Acer")
+                    if (trainingSet[0].Class == "Acer")
                     {
-                        _modA += (double)currentPointer[i].Features[j];
+                        _modA += (double)trainingSet[i].Features[j];
                         numOfAMod++;
                     }
                     else
                     {
-                        _modB += (double)currentPointer[i].Features[j];
+                        _modB += (double)trainingSet[i].Features[j];
                         numOfBMod++;
                     }
                 }
@@ -58,7 +52,7 @@ namespace OakStatisticalAnalysis
             means = new double[][] { modA, modB };
         }
 
-        public List<List<Sample>> GetTrainingSet()
+        public List<Sample> GetTrainingSet()
         {
             return trainingSet;
         }
