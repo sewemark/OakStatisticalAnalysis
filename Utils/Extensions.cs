@@ -17,6 +17,14 @@ namespace OakStatisticalAnalysis.Utils
             }
         }
 
+        public static IEnumerable<double> MinusTwoList(this List<double> first, IEnumerable<double> second)
+        {
+            for (int i = 0; i < first.Count; i++)
+            {
+                yield return first.ElementAt(i) - second.ElementAt(i);
+            }
+        }
+
         public static Matrix<double> ComputeCovarianceMatrix(this Matrix<double> matrix)
         {
             Matrix<double> MT = matrix.Transpose();

@@ -1,5 +1,6 @@
 ﻿using OakStatisticalAnalysis.Models;
 using OakStatisticalAnalysis.Rules;
+using OakStatisticalAnalysis.Rules.FisherCalculatoionStrategies;
 using System;
 using System.Collections.Generic;
 using System.Linq;
