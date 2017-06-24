@@ -51,11 +51,13 @@
             this.label1 = new System.Windows.Forms.Label();
             this.bootstrapPercentageTextBox = new System.Windows.Forms.TextBox();
             this.panel4 = new System.Windows.Forms.Panel();
-            this.label4 = new System.Windows.Forms.Label();
             this.crossvalidationNumOfPartsTextBox = new System.Windows.Forms.TextBox();
+            this.label4 = new System.Windows.Forms.Label();
             this.radioButton1 = new System.Windows.Forms.RadioButton();
             this.radioButton2 = new System.Windows.Forms.RadioButton();
             this.radioButton3 = new System.Windows.Forms.RadioButton();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
             this.menuStrip2.SuspendLayout();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -65,6 +67,7 @@
             // 
             // menuStrip2
             // 
+            this.menuStrip2.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.menuStrip2.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.readDatabaseToolStripMenuItem});
             resources.ApplyResources(this.menuStrip2, "menuStrip2");
@@ -108,6 +111,7 @@
             // featureExtractionResultLabel
             // 
             resources.ApplyResources(this.featureExtractionResultLabel, "featureExtractionResultLabel");
+            this.featureExtractionResultLabel.BackColor = System.Drawing.Color.Chartreuse;
             this.featureExtractionResultLabel.Name = "featureExtractionResultLabel";
             // 
             // ekstractFeaturesButton
@@ -139,6 +143,8 @@
             // 
             // panel2
             // 
+            this.panel2.Controls.Add(this.label5);
+            this.panel2.Controls.Add(this.label3);
             this.panel2.Controls.Add(this.button1);
             this.panel2.Controls.Add(this.executeTestButton);
             this.panel2.Controls.Add(this.selectClassifierComboBox);
@@ -171,6 +177,7 @@
             resources.GetString("selectClassifierComboBox.Items3")});
             resources.ApplyResources(this.selectClassifierComboBox, "selectClassifierComboBox");
             this.selectClassifierComboBox.Name = "selectClassifierComboBox";
+            this.selectClassifierComboBox.SelectedIndexChanged += new System.EventHandler(this.selectClassifierComboBox_SelectedIndexChanged);
             // 
             // trainButton
             // 
@@ -220,15 +227,15 @@
             resources.ApplyResources(this.panel4, "panel4");
             this.panel4.Name = "panel4";
             // 
-            // label4
-            // 
-            resources.ApplyResources(this.label4, "label4");
-            this.label4.Name = "label4";
-            // 
             // crossvalidationNumOfPartsTextBox
             // 
             resources.ApplyResources(this.crossvalidationNumOfPartsTextBox, "crossvalidationNumOfPartsTextBox");
             this.crossvalidationNumOfPartsTextBox.Name = "crossvalidationNumOfPartsTextBox";
+            // 
+            // label4
+            // 
+            resources.ApplyResources(this.label4, "label4");
+            this.label4.Name = "label4";
             // 
             // radioButton1
             // 
@@ -250,6 +257,17 @@
             this.radioButton3.Name = "radioButton3";
             this.radioButton3.TabStop = true;
             this.radioButton3.UseVisualStyleBackColor = true;
+            // 
+            // label3
+            // 
+            resources.ApplyResources(this.label3, "label3");
+            this.label3.Name = "label3";
+            this.label3.Click += new System.EventHandler(this.label3_Click);
+            // 
+            // label5
+            // 
+            resources.ApplyResources(this.label5, "label5");
+            this.label5.Name = "label5";
             // 
             // OakStatisticalAnalisysisForm
             // 
@@ -313,6 +331,8 @@
         private System.Windows.Forms.RadioButton radioButton1;
         private System.Windows.Forms.RadioButton radioButton2;
         private System.Windows.Forms.RadioButton radioButton3;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label5;
     }
 }
 

@@ -17,6 +17,7 @@ namespace OakStatisticalAnalysis.Rules.FisherCalculatoionStrategies
         private List<Matrix> normalizedMods;
         private List<Matrix> subtractedMatrix;
         private List<Matrix<double>> convariances;
+        private List<Matrix<double>> transposed;
         private Dictionary<string, IEnumerable<IEnumerable<double>>> lookup;
 
         public TwoDimensionsFisherCalculator(int _numOfFeatures, List<Sample> _samples)
@@ -32,6 +33,7 @@ namespace OakStatisticalAnalysis.Rules.FisherCalculatoionStrategies
             normalizedMods = new List<Matrix>();
             subtractedMatrix = new List<Matrix>();
             convariances = new List<Matrix<double>>();
+            transposed = new List<Matrix<double>>();
         }
         public double Calc(int[] currentTestingFeatures)
         {
@@ -41,7 +43,7 @@ namespace OakStatisticalAnalysis.Rules.FisherCalculatoionStrategies
             CalculateProjectedMeans();
             NormalizeMods();
             SubTractMatrix();
-            CalculateCovariances();
+            CalculateTransposed();
             return CalculateFisher();
         }
 
@@ -75,20 +77,16 @@ namespace OakStatisticalAnalysis.Rules.FisherCalculatoionStrategies
 
         private double CalculateFisherDown()
         {
-            Matrix<double> resultTODeterminant = convariances.Aggregate((x, y) => x.Add(y));
-            double fisherDownResult = resultTODeterminant.Determinant();
-            return fisherDownResult;
-        }
-
-        public void CalculateCovariances()
-        {
-            subtractedMatrix.ForEach(x =>
+            double det = 0;
+            for(int i =0;i<transposed.Count;i++)
             {
-                var result = x.ComputeCovarianceMatrix();
-                convariances.Add(result);
-            });
+               var result = transposed[i] * subtractedMatrix[i];
+                det += result.Determinant();
+            }
+            return det;
         }
 
+     
         public void NormalizeMods()
         {
             for (int i = 0; i < mods.Count; i++)
@@ -124,10 +122,20 @@ namespace OakStatisticalAnalysis.Rules.FisherCalculatoionStrategies
         {
             for (int i = 0; i < mods.Count; i++)
             {
-                Matrix matrixBeforeTranspose = DenseMatrix.OfArray(new double[numOfFeatures, projetctedClassFateures[i].RowCount]);
+                Matrix matrixBeforeTranspose = DenseMatrix.OfArray(new double[ projetctedClassFateures[i].RowCount, numOfFeatures]);
                 projetctedClassFateures[i].Subtract(normalizedMods[i], matrixBeforeTranspose);
                 subtractedMatrix.Add(matrixBeforeTranspose);
             }
         }
+
+        public void CalculateTransposed()
+        {
+            subtractedMatrix.ForEach(x =>
+            {
+                var result = x.Transpose();
+                transposed.Add(result);
+            });
+        }
+
     }
 }

@@ -70,7 +70,7 @@ namespace OakStatisticalAnalysis
 
         private void UpdateUI()
         {
-            featureNumberLabel.Text += String.Join(", ", featuresUI);
+            featureExtractionResultLabel.Text +=  " "+ String.Join(", ", featuresUI);
         }
 
         private void ReadFromFile()
@@ -120,6 +120,16 @@ namespace OakStatisticalAnalysis
             trainTestStruct = splitter.Split(parsedDatabaseContent, ration);
             BootstrapTrainTestSetsSplitter bootstrap = new BootstrapTrainTestSetsSplitter(k, 30, percentage,parsedDatabaseContent);
             
+        }
+
+        private void label3_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void selectClassifierComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

@@ -122,13 +122,13 @@
   </metadata>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="readFromFile.Size" type="System.Drawing.Size, System.Drawing">
-    <value>121, 22</value>
+    <value>143, 26</value>
   </data>
   <data name="readFromFile.Text" xml:space="preserve">
     <value>From file</value>
   </data>
   <data name="readDatabaseToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>96, 20</value>
+    <value>122, 24</value>
   </data>
   <data name="readDatabaseToolStripMenuItem.Text" xml:space="preserve">
     <value>Read Database</value>
@@ -137,7 +137,7 @@
     <value>0, 0</value>
   </data>
   <data name="menuStrip2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>700, 24</value>
+    <value>700, 28</value>
   </data>
   <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="menuStrip2.TabIndex" type="System.Int32, mscorlib">
@@ -168,7 +168,7 @@
     <value>88, 51</value>
   </data>
   <data name="extractFeaturesSFSButton.Size" type="System.Drawing.Size, System.Drawing">
-    <value>75, 23</value>
+    <value>105, 23</value>
   </data>
   <data name="extractFeaturesSFSButton.TabIndex" type="System.Int32, mscorlib">
     <value>4</value>
@@ -195,7 +195,7 @@
     <value>3, 86</value>
   </data>
   <data name="featureExtractionResultLabel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>43, 13</value>
+    <value>56, 17</value>
   </data>
   <data name="featureExtractionResultLabel.TabIndex" type="System.Int32, mscorlib">
     <value>3</value>
@@ -246,7 +246,7 @@
     <value>3, 20</value>
   </data>
   <data name="featureNumberLabel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>82, 13</value>
+    <value>109, 17</value>
   </data>
   <data name="featureNumberLabel.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
@@ -294,10 +294,10 @@
     <value>126, 17</value>
   </data>
   <data name="featureNumberComboBox.Size" type="System.Drawing.Size, System.Drawing">
-    <value>121, 21</value>
+    <value>121, 24</value>
   </data>
   <data name="featureNumberComboBox.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
+    <value>1</value>
   </data>
   <data name="&gt;&gt;featureNumberComboBox.Name" xml:space="preserve">
     <value>featureNumberComboBox</value>
@@ -332,12 +332,72 @@
   <data name="&gt;&gt;panel1.ZOrder" xml:space="preserve">
     <value>6</value>
   </data>
+  <data name="label5.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="label5.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="label5.Location" type="System.Drawing.Point, System.Drawing">
+    <value>208, 19</value>
+  </data>
+  <data name="label5.Size" type="System.Drawing.Size, System.Drawing">
+    <value>20, 17</value>
+  </data>
+  <data name="label5.TabIndex" type="System.Int32, mscorlib">
+    <value>6</value>
+  </data>
+  <data name="label5.Text" xml:space="preserve">
+    <value>%</value>
+  </data>
+  <data name="&gt;&gt;label5.Name" xml:space="preserve">
+    <value>label5</value>
+  </data>
+  <data name="&gt;&gt;label5.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label5.Parent" xml:space="preserve">
+    <value>panel2</value>
+  </data>
+  <data name="&gt;&gt;label5.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="label3.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label3.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="label3.Location" type="System.Drawing.Point, System.Drawing">
+    <value>14, 19</value>
+  </data>
+  <data name="label3.Size" type="System.Drawing.Size, System.Drawing">
+    <value>138, 17</value>
+  </data>
+  <data name="label3.TabIndex" type="System.Int32, mscorlib">
+    <value>5</value>
+  </data>
+  <data name="label3.Text" xml:space="preserve">
+    <value>Part of train/test split</value>
+  </data>
+  <data name="&gt;&gt;label3.Name" xml:space="preserve">
+    <value>label3</value>
+  </data>
+  <data name="&gt;&gt;label3.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label3.Parent" xml:space="preserve">
+    <value>panel2</value>
+  </data>
+  <data name="&gt;&gt;label3.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
   <data name="button1.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
   <data name="button1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>17, 78</value>
+    <value>17, 123</value>
   </data>
   <data name="button1.Size" type="System.Drawing.Size, System.Drawing">
     <value>75, 23</value>
@@ -358,13 +418,13 @@
     <value>panel2</value>
   </data>
   <data name="&gt;&gt;button1.ZOrder" xml:space="preserve">
-    <value>0</value>
+    <value>2</value>
   </data>
   <data name="executeTestButton.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
   <data name="executeTestButton.Location" type="System.Drawing.Point, System.Drawing">
-    <value>98, 49</value>
+    <value>98, 94</value>
   </data>
   <data name="executeTestButton.Size" type="System.Drawing.Size, System.Drawing">
     <value>75, 23</value>
@@ -385,7 +445,7 @@
     <value>panel2</value>
   </data>
   <data name="&gt;&gt;executeTestButton.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>3</value>
   </data>
   <data name="selectClassifierComboBox.Items" xml:space="preserve">
     <value>NN</value>
@@ -400,10 +460,10 @@
     <value>kNM</value>
   </data>
   <data name="selectClassifierComboBox.Location" type="System.Drawing.Point, System.Drawing">
-    <value>159, 14</value>
+    <value>24, 54</value>
   </data>
   <data name="selectClassifierComboBox.Size" type="System.Drawing.Size, System.Drawing">
-    <value>82, 21</value>
+    <value>82, 24</value>
   </data>
   <data name="selectClassifierComboBox.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
@@ -418,10 +478,10 @@
     <value>panel2</value>
   </data>
   <data name="&gt;&gt;selectClassifierComboBox.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>4</value>
   </data>
   <data name="trainButton.Location" type="System.Drawing.Point, System.Drawing">
-    <value>17, 49</value>
+    <value>17, 94</value>
   </data>
   <data name="trainButton.Size" type="System.Drawing.Size, System.Drawing">
     <value>75, 23</value>
@@ -442,13 +502,13 @@
     <value>panel2</value>
   </data>
   <data name="&gt;&gt;trainButton.ZOrder" xml:space="preserve">
-    <value>3</value>
+    <value>5</value>
   </data>
   <data name="trainTestRatioTextBox.Location" type="System.Drawing.Point, System.Drawing">
-    <value>82, 14</value>
+    <value>158, 16</value>
   </data>
   <data name="trainTestRatioTextBox.Size" type="System.Drawing.Size, System.Drawing">
-    <value>44, 20</value>
+    <value>44, 22</value>
   </data>
   <data name="trainTestRatioTextBox.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -466,13 +526,13 @@
     <value>panel2</value>
   </data>
   <data name="&gt;&gt;trainTestRatioTextBox.ZOrder" xml:space="preserve">
-    <value>4</value>
+    <value>6</value>
   </data>
   <data name="panel2.Location" type="System.Drawing.Point, System.Drawing">
     <value>18, 190</value>
   </data>
   <data name="panel2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>258, 116</value>
+    <value>258, 185</value>
   </data>
   <data name="panel2.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
@@ -493,7 +553,7 @@
     <value>154, 48</value>
   </data>
   <data name="bootstrapBagsNumberTextBox.Size" type="System.Drawing.Size, System.Drawing">
-    <value>44, 20</value>
+    <value>44, 22</value>
   </data>
   <data name="bootstrapBagsNumberTextBox.TabIndex" type="System.Int32, mscorlib">
     <value>7</value>
@@ -523,7 +583,7 @@
     <value>3, 51</value>
   </data>
   <data name="label2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>111, 13</value>
+    <value>148, 17</value>
   </data>
   <data name="label2.TabIndex" type="System.Int32, mscorlib">
     <value>6</value>
@@ -553,7 +613,7 @@
     <value>3, 20</value>
   </data>
   <data name="label1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>136, 13</value>
+    <value>182, 17</value>
   </data>
   <data name="label1.TabIndex" type="System.Int32, mscorlib">
     <value>5</value>
@@ -577,7 +637,7 @@
     <value>154, 17</value>
   </data>
   <data name="bootstrapPercentageTextBox.Size" type="System.Drawing.Size, System.Drawing">
-    <value>44, 20</value>
+    <value>44, 22</value>
   </data>
   <data name="bootstrapPercentageTextBox.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -622,7 +682,7 @@
     <value>164, 46</value>
   </data>
   <data name="crossvalidationNumOfPartsTextBox.Size" type="System.Drawing.Size, System.Drawing">
-    <value>44, 20</value>
+    <value>44, 22</value>
   </data>
   <data name="crossvalidationNumOfPartsTextBox.TabIndex" type="System.Int32, mscorlib">
     <value>8</value>
@@ -652,7 +712,7 @@
     <value>13, 46</value>
   </data>
   <data name="label4.Size" type="System.Drawing.Size, System.Drawing">
-    <value>67, 13</value>
+    <value>89, 17</value>
   </data>
   <data name="label4.TabIndex" type="System.Int32, mscorlib">
     <value>8</value>
@@ -700,7 +760,7 @@
     <value>308, 119</value>
   </data>
   <data name="radioButton1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>56, 17</value>
+    <value>72, 21</value>
   </data>
   <data name="radioButton1.TabIndex" type="System.Int32, mscorlib">
     <value>6</value>
@@ -730,7 +790,7 @@
     <value>308, 168</value>
   </data>
   <data name="radioButton2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>90, 17</value>
+    <value>116, 21</value>
   </data>
   <data name="radioButton2.TabIndex" type="System.Int32, mscorlib">
     <value>7</value>
@@ -760,7 +820,7 @@
     <value>308, 142</value>
   </data>
   <data name="radioButton3.Size" type="System.Drawing.Size, System.Drawing">
-    <value>69, 17</value>
+    <value>89, 21</value>
   </data>
   <data name="radioButton3.TabIndex" type="System.Int32, mscorlib">
     <value>8</value>
@@ -787,7 +847,7 @@
     <value>25</value>
   </metadata>
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
-    <value>700, 352</value>
+    <value>700, 502</value>
   </data>
   <data name="$this.Text" xml:space="preserve">
     <value>$</value>
