@@ -50,8 +50,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BootstrapTrainTestSetsSplitter.cs" />
-    <Compile Include="ClassifierFactory.cs" />
+    <Compile Include="Splitter\BootstrapTrainTestSetsSplitter.cs" />
+    <Compile Include="Classifiers\ClassifierFactory.cs" />
     <Compile Include="DatabaseContentParser.cs" />
     <Compile Include="FeatureSelector.cs" />
     <Compile Include="Form1.cs">
@@ -61,13 +61,13 @@
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
     <Compile Include="IClassifier.cs" />
-    <Compile Include="ITestClassifier.cs" />
-    <Compile Include="KNMClassifier.cs" />
-    <Compile Include="KNNClassifier.cs" />
+    <Compile Include="Classifiers\ITestClassifier.cs" />
+    <Compile Include="Classifiers\KNMClassifier.cs" />
+    <Compile Include="Classifiers\KNNClassifier.cs" />
     <Compile Include="Models\Sample.cs" />
     <Compile Include="Models\SampleInfo.cs" />
-    <Compile Include="NMClassifier.cs" />
-    <Compile Include="NNClassifier.cs" />
+    <Compile Include="Classifiers\NMClassifier.cs" />
+    <Compile Include="Classifiers\NNClassifier.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Rules\FeaturesSelectingRules.cs" />
@@ -78,13 +78,13 @@
     <Compile Include="Rules\OneDimensionFeaturesSelectingRule.cs" />
     <Compile Include="Rules\RulesFactory.cs" />
     <Compile Include="SFSFeatureSelector.cs" />
-    <Compile Include="TestClassifierFactory.cs" />
-    <Compile Include="TestKNMClassifier.cs" />
-    <Compile Include="TestKNNClassifier.cs" />
-    <Compile Include="TestNMClassifier.cs" />
-    <Compile Include="TestNNClassifier.cs" />
-    <Compile Include="TrainTestSetsSplitter.cs" />
-    <Compile Include="TrainTestSetsSplitterFactory.cs" />
+    <Compile Include="TestClassifiers\TestClassifierFactory.cs" />
+    <Compile Include="TestClassifiers\TestKNMClassifier.cs" />
+    <Compile Include="TestClassifiers\TestKNNClassifier.cs" />
+    <Compile Include="TestClassifiers\TestNMClassifier.cs" />
+    <Compile Include="TestClassifiers\TestNNClassifier.cs" />
+    <Compile Include="Splitter\TrainTestSetsSplitter.cs" />
+    <Compile Include="Splitter\TrainTestSetsSplitterFactory.cs" />
     <Compile Include="Utils\Extensions.cs" />
     <Compile Include="Utils\MathUtil.cs" />
     <Compile Include="Utils\Permutations.cs" />

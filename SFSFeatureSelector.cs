@@ -62,7 +62,14 @@ namespace OakStatisticalAnalysis
                     listOfFeatures[j] = currentPerm[j];
                 }
                 listOfFeatures[currentPerm.Count] = num[i];
-                listOfPermutations.Add(listOfFeatures);
+                if (listOfFeatures.Count() > 1 && listOfFeatures.Distinct().Count() == 1)
+                {
+
+                }
+                else
+                {
+                    listOfPermutations.Add(listOfFeatures);
+                }
             }
             return listOfPermutations;
         }

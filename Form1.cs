@@ -95,7 +95,7 @@ namespace OakStatisticalAnalysis
             var selectedRadioButton = this.Controls.OfType<RadioButton>()
                                     .FirstOrDefault(r => r.Checked);
             var splitter = TrainTestSetsSplitterFactory.Get(selectedRadioButton.Text);
-            var trainTestStruct = splitter.Split(parsedDatabaseContent,GetCurrentConfig());
+            trainTestStruct = splitter.Split(parsedDatabaseContent,GetCurrentConfig());
             ClassifierFactory factory = new ClassifierFactory();
             currentClassifier = factory.Select(selectClassifierComboBox.SelectedItem.ToString());
             currentClassifier.Train(trainTestStruct.TrainingSets);
@@ -105,7 +105,9 @@ namespace OakStatisticalAnalysis
         {
             TestClassifierFactory factory = new TestClassifierFactory();
             var testClassifier = factory.Select(selectClassifierComboBox.SelectedItem.ToString());
-            testClassifier.Test(currentClassifier,trainTestStruct.TestSet);
+            var result = testClassifier.Test(currentClassifier,trainTestStruct.TestSet);
+            classificationResultLabel.Text += 
+                "\n" + selectClassifierComboBox.SelectedItem.ToString() + " " + result.ToString();
 
         }
 
@@ -122,8 +124,9 @@ namespace OakStatisticalAnalysis
         {
             return new SpitterConfig()
             {
-                Ratio= Convert.ToDouble(trainTestRatioTextBox.Text),
-                BootstrapBags =  Convert.ToInt32(bootstrapBagsNumberTextBox.Text)
+                Ratio = Convert.ToDouble(trainTestRatioTextBox.Text),
+                BootstrapBags = Convert.ToInt32(bootstrapBagsNumberTextBox.Text),
+                KParam = Convert.ToInt32(kParamTextBox.Text)
             };
         }
     }
@@ -132,5 +135,6 @@ namespace OakStatisticalAnalysis
     {
         public double Ratio { get; set; }
         public int BootstrapBags { get; set; }
+        public int KParam { get; set; }
     }
 }

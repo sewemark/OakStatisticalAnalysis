@@ -40,6 +40,8 @@
             this.featureNumberLabel = new System.Windows.Forms.Label();
             this.featureNumberComboBox = new System.Windows.Forms.ComboBox();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.label7 = new System.Windows.Forms.Label();
+            this.kParamTextBox = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.executeTestButton = new System.Windows.Forms.Button();
@@ -60,6 +62,8 @@
             this.panel5 = new System.Windows.Forms.Panel();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
+            this.classificationResultLabel = new System.Windows.Forms.Label();
             this.menuStrip2.SuspendLayout();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -146,6 +150,8 @@
             // 
             // panel2
             // 
+            this.panel2.Controls.Add(this.label7);
+            this.panel2.Controls.Add(this.kParamTextBox);
             this.panel2.Controls.Add(this.label5);
             this.panel2.Controls.Add(this.label3);
             this.panel2.Controls.Add(this.executeTestButton);
@@ -154,6 +160,16 @@
             this.panel2.Controls.Add(this.trainTestRatioTextBox);
             resources.ApplyResources(this.panel2, "panel2");
             this.panel2.Name = "panel2";
+            // 
+            // label7
+            // 
+            resources.ApplyResources(this.label7, "label7");
+            this.label7.Name = "label7";
+            // 
+            // kParamTextBox
+            // 
+            resources.ApplyResources(this.kParamTextBox, "kParamTextBox");
+            this.kParamTextBox.Name = "kParamTextBox";
             // 
             // label5
             // 
@@ -280,9 +296,21 @@
             resources.ApplyResources(this.label6, "label6");
             this.label6.Name = "label6";
             // 
+            // label8
+            // 
+            resources.ApplyResources(this.label8, "label8");
+            this.label8.Name = "label8";
+            // 
+            // classificationResultLabel
+            // 
+            resources.ApplyResources(this.classificationResultLabel, "classificationResultLabel");
+            this.classificationResultLabel.Name = "classificationResultLabel";
+            // 
             // OakStatisticalAnalisysisForm
             // 
             resources.ApplyResources(this, "$this");
+            this.Controls.Add(this.classificationResultLabel);
+            this.Controls.Add(this.label8);
             this.Controls.Add(this.panel5);
             this.Controls.Add(this.radioButton3);
             this.Controls.Add(this.radioButton2);
@@ -349,6 +377,10 @@
         private System.Windows.Forms.Panel panel5;
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.TextBox kParamTextBox;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Label classificationResultLabel;
     }
 }
 
