@@ -11,9 +11,11 @@ namespace OakStatisticalAnalysis
         private List<List<Sample>> trainingSet;
         private List<Sample> adjuctesTrainingSet = new List<Sample>();
         private List<Centroid> centroids;
+        private List<List<Centroid>> listOfCentroids = new List<List<Centroid>>();
         private const int kParam = 3;
         private double[][] oldCentroids = new double[kParam][];
         private List<Sample> currentPointer;
+
         public void Classify()
         {
 
@@ -49,8 +51,8 @@ namespace OakStatisticalAnalysis
                     UpdateSamples();
                     maxCount++;
                     UpdateInfo();
-
                 }
+                listOfCentroids.Add(centroids);
             });
 
 
@@ -99,6 +101,7 @@ namespace OakStatisticalAnalysis
                 adjuctesTrainingSet.Add(new Sample() { Label = y.Label, Class = min.ToString(), CentoridNumber= min, Features = y.Features });
             });
         }
+
         public bool CheckChanged()
         {
             for(int i=0;i<centroids.Count;i++)
@@ -195,9 +198,5 @@ namespace OakStatisticalAnalysis
            
         }
     }
-
-    public class Claster
-    {
-
-    }
+    
 }

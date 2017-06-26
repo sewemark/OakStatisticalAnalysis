@@ -136,5 +136,6 @@ namespace OakStatisticalAnalysis
         public double Ratio { get; set; }
         public int BootstrapBags { get; set; }
         public int KParam { get; set; }
+        public int CrossValidationKParam { get; set; }
     }
 }

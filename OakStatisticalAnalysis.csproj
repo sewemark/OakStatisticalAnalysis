@@ -78,6 +78,7 @@
     <Compile Include="Rules\OneDimensionFeaturesSelectingRule.cs" />
     <Compile Include="Rules\RulesFactory.cs" />
     <Compile Include="SFSFeatureSelector.cs" />
+    <Compile Include="Splitter\CorssValidationSplitter.cs" />
     <Compile Include="TestClassifiers\TestClassifierFactory.cs" />
     <Compile Include="TestClassifiers\TestKNMClassifier.cs" />
     <Compile Include="TestClassifiers\TestKNNClassifier.cs" />
