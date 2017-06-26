@@ -20,17 +20,18 @@ namespace OakStatisticalAnalysis
         {
             classifier = _classifier;
             var trainingSet = classifier.GetTrainingSet();
-            return _testSet.Count(x => GetNearestMean(x) == x.Class)
-            / _testSet.Count;
+            var aa = _testSet.Count(x => GetNearestMean(x) == x.Class);
+            
+                return aa / (_testSet.Count * 1.0);
         }
-
+        
         private string GetNearestMean(Sample x)
         {
             var currentclassfier  = classifier as NMClassifier;
             var means = currentclassfier.GetMeans();
             return MathUtil.CalculateDistnace(means[0].ToList(), x.Features)
-                >= MathUtil.CalculateDistnace(means[0].ToList(), x.Features) ?
-                "Acer" : "Quercus";
+                >= MathUtil.CalculateDistnace(means[1].ToList(), x.Features) ?
+                  "Quercus" : "Acer";
         }
     }
 }
