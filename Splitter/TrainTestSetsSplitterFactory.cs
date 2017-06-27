@@ -1,4 +1,4 @@
-﻿using System;
+﻿using OakStatisticalAnalysis.Splitter;
 
 namespace OakStatisticalAnalysis
 {
@@ -6,10 +6,12 @@ namespace OakStatisticalAnalysis
     {
         public static ITrainTestSetsSplitter Get(string text)
         {
-            if (text.Equals("basic"))
-                return new BasicTrainTestSetsSplitter();
-            else
+            if (text.Equals("bootstrap"))
                 return new BootstrapTrainTestSetsSplitter();
+            else if(text.Equals("crossvalidation"))
+                return new CorssValidationSplitter();
+            else 
+                return new BasicTrainTestSetsSplitter();
         }
     }
 }

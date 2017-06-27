@@ -126,7 +126,8 @@ namespace OakStatisticalAnalysis
             {
                 Ratio = Convert.ToDouble(trainTestRatioTextBox.Text),
                 BootstrapBags = Convert.ToInt32(bootstrapBagsNumberTextBox.Text),
-                KParam = Convert.ToInt32(kParamTextBox.Text)
+                KParam = Convert.ToInt32(kParamTextBox.Text),
+                CrossValidationKParam = Convert.ToInt32(crossvalidationNumOfPartsTextBox.Text)
             };
         }
     }

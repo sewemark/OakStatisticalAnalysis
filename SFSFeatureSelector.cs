@@ -62,7 +62,7 @@ namespace OakStatisticalAnalysis
                     listOfFeatures[j] = currentPerm[j];
                 }
                 listOfFeatures[currentPerm.Count] = num[i];
-                if (listOfFeatures.Count() > 1 && listOfFeatures.Distinct().Count() == 1)
+                if (listOfFeatures.Count() > 1 && listOfFeatures.Distinct().Count() < listOfFeatures.Count())
                 {
 
                 }
