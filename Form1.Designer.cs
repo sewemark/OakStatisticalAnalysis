@@ -60,8 +60,6 @@
             this.radioButton2 = new System.Windows.Forms.RadioButton();
             this.radioButton3 = new System.Windows.Forms.RadioButton();
             this.panel5 = new System.Windows.Forms.Panel();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.label6 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.classificationResultLabel = new System.Windows.Forms.Label();
             this.menuStrip2.SuspendLayout();
@@ -147,17 +145,15 @@
             resources.GetString("featureNumberComboBox.Items7")});
             resources.ApplyResources(this.featureNumberComboBox, "featureNumberComboBox");
             this.featureNumberComboBox.Name = "featureNumberComboBox";
+            this.featureNumberComboBox.SelectedIndex = 0;
             // 
             // panel2
             // 
             this.panel2.Controls.Add(this.label7);
             this.panel2.Controls.Add(this.kParamTextBox);
-            this.panel2.Controls.Add(this.label5);
-            this.panel2.Controls.Add(this.label3);
             this.panel2.Controls.Add(this.executeTestButton);
             this.panel2.Controls.Add(this.selectClassifierComboBox);
             this.panel2.Controls.Add(this.trainButton);
-            this.panel2.Controls.Add(this.trainTestRatioTextBox);
             resources.ApplyResources(this.panel2, "panel2");
             this.panel2.Name = "panel2";
             // 
@@ -200,6 +196,7 @@
             resources.ApplyResources(this.selectClassifierComboBox, "selectClassifierComboBox");
             this.selectClassifierComboBox.Name = "selectClassifierComboBox";
             this.selectClassifierComboBox.SelectedIndexChanged += new System.EventHandler(this.selectClassifierComboBox_SelectedIndexChanged);
+            this.selectClassifierComboBox.SelectedIndex = 0;
             // 
             // trainButton
             // 
@@ -281,20 +278,11 @@
             // 
             // panel5
             // 
-            this.panel5.Controls.Add(this.textBox1);
-            this.panel5.Controls.Add(this.label6);
+            this.panel5.Controls.Add(this.label5);
+            this.panel5.Controls.Add(this.label3);
+            this.panel5.Controls.Add(this.trainTestRatioTextBox);
             resources.ApplyResources(this.panel5, "panel5");
             this.panel5.Name = "panel5";
-            // 
-            // textBox1
-            // 
-            resources.ApplyResources(this.textBox1, "textBox1");
-            this.textBox1.Name = "textBox1";
-            // 
-            // label6
-            // 
-            resources.ApplyResources(this.label6, "label6");
-            this.label6.Name = "label6";
             // 
             // label8
             // 
@@ -375,8 +363,6 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Panel panel5;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.TextBox kParamTextBox;
         private System.Windows.Forms.Label label8;
