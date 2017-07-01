@@ -31,7 +31,7 @@ namespace OakStatisticalAnalysis
                 for (int j = 1; j < columns.Length; j++)
                 {
                     string value = columns[j];
-                    sample.Features.Add(double.Parse(value, NumberStyles.AllowDecimalPoint | NumberStyles.AllowTrailingSign, CultureInfo.InvariantCulture));
+                    sample.Features.Add(double.Parse(value, NumberStyles.AllowDecimalPoint | NumberStyles.Integer | NumberStyles.Number |  NumberStyles.AllowTrailingSign, CultureInfo.InvariantCulture));
                 }
                 sample.Class = textColumns.ElementAt(0);
                 sample.Label = String.Join(String.Empty, textColumns.Skip(1));

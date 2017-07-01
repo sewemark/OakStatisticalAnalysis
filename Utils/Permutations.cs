@@ -30,9 +30,18 @@ namespace OakStatisticalAnalysis.Utils
                     int itemPoolIndex = (int)Math.Floor((double)(i % (int)Math.Pow(itemsPoolCount, j + 1)) / (int)Math.Pow(itemsPoolCount, j));
                     permutation[j] = featuresCount[itemPoolIndex];
                 }
-                if (!Duplicates(permutation, permutation.Count()))
+                if (permutation.Count() > 1 && permutation.Distinct().Count() < permutation.Count())
                 {
-                    permutations.Add(permutation);
+                    
+                }
+                else
+                {
+                    if (permutations.Exists(x => x.Except(permutation).Count() == 0))
+                    { }
+                    else
+                    {
+                        permutations.Add(permutation);
+                    }
                 }
             }
             return permutations;

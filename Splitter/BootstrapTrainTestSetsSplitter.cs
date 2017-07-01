@@ -60,7 +60,7 @@ namespace OakStatisticalAnalysis
             return new TrainTestStruct()
             {
                 TrainingSets = lista,
-                TestSet = testSet
+                TestSet = new List<List<Sample>>() { testSet }
             };
         }
     }

@@ -12,15 +12,20 @@ namespace OakStatisticalAnalysis
         private List<List<Sample>> trainingSet;
         private List<Sample> currentPointer;
         private int kParam = 0;
-        public double Test(IClassifier classifier, List<Sample> _testSet)
+        public double Test(IClassifier classifier, List<List<Sample>> _testSet)
         {
             double result = 0;
+            var kk =classifier as KNMClassifier;
             trainingSet = classifier.GetTrainingSet();
-            trainingSet.ForEach(x =>
+
+            _testSet.ForEach(tS =>
             {
-                currentPointer = x;
-                result += _testSet.Count(y => GetKNearestNeighbourFromTrainingSet(y) == y.Class)
-                    / _testSet.Count;
+                currentPointer = tS;
+                tS.ForEach(x =>
+                {
+                    result += tS.Count(y => GetKNearestNeighbourFromTrainingSet(y) == y.Class)
+                        / _testSet.Count;
+                });
             });
             return result / trainingSet.Select(x => x.Count).Sum();
         }

@@ -93,7 +93,7 @@ namespace OakStatisticalAnalysis
         private void TrainButtonClick(object sender, EventArgs e)
         {
             var selectedRadioButton = this.Controls.OfType<RadioButton>()
-                                    .FirstOrDefault(r => r.Checked);
+                                          .FirstOrDefault(r => r.Checked);
             var splitter = TrainTestSetsSplitterFactory.Get(selectedRadioButton.Text);
             trainTestStruct = splitter.Split(parsedDatabaseContent,GetCurrentConfig());
             ClassifierFactory factory = new ClassifierFactory();

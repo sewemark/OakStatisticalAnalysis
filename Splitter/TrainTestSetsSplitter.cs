@@ -22,14 +22,14 @@ namespace OakStatisticalAnalysis
             return new TrainTestStruct
             {
                 TrainingSets = new List<List<Sample>>() { train.SelectMany(x => x).ToList()},
-                TestSet = test.SelectMany(x => x).ToList()
+                TestSet = new List<List<Sample>>(){ test.SelectMany(x => x).ToList() }
             };
         }
     }
 
     public struct TrainTestStruct
     {
-        public List<Sample> TestSet;
+        public List<List<Sample>> TestSet;
         public List<List<Sample>> TrainingSets;
     }
 }

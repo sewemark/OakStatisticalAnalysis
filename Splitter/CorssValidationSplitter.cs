@@ -29,7 +29,7 @@ namespace OakStatisticalAnalysis.Splitter
             return new TrainTestStruct()
             {
                 TrainingSets = trainingSet,
-                TestSet = testSets[0]
+                TestSet = testSets
             };
 
         }

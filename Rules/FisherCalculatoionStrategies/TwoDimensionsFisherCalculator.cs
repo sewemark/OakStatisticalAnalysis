@@ -2,9 +2,9 @@
 using MathNet.Numerics.LinearAlgebra.Double;
 using OakStatisticalAnalysis.Models;
 using OakStatisticalAnalysis.Utils;
-using System;
 using System.Collections.Generic;
 using System.Linq;
+using System;
 
 namespace OakStatisticalAnalysis.Rules.FisherCalculatoionStrategies
 {
@@ -14,8 +14,8 @@ namespace OakStatisticalAnalysis.Rules.FisherCalculatoionStrategies
         private List<Sample> samples;
         private List<Matrix<double>> projetctedClassFateures;
         private List<List<double>> mods;
-        private List<Matrix> normalizedMods;
-        private List<Matrix> subtractedMatrix;
+        private List<Matrix<double>> normalizedMods;
+        private List<Matrix<double>> subtractedMatrix;
         private List<Matrix<double>> convariances;
         private List<Matrix<double>> transposed;
         private Dictionary<string, IEnumerable<IEnumerable<double>>> lookup;
@@ -31,8 +31,8 @@ namespace OakStatisticalAnalysis.Rules.FisherCalculatoionStrategies
         {
             projetctedClassFateures = new List<Matrix<double>>();
             mods = new List<List<double>>();
-            normalizedMods = new List<Matrix>();
-            subtractedMatrix = new List<Matrix>();
+            normalizedMods = new List<Matrix<double>>();
+            subtractedMatrix = new List<Matrix<double>>();
             convariances = new List<Matrix<double>>();
             transposed = new List<Matrix<double>>();
         }
@@ -60,7 +60,7 @@ namespace OakStatisticalAnalysis.Rules.FisherCalculatoionStrategies
         {
             projetctedClassFateures.ForEach(x =>
             {
-                var currentMod = x.ColumnSums().Select(y => y / x.RowCount);
+                var currentMod = x.RowSums().Select(y => y / x.ColumnCount);
                 mods.Add(currentMod.ToList());
             });
         }
@@ -81,7 +81,9 @@ namespace OakStatisticalAnalysis.Rules.FisherCalculatoionStrategies
             double det = 0;
             for(int i =0;i<transposed.Count;i++)
             {
-               var result = transposed[i] * subtractedMatrix[i];
+                var tt = subtractedMatrix[i].Transpose();
+                var result = new DenseMatrix(subtractedMatrix[i].RowCount, tt.ColumnCount);
+                subtractedMatrix[i].Multiply(tt, result);
                 det += result.Determinant();
             }
             return det;
@@ -93,9 +95,9 @@ namespace OakStatisticalAnalysis.Rules.FisherCalculatoionStrategies
             for (int i = 0; i < mods.Count; i++)
             {
                 var x = mods[i];
-                var resutl = Enumerable.Repeat(x, projetctedClassFateures[i].RowCount);
+                var resutl = Enumerable.Repeat(x, projetctedClassFateures[i].ColumnCount);
                 var normalized = DenseMatrix.OfArray(resutl.To2DArray());
-                normalizedMods.Add(normalized);
+                normalizedMods.Add(normalized.Transpose());
             }
         }
 
@@ -108,6 +110,7 @@ namespace OakStatisticalAnalysis.Rules.FisherCalculatoionStrategies
                           .Select(x => x.Features
                               .Where((m, index) => currentTestingFeatures
                                       .Contains(index))));
+            var test = lookup.ToList();
         }
 
         public void CopyProjectedLookupToMatrixes()
@@ -116,7 +119,7 @@ namespace OakStatisticalAnalysis.Rules.FisherCalculatoionStrategies
             {
                 var values = lookup.ElementAt(i).Value;
                 var matrix = DenseMatrix.OfArray(values.Select(x => x.ToArray()).ToArray().To2DArray<double>());
-                projetctedClassFateures.Add(matrix);
+                projetctedClassFateures.Add(matrix.Transpose());
             }
         }
 
@@ -124,7 +127,7 @@ namespace OakStatisticalAnalysis.Rules.FisherCalculatoionStrategies
         {
             for (int i = 0; i < mods.Count; i++)
             {
-                Matrix matrixBeforeTranspose = DenseMatrix.OfArray(new double[ projetctedClassFateures[i].RowCount, numOfFeatures]);
+                Matrix matrixBeforeTranspose = DenseMatrix.OfArray(new double[ numOfFeatures, projetctedClassFateures[i].ColumnCount]);
                 projetctedClassFateures[i].Subtract(normalizedMods[i], matrixBeforeTranspose);
                 subtractedMatrix.Add(matrixBeforeTranspose);
             }

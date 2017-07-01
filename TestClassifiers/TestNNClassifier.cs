@@ -12,25 +12,27 @@ namespace OakStatisticalAnalysis
         List<Sample> currentPointer;
         private IClassifier classifier;
         private List<double> results = new List<double>();
-        public double Test(IClassifier _classifier, List<Sample> _testSet)
+        public double Test(IClassifier _classifier, List<List<Sample>> _testSet)
         {
             classifier = _classifier;
             trainingSet = classifier.GetTrainingSet();
             //return _testSet.Count(x => GetNearestNeighbourFromTrainingSet(x).Class == x.Class)
-           // / _testSet.Count;
-
-            _testSet.Take(50).ToList().ForEach(y =>
+            // / _testSet.Count;
+            _testSet.ForEach(tS =>
             {
-                trainingSet.ForEach(zz =>
+
+                tS.Take(10).ToList().ForEach(y =>
                 {
-                    currentPointer = zz;
-                    var qq = zz.Count(zzz => GetNearestNeighbourFromTrainingSet(zzz).Class == y.Class);
-                       var aa= zz.Count;
-                    double r = qq / (aa * 1.0);
-                    results.Add(r);
+                    trainingSet.ForEach(zz =>
+                   {
+                       currentPointer = zz;
+                        var qq =zz.Count(zzz => GetNearestNeighbourFromTrainingSet(zzz).Class == y.Class);
+                        var aa = zz.Count;
+                        double r = qq / (aa * 1.0);
+                        results.Add(r);
+                    });
                 });
             });
-
             return results.Average();
         }
 

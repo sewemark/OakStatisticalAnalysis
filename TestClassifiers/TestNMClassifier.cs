@@ -8,7 +8,7 @@ namespace OakStatisticalAnalysis
     public class TestNMClassifier : ITestClassifier
     {
         private List<Sample> testSet;
-
+        private List<double> Avgs = new List<double>();
         private IClassifier classifier;
 
         public TestNMClassifier()
@@ -16,12 +16,17 @@ namespace OakStatisticalAnalysis
 
         }
 
-        public double Test(IClassifier _classifier, List<Sample> _testSet)
+        public double Test(IClassifier _classifier, List<List<Sample>> _testSet)
         {
             classifier = _classifier;
             var trainingSet = classifier.GetTrainingSet();
-            var aa = _testSet.Count(x => GetNearestMean(x) == x.Class);
-            return aa / (_testSet.Count * 1.0);
+            _testSet.ForEach(tS =>
+            {
+                var aa = tS.Count(x => GetNearestMean(x) == x.Class);
+                Avgs.Add(aa / (_testSet.Count * 1.0));
+            });
+
+            return Avgs.Average();
         }
         
         private string GetNearestMean(Sample x)

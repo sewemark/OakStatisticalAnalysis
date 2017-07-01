@@ -11,6 +11,7 @@ namespace OakStatisticalAnalysis
         private List<Sample> testSet;
         private List<List<Sample>> trainingSet;
         private List<Sample> currentPointer;
+        private List<double> results = new List<double>();
         private int kParam = 3;
 
         public void SetKParam(int k)
@@ -18,17 +19,22 @@ namespace OakStatisticalAnalysis
             kParam = k; 
         }
 
-        public double Test(IClassifier classifier, List<Sample> _testSet)
+        public double Test(IClassifier classifier, List<List<Sample>> _testSet)
         {
             double result = 0;
             trainingSet = classifier.GetTrainingSet();
-            trainingSet.ForEach(x =>
+            _testSet.ForEach(tS =>
             {
-                currentPointer = x;
-                result += _testSet.Count(y => GetKNearestNeighbourFromTrainingSet(y) == y.Class)
-                    / (_testSet.Count * 1.0);
+                trainingSet.ForEach(x =>
+                {
+                    currentPointer = x;
+                    result += tS.Count(y => GetKNearestNeighbourFromTrainingSet(y) == y.Class)
+                        / (_testSet.Count * 1.0);
+                });
+                results.Add(result / trainingSet.Count() * 1.0);
             });
-            return result / trainingSet.Count() * 1.0;
+
+            return results.Average();
         }
 
 
