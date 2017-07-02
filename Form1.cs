@@ -102,7 +102,7 @@ namespace OakStatisticalAnalysis
             trainTestStruct = splitter.Split(parsedDatabaseContent,GetCurrentConfig());
             ClassifierFactory factory = new ClassifierFactory();
             currentClassifier = factory.Select(selectClassifierComboBox.SelectedItem.ToString());
-            currentClassifier.Train(trainTestStruct.TrainingSets);
+            currentClassifier.Train(trainTestStruct.TrainingSets, GetCurrentClassifierConfig());
         }
 
         private void ExecuteTestButtonClick(object sender, EventArgs e)
@@ -127,5 +127,14 @@ namespace OakStatisticalAnalysis
                 CrossValidationKParam = Convert.ToInt32(crossvalidationNumOfPartsTextBox.Text)
             };
         }
+
+        public ClassifierConfig GetCurrentClassifierConfig()
+        {
+            return new ClassifierConfig()
+            {
+                KParam = Convert.ToInt32(kParamTextBox.Text),
+            };
+        }
+
     }
 }

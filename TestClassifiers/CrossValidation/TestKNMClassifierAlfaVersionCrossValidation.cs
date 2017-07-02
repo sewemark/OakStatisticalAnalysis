@@ -3,10 +3,9 @@ using System.Collections.Generic;
 using OakStatisticalAnalysis.Models;
 using System.Linq;
 using OakStatisticalAnalysis.Utils;
-
 namespace OakStatisticalAnalysis
 {
-    public class TestKNMClassifierAlfaVersion : ITestClassifier
+    public class TestKNMClassifierAlfaVersionCrossValidation : ITestClassifier
     {
         private List<Sample> testSet;
         private List<List<Sample>> trainingSet;
@@ -18,20 +17,21 @@ namespace OakStatisticalAnalysis
         {
             kParam = classifier.GetConfig().KParam;
             double result = 0;
-            var kk =classifier as KNMClassifierAlfaVersion;
+            var kk = classifier as KNMClassifierAlfaVersion;
             centroids = kk.GetCentroid();
-            trainingSet = classifier.GetTrainingSet();
-            _testSet.ForEach(tS =>
+            var listOfCentorids = kk.GetListCentroid();
+            for(int i=0;i<_testSet.Count;i++)
             {
-                currentPointer = tS;
-                    var properClassification = tS.Count(y => {
-                        var nn = GetKNearestNeighbourFromTrainingSet(y);
-                        return nn == y.Class;
-                        });
-                    result += properClassification
-                        / (tS.Count * 1.0);
-            });
-           return  result / _testSet.Count; 
+                currentPointer = _testSet[i];
+                centroids = listOfCentorids.ElementAt(i);
+                var properClassification = currentPointer.Count(y => {
+                    var nn = GetKNearestNeighbourFromTrainingSet(y);
+                    return nn == y.Class;
+                });
+                result += properClassification
+                    / (currentPointer.Count * 1.0);
+            }
+            return result / _testSet.Count;
         }
 
 
@@ -40,7 +40,7 @@ namespace OakStatisticalAnalysis
             var distnaces = centroids.Select(x => MathUtil.CalculateDistnace(x.Mod.ToList(), sample.Features));
             var closestCentroid = centroids.OrderBy(x => MathUtil.CalculateDistnace(x.Mod.ToList(), sample.Features))
                 .Take(kParam);
-            return closestCentroid.Where(x=>x.AcerNum>x.QNum).Count()  > closestCentroid.Where(x => x.QNum > x.AcerNum).Count() ? "Acer" : "Quercus";
+            return closestCentroid.Where(x => x.AcerNum > x.QNum).Count() > closestCentroid.Where(x => x.QNum > x.AcerNum).Count() ? "Acer" : "Quercus";
 
         }
 

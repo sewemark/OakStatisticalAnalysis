@@ -13,4 +13,8 @@ namespace OakStatisticalAnalysis
         public int KParam { get; set; }
         public int CrossValidationKParam { get; set; }
     }
+    public class ClassifierConfig
+    {
+        public int KParam { get; set; }
+    }
 }

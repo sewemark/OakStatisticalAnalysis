@@ -51,7 +51,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Classifiers\KNMClassifierAlfaVersion.cs" />
+    <Compile Include="Models\Centroid.cs" />
     <Compile Include="Models\SplitterConfig.cs" />
+    <Compile Include="Models\TrainTestStruct.cs" />
     <Compile Include="Splitter\BootstrapTrainTestSetsSplitter.cs" />
     <Compile Include="Classifiers\ClassifierFactory.cs" />
     <Compile Include="DatabaseContentParser.cs" />
@@ -81,6 +83,7 @@
     <Compile Include="Rules\RulesFactory.cs" />
     <Compile Include="SFSFeatureSelector.cs" />
     <Compile Include="Splitter\CorssValidationSplitter.cs" />
+    <Compile Include="TestClassifiers\CrossValidation\TestKNMClassifierAlfaVersionCrossValidation.cs" />
     <Compile Include="TestClassifiers\CrossValidation\TestNNClassifierCrossValidation.cs" />
     <Compile Include="TestClassifiers\CrossValidation\TestKNNClassifierCrossValidation.cs" />
     <Compile Include="TestClassifiers\CrossValidation\TestNMClassifierCrossValidation.cs" />

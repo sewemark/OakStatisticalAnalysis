@@ -22,7 +22,7 @@ namespace OakStatisticalAnalysis
             classifierSelectingRules.Add("NNcrossvalidation", new TestNNClassifierCrossValidation());
             classifierSelectingRules.Add("NMcrossvalidation", new TestNMClassifierCrossValidation());
             classifierSelectingRules.Add("kNNcrossvalidation", new TestKNNClassifierCrossValidation());
-            classifierSelectingRules.Add("kNMcrossvalidation", new TestKNMClassifierAlfaVersion());
+            classifierSelectingRules.Add("kNMcrossvalidation", new TestKNMClassifierAlfaVersionCrossValidation());
         }
 
         public ITestClassifier Select(string classifierName, string methodName)

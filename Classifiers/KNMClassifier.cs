@@ -15,14 +15,7 @@ namespace OakStatisticalAnalysis
         private const int kParam = 3;
         private double[][] oldCentroids = new double[kParam][];
         private List<Sample> currentPointer;
-
-        public double[][] GetMeans()
-        {
-            // return means;
-
-            return null;
-        }
-
+        private ClassifierConfig config;
         public List<List<Sample>> GetTrainingSet()
         {
             return trainingSet;
@@ -33,9 +26,9 @@ namespace OakStatisticalAnalysis
             return centroids;
         }
 
-        public void Train(List<List<Sample>> _trainingSet)
+        public void Train(List<List<Sample>> _trainingSet, ClassifierConfig _config)
         {
-            
+            config = _config;
             trainingSet = _trainingSet;
             trainingSet.ForEach(x =>
             {
@@ -169,36 +162,10 @@ namespace OakStatisticalAnalysis
             }
             return randomClastering;
         }
-    }
 
-    public class Centroid
-    {
-        public int Number;
-        public double[] Mod;
-        public double[] ModOccurencies;
-        public List<string> ClassLables;
-        public int AcerNum = 0;
-        public int QNum = 0;
-
-        public Centroid(int _number,int numOfFeatures)
+        public ClassifierConfig GetConfig()
         {
-            Number = _number;
-            InitValues(numOfFeatures);
-        }
-        public void InitValues(int numOfFeatures)
-        {
-            Mod = Enumerable.Repeat<double>(0, numOfFeatures).ToArray();
-            ModOccurencies  = Enumerable.Repeat<double>(0, numOfFeatures).ToArray();
-            ClassLables = new List<string>();
-    }
-        public void ZippValues()
-        {
-            Mod = Mod.Zip(ModOccurencies, (x, y) =>
-            {
-                return x / y;
-            }).ToArray();
-           
+            return config;
         }
     }
-    
 }

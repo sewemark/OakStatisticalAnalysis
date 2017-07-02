@@ -8,10 +8,11 @@ namespace OakStatisticalAnalysis
         private List<List<Sample>> trainingSet;
         private List<Sample> currentPointer;
         private List<double[][]> mods = new List<double[][]>();
+        private ClassifierConfig config;
 
-        public void Train(List<List<Sample>> _trainingSet)
+        public void Train(List<List<Sample>> _trainingSet, ClassifierConfig _config)
         {
-
+            config = _config;
             trainingSet = _trainingSet;
             mods.Clear();
             trainingSet.ForEach(x =>
@@ -58,6 +59,11 @@ namespace OakStatisticalAnalysis
         public List<List<Sample>> GetTrainingSet()
         {
             return trainingSet;
+        }
+
+        public ClassifierConfig GetConfig()
+        {
+            return config;
         }
     }
 }

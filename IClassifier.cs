@@ -5,7 +5,8 @@ namespace OakStatisticalAnalysis
 {
     public interface IClassifier
     {
-        void Train(List<List<Sample>> trainingSet);
+        void Train(List<List<Sample>> trainingSet, ClassifierConfig config);
         List<List<Sample>> GetTrainingSet();
+        ClassifierConfig GetConfig();
     }
 }

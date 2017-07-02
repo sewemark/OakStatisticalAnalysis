@@ -10,28 +10,51 @@ namespace OakStatisticalAnalysis.Splitter
     public class CorssValidationSplitter : ITrainTestSetsSplitter
     {
         private SplitterConfig _config;
-        private List<List<Sample>> trainingSet = new List<List<Sample>>();
-        private List<List<Sample>> testSets = new List<List<Sample>>();
+        private List<List<Sample>> trainingSet;
+        private List<List<Sample>> testSets;
 
         public TrainTestStruct Split(List<Sample> database, SplitterConfig config)
         {
+           
             _config= config;
-            var elementCount = database.Count / config.CrossValidationKParam;
-            for(int i =0;i<database.Count;i+=elementCount)
+            InitList();
+            var grouped = database.GroupBy(x => x.Class);
+            for (int i = 0; i < grouped.Count(); i++)
             {
-                var testSet = database.Skip(i).Take(elementCount);
-                var usedIndexs = Enumerable.Range(i,  i + elementCount);
-                var trainign = database.Where((x, index) => usedIndexs.Contains(index) == false);
-                testSets.Add(testSet.ToList());
-                trainingSet.Add(trainign.ToList());
+                var currentGrouped = grouped.ElementAt(i).Select(x => x);
+                var elementCount = currentGrouped.Count() / config.CrossValidationKParam + 1;
 
+                for (int j = 0; j < currentGrouped.Count();j++)
+                {
+                    var testSet = currentGrouped.Skip(j).Take(elementCount);
+                    var usedIndexs = Enumerable.Range(j, j + elementCount);
+                    var trainign = currentGrouped.Where((x, index) => usedIndexs.Contains(index) == false);
+                    testSets[j/ elementCount].AddRange(testSet.ToList());
+                    trainingSet[j/elementCount].AddRange(trainign.ToList());
+                    j = j+ elementCount;
+
+                }
             }
+            
             return new TrainTestStruct()
             {
                 TrainingSets = trainingSet,
                 TestSet = testSets
             };
 
+        }
+
+        public void InitList()
+        {
+            trainingSet = new List<List<Sample>>(_config.CrossValidationKParam);
+            testSets = new List<List<Sample>>(_config.CrossValidationKParam);
+                
+            for (int i =0;i<_config.CrossValidationKParam;i++)
+            {
+                trainingSet.Add(new List<Sample>());
+                testSets.Add(new List<Sample>());
+
+            }
         }
     }
 }

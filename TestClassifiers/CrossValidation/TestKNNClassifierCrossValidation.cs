@@ -9,16 +9,13 @@ namespace OakStatisticalAnalysis
         private List<List<Sample>> trainingSet;
         private List<Sample> currentPointer;
         private List<double> results = new List<double>();
-        private int kParam = 3;
+        private int kParam =3;
 
-        public void SetKParam(int k)
-        {
-            kParam = k;
-        }
+     
 
         public double Test(IClassifier classifier, List<List<Sample>> _testSet)
         {
-
+            kParam = classifier.GetConfig().KParam;
             trainingSet = classifier.GetTrainingSet();
             for (int i = 0; i < _testSet.Count; i++)
             {

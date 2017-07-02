@@ -13,19 +13,17 @@ namespace OakStatisticalAnalysis
         private List<List<Sample>> listOfSetsByClass = new List<List<Sample>>();
         private List<Centroid> centroids;
         private List<List<Centroid>> listOfCentroids = new List<List<Centroid>>();
-        private const int kParam = 3;
-        //private double[][] oldCentroids = new double[kParam][];
-        private Centroid[] backCentorids = new Centroid[kParam];
+        private Centroid[] backCentorids;
         private List<Sample> currentPointer;
         private int[] randomClastering;
-        bool isAnyMenasChanged = true;
-        bool areAllsCentroidsAsignes = true;
-        int  maxCount = 0;
+        private ClassifierConfig config;
+        private bool isAnyMenasChanged = true;
+        private bool areAllsCentroidsAsignes = true;
+        private int  maxCount = 0;
 
-      
-
-        public void Train(List<List<Sample>> _trainingSet)
+        public void Train(List<List<Sample>> _trainingSet, ClassifierConfig _config)
         {
+            config = _config;
             trainingSet = _trainingSet;
             trainingSet.ForEach(x =>
             {
@@ -59,6 +57,7 @@ namespace OakStatisticalAnalysis
             centroids.Clear();
             centroids.AddRange(backCentorids.ToList());
         }
+
         public bool CheckState()
         {
             return isAnyMenasChanged == true && areAllsCentroidsAsignes == true && maxCount < 5;
@@ -68,6 +67,7 @@ namespace OakStatisticalAnalysis
         {
             return areAllsCentroidsAsignes == false;
         }
+
         private void SetuCurrentPointer(List<Sample> p)
         {
             currentPointer = p;
@@ -75,6 +75,7 @@ namespace OakStatisticalAnalysis
 
         private void GroupSamplesByClass(List<Sample> x)
         {
+            listOfSetsByClass.Clear();
             var grouped = x.GroupBy(y => y.Class);
             for (int i = 0; i < grouped.Count(); i++)
             {
@@ -94,13 +95,8 @@ namespace OakStatisticalAnalysis
 
         private void CleanCentroids()
         {
+            backCentorids = new Centroid[config.KParam];
             centroids.CopyTo(backCentorids);
-         //   for(int i =0;i<centroids.Count;i++)
-           // {
-               // oldCentroids[i] = new double[centroids.ElementAt(i).Mod.Count()];
-                // Array.Copy(centroids.ElementAt(i).Mod, oldCentroids[i], centroids.ElementAt(i).Mod.Count());
-          //  }
-
             centroids.ForEach(x =>
             {
               x.InitValues(currentPointer[0].Features.Count);
@@ -109,13 +105,12 @@ namespace OakStatisticalAnalysis
 
         private void InitCentroids()
         {
-            centroids = new List<Centroid>(kParam);
-            for(int i=0;i<kParam;i++)
+            centroids = new List<Centroid>(config.KParam);
+            for(int i=0;i< config.KParam; i++)
             {
                 Centroid c = new Centroid(i, currentPointer[0].Features.Count);
                 centroids.Add(c);
             }
-            
         }
 
         public  void UpdateSamples()
@@ -126,12 +121,10 @@ namespace OakStatisticalAnalysis
 
             currentPointer.ForEach(y => {
                 var centroid = centroids.Select(x=>MathUtil.CalculateDistnace(x.Mod.ToList(), y.Features)).ToList();
-                 
                 var min = Array.IndexOf(centroid.ToArray(), centroid.Min());
                 adjuctesTrainingSet.Add(new Sample() { Label = y.Label, Class = min.ToString(), CentoridNumber= min, Features = y.Features });
             });
 
-            var test = adjuctesTrainingSet.Select(x => x.CentoridNumber);
             for (int i = 0; i < centroids.Count; i++)
             {
                 if (!adjuctesTrainingSet.Any(x => x.CentoridNumber == i))
@@ -144,6 +137,7 @@ namespace OakStatisticalAnalysis
              }
             areAllsCentroidsAsignes= true;
         }
+
         public bool UpdateInitialSamples()
         {
             for (int i = 0; i < currentPointer.Count; i++)
@@ -192,7 +186,7 @@ namespace OakStatisticalAnalysis
 
         public void CalculateInitialMeans()
         {
-           randomClastering = MathUtil.RandomPartition(kParam, currentPointer.Count);
+           randomClastering = MathUtil.RandomPartition(config.KParam, currentPointer.Count);
            for (int j = 0; j < currentPointer[0].Features.Count; j++)
             {
                 for (int i = 0; i < randomClastering.Length; i++)
@@ -226,6 +220,17 @@ namespace OakStatisticalAnalysis
         public List<Centroid> GetCentroid()
         {
             return listOfCentroids.SelectMany(x => x).ToList();
+        }
+
+        public List<List<Centroid>> GetListCentroid()
+        {
+            return listOfCentroids;
+        }
+
+
+        public ClassifierConfig GetConfig()
+        {
+            return config;
         }
     }
 }

@@ -15,11 +15,11 @@ namespace OakStatisticalAnalysis
         private int kParam = 3;
         public double Test(IClassifier classifier, List<List<Sample>> _testSet)
         {
+            kParam = classifier.GetConfig().KParam;
             double result = 0;
             var kk =classifier as KNMClassifier;
             centroids = kk.GetCentroid();
             trainingSet = classifier.GetTrainingSet();
-            kParam = 3;
             _testSet.ForEach(tS =>
             {
                 currentPointer = tS;
