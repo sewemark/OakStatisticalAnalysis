@@ -14,7 +14,7 @@ namespace OakStatisticalAnalysis
         private List<Centroid> centroids;
         private List<List<Centroid>> listOfCentroids = new List<List<Centroid>>();
         private const int kParam = 3;
-        private double[][] oldCentroids = new double[kParam][];
+        //private double[][] oldCentroids = new double[kParam][];
         private Centroid[] backCentorids = new Centroid[kParam];
         private List<Sample> currentPointer;
         private int[] randomClastering;
@@ -22,57 +22,58 @@ namespace OakStatisticalAnalysis
         bool areAllsCentroidsAsignes = true;
         int  maxCount = 0;
 
-        public List<List<Sample>> GetTrainingSet()
-        {
-            return trainingSet;
-        }
-
-        public List<Centroid> GetCentroid()
-        {
-            return listOfCentroids.SelectMany(x => x).ToList();
-        }
+      
 
         public void Train(List<List<Sample>> _trainingSet)
         {
-            
             trainingSet = _trainingSet;
             trainingSet.ForEach(x =>
             {
-                GroupByClass(x);
+                GroupSamplesByClass(x);
                 listOfSetsByClass.ForEach(p =>
                 {
                     SetuCurrentPointer(p);
                     InitCentroids();
                     CalculateInitialMeans();
                     UpdateInitialSamples();
-                    
-                    while (isAnyMenasChanged == true && areAllsCentroidsAsignes  == true && maxCount < 5)
+                    RestState();
+                    while (CheckState())
                     {
                         CleanCentroids();
                         CalculateMeans();
-                        isAnyMenasChanged = CheckChanged();
-                        areAllsCentroidsAsignes =UpdateSamples();
-                        if(areAllsCentroidsAsignes == false)
+                        CheckChanged();
+                        UpdateSamples();
+                        if(CheckIfAllCentroidsAreAssignedSample())
                         {
-                            centroids.Clear();
-                            centroids.AddRange(backCentorids.ToList());
+                            RollBack();
                         }
-                        maxCount++;
                         UpdateInfo();
                     }
                     listOfCentroids.Add(centroids);
                 });
             });
-
-
         }
 
+        public void RollBack()
+        {
+            centroids.Clear();
+            centroids.AddRange(backCentorids.ToList());
+        }
+        public bool CheckState()
+        {
+            return isAnyMenasChanged == true && areAllsCentroidsAsignes == true && maxCount < 5;
+        }
+
+        public bool CheckIfAllCentroidsAreAssignedSample()
+        {
+            return areAllsCentroidsAsignes == false;
+        }
         private void SetuCurrentPointer(List<Sample> p)
         {
             currentPointer = p;
         }
 
-        private void GroupByClass(List<Sample> x)
+        private void GroupSamplesByClass(List<Sample> x)
         {
             var grouped = x.GroupBy(y => y.Class);
             for (int i = 0; i < grouped.Count(); i++)
@@ -83,6 +84,7 @@ namespace OakStatisticalAnalysis
 
         private void UpdateInfo()
         {
+            maxCount++;
             centroids.ForEach(x =>
             {
                 x.AcerNum = x.ClassLables.Count(y => string.Equals(y, "Acer"));
@@ -92,15 +94,12 @@ namespace OakStatisticalAnalysis
 
         private void CleanCentroids()
         {
-            //backCentorids = new double[oldCentroids.Count()][];
-            // oldCentroids.CopyTo(backCentorids, 0);
-          //  var oldTemp = new Sample[centroids.Count]; 
             centroids.CopyTo(backCentorids);
-            for(int i =0;i<centroids.Count;i++)
-            {
-                oldCentroids[i] = new double[centroids.ElementAt(i).Mod.Count()];
-                 Array.Copy(centroids.ElementAt(i).Mod, oldCentroids[i], centroids.ElementAt(i).Mod.Count());
-            }
+         //   for(int i =0;i<centroids.Count;i++)
+           // {
+               // oldCentroids[i] = new double[centroids.ElementAt(i).Mod.Count()];
+                // Array.Copy(centroids.ElementAt(i).Mod, oldCentroids[i], centroids.ElementAt(i).Mod.Count());
+          //  }
 
             centroids.ForEach(x =>
             {
@@ -119,11 +118,12 @@ namespace OakStatisticalAnalysis
             
         }
 
-        public  bool UpdateSamples()
+        public  void UpdateSamples()
         {
             var bakc = new Sample[adjuctesTrainingSet.Count];
             adjuctesTrainingSet.CopyTo(bakc);
             adjuctesTrainingSet.Clear();
+
             currentPointer.ForEach(y => {
                 var centroid = centroids.Select(x=>MathUtil.CalculateDistnace(x.Mod.ToList(), y.Features)).ToList();
                  
@@ -138,16 +138,14 @@ namespace OakStatisticalAnalysis
                 {
                     adjuctesTrainingSet.Clear();
                     adjuctesTrainingSet.AddRange(bakc.ToList());
-                    return false;
+                    areAllsCentroidsAsignes = false;
+                    return;
                 }
              }
-            return true;
+            areAllsCentroidsAsignes= true;
         }
         public bool UpdateInitialSamples()
         {
-            // var bakc = new Sample[adjuctesTrainingSet.Count];
-            // adjuctesTrainingSet.CopyTo(bakc);
-            //   adjuctesTrainingSet.Clear();
             for (int i = 0; i < currentPointer.Count; i++)
             {
                 var y = currentPointer[i];
@@ -157,22 +155,21 @@ namespace OakStatisticalAnalysis
             return true;
         }
 
-
-
-        public bool CheckChanged()
+        public void CheckChanged()
         {
             for(int i=0;i<centroids.Count;i++)
             {
-               if (centroids[i].Mod.Except(oldCentroids[i]).Count() != 0) 
-                    return true;
+                if (centroids[i].Mod.Except(backCentorids[i].Mod).Count() != 0)
+                {
+                    isAnyMenasChanged = true;
+                    return;
+                }
             }
-            return false;
+            isAnyMenasChanged = false;
         }
 
         public void CalculateMeans()
         {
-
-          
             for (int j = 0; j < currentPointer[0].Features.Count; j++)
             {
                 for (int i = 0; i < currentPointer.Count(); i++)
@@ -185,7 +182,6 @@ namespace OakStatisticalAnalysis
                     curentCentorid.ModOccurencies[j] += 1;
                     if (j == 0)
                     {
-                        
                         curentCentorid.ClassLables.Add(currentPointer[i].Class);
                     }
                 }
@@ -196,9 +192,8 @@ namespace OakStatisticalAnalysis
 
         public void CalculateInitialMeans()
         {
-           randomClastering = RandomPartition(kParam);
-          
-            for (int j = 0; j < currentPointer[0].Features.Count; j++)
+           randomClastering = MathUtil.RandomPartition(kParam, currentPointer.Count);
+           for (int j = 0; j < currentPointer[0].Features.Count; j++)
             {
                 for (int i = 0; i < randomClastering.Length; i++)
                 {
@@ -210,26 +205,27 @@ namespace OakStatisticalAnalysis
                     curentCentorid.ModOccurencies[j] += 1;
                     if (j == 0)
                     {
-                       
                         curentCentorid.ClassLables.Add(currentPointer[i].Class);
                     }
                 }
             }
             centroids.ForEach(x => x.ZippValues());
         }
-           
-        
 
-        public  int[] RandomPartition(int numOfClasters)
+        public void RestState()
         {
-            Random r = new Random(12);
-            int[] randomClastering = new int[currentPointer.Count];
-            for(int i = 0; i < currentPointer.Count; i++)
-            {
-                 randomClastering[i] =  r.Next(0, numOfClasters);
-            }
-            return randomClastering;
+            isAnyMenasChanged = true;
+            areAllsCentroidsAsignes = true;
+            maxCount = 0;
+        }
+        public List<List<Sample>> GetTrainingSet()
+        {
+            return trainingSet;
+        }
+
+        public List<Centroid> GetCentroid()
+        {
+            return listOfCentroids.SelectMany(x => x).ToList();
         }
     }
-    
 }

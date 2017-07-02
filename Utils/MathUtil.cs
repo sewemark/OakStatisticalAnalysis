@@ -1,8 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace OakStatisticalAnalysis.Utils
 {
@@ -42,6 +39,17 @@ namespace OakStatisticalAnalysis.Utils
                 res += Math.Pow((double)v2[i] - (double)v1[i], 2);
             }
             return Math.Sqrt(res);
+        }
+
+        public static int[] RandomPartition(int numOfClasters, int numOfElements)
+        {
+            Random r = new Random(12);
+            int[] randomClastering = new int[numOfElements];
+            for (int i = 0; i < numOfElements; i++)
+            {
+                randomClastering[i] = r.Next(0, numOfClasters);
+            }
+            return randomClastering;
         }
     }
 }

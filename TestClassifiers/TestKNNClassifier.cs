@@ -19,7 +19,6 @@ namespace OakStatisticalAnalysis
 
         public double Test(IClassifier classifier, List<List<Sample>> _testSet)
         {
-            double result = 0;
             trainingSet = classifier.GetTrainingSet();
             _testSet.ForEach(tS =>
             {
