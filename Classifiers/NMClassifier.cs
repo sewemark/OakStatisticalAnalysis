@@ -30,8 +30,16 @@ namespace OakStatisticalAnalysis
         {
             return means;
         }
+
+        public List<double[][]> GetMods()
+        {
+            var aa= mods;
+            return mods;
+        }
+
         public void CalculateMenasForClass()
         {
+            mods.Clear();
             for (int j = 0; j < trainingSet.Count; j++)
             {
                 var currentPointer = trainingSet[j];

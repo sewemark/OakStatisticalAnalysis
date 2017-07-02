@@ -109,8 +109,10 @@ namespace OakStatisticalAnalysis
 
         private void ExecuteTestButtonClick(object sender, EventArgs e)
         {
+            var selectedRadioButton = this.Controls.OfType<RadioButton>()
+                                        .FirstOrDefault(r => r.Checked);
             TestClassifierFactory factory = new TestClassifierFactory();
-            var testClassifier = factory.Select(selectClassifierComboBox.SelectedItem.ToString());
+            var testClassifier = factory.Select(selectClassifierComboBox.SelectedItem.ToString(), selectedRadioButton.Text);
             var result = testClassifier.Test(currentClassifier,trainTestStruct.TestSet);
             classificationResultLabel.Text += 
                 "\n" + selectClassifierComboBox.SelectedItem.ToString() + " " + result.ToString();

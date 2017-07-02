@@ -23,15 +23,12 @@ namespace OakStatisticalAnalysis
             _testSet.ForEach(tS =>
             {
                 currentPointer = tS;
-               // tS.ForEach(x =>
-                //{
                     var properClassification = tS.Count(y => {
                         var nn = GetKNearestNeighbourFromTrainingSet(y);
                         return nn == y.Class;
                         });
                     result += properClassification
                         / (tS.Count * 1.0);
-                //});
             });
            return  result / _testSet.Count; 
         }

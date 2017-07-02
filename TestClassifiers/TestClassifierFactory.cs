@@ -9,15 +9,25 @@ namespace OakStatisticalAnalysis
            = new Dictionary<string, ITestClassifier>();
         public TestClassifierFactory()
         {
-            classifierSelectingRules.Add("NN", new TestNNClassifier());
-            classifierSelectingRules.Add("NM", new TestNMClassifier());
-            classifierSelectingRules.Add("kNN", new TestKNNClassifier());
-            classifierSelectingRules.Add("kNM", new TestKNMClassifier2());
+            classifierSelectingRules.Add("NNbasic", new TestNNClassifier());
+            classifierSelectingRules.Add("NMbasic", new TestNMClassifier());
+            classifierSelectingRules.Add("kNNbasic", new TestKNNClassifier());
+            classifierSelectingRules.Add("kNMbasic", new TestKNMClassifier2());
+
+            classifierSelectingRules.Add("NNbootstrap", new TestNNClassifier());
+            classifierSelectingRules.Add("NMbootstrap", new TestNMClassifier());
+            classifierSelectingRules.Add("kNNbootstrap", new TestKNNClassifier());
+            classifierSelectingRules.Add("kNMbootstrap", new TestKNMClassifier2());
+
+            classifierSelectingRules.Add("NNcrossvalidation", new TestNNClassifierCrossValidation());
+            classifierSelectingRules.Add("NMcrossvalidation", new TestNMClassifierCrossValidation());
+            classifierSelectingRules.Add("kNNcrossvalidation", new TestKNNClassifierCrossValidation());
+            classifierSelectingRules.Add("kNMcrossvalidation", new TestKNMClassifier2());
         }
 
-        public ITestClassifier Select(string classifierName)
+        public ITestClassifier Select(string classifierName, string methodName)
         {
-            return classifierSelectingRules[classifierName];
+            return classifierSelectingRules[classifierName + methodName];
         }
     }
 }
