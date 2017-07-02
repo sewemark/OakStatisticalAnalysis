@@ -70,7 +70,13 @@ namespace OakStatisticalAnalysis
 
         private void UpdateUI()
         {
-            featureExtractionResultLabel.Text +=  " "+ String.Join(", ", featuresUI);
+            parsedDatabaseContent.ForEach(x => {
+                x.Features = x.Features.Where((y, index) => featuresUI.Contains(index)).Select(y => y).ToList();
+                //x.Features.Clear();
+               //x.Features.AddRange(newFeatures);
+            });
+           featureExtractionResultLabel.Text +=  " "+ String.Join(", ", featuresUI);
+
         }
 
         private void ReadFromFile()

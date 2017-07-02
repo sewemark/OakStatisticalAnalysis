@@ -50,6 +50,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Classifiers\KNMClassifier2.cs" />
     <Compile Include="Splitter\BootstrapTrainTestSetsSplitter.cs" />
     <Compile Include="Classifiers\ClassifierFactory.cs" />
     <Compile Include="DatabaseContentParser.cs" />
@@ -80,6 +81,7 @@
     <Compile Include="SFSFeatureSelector.cs" />
     <Compile Include="Splitter\CorssValidationSplitter.cs" />
     <Compile Include="TestClassifiers\TestClassifierFactory.cs" />
+    <Compile Include="TestClassifiers\TestKNMClassifier2.cs" />
     <Compile Include="TestClassifiers\TestKNMClassifier.cs" />
     <Compile Include="TestClassifiers\TestKNNClassifier.cs" />
     <Compile Include="TestClassifiers\TestNMClassifier.cs" />

@@ -31,7 +31,7 @@ namespace OakStatisticalAnalysis
                     result += tS.Count(y => GetKNearestNeighbourFromTrainingSet(y) == y.Class)
                         / (_testSet.Count * 1.0);
                 });
-                results.Add(result / trainingSet.Count() * 1.0);
+                results.Add(result / tS.Count() * 1.0);
             });
 
             return results.Average();

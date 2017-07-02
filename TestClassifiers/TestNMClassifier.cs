@@ -23,7 +23,7 @@ namespace OakStatisticalAnalysis
             _testSet.ForEach(tS =>
             {
                 var aa = tS.Count(x => GetNearestMean(x) == x.Class);
-                Avgs.Add(aa / (_testSet.Count * 1.0));
+                Avgs.Add(aa / (tS.Count * 1.0));
             });
 
             return Avgs.Average();
