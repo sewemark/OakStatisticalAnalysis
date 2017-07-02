@@ -7,7 +7,6 @@ namespace OakStatisticalAnalysis
 {
     public class TestNMClassifier : ITestClassifier
     {
-        private List<Sample> testSet;
         private List<double> Avgs = new List<double>();
         private IClassifier classifier;
 
@@ -18,11 +17,10 @@ namespace OakStatisticalAnalysis
 
         public double Test(IClassifier _classifier, List<List<Sample>> _testSet)
         {
+            classifier = _classifier;
             var currnetClassifer = _classifier as NMClassifier;
-           // var trainingSet = classifier.GetTrainingSet();
             _testSet.ForEach(tS =>
             {
-
                 var centroids =currnetClassifer.GetMods();
                 centroids.ForEach(y =>
                 {
@@ -36,12 +34,9 @@ namespace OakStatisticalAnalysis
         
         private string GetNearestMean(Sample x, double [][] means)
         {
-            var currentclassfier  = classifier as NMClassifier;
             return MathUtil.CalculateDistnace(means[0].ToList(), x.Features)
                 <= MathUtil.CalculateDistnace(means[1].ToList(), x.Features) ?
                   "Acer" : "Quercus" ;
         }
     }
-
- 
 }

@@ -7,7 +7,6 @@ namespace OakStatisticalAnalysis
 {
     public class TestKNNClassifier : ITestClassifier
     {
-        private List<Sample> testSet;
         private List<List<Sample>> trainingSet;
         private List<Sample> currentPointer;
         private List<double> results = new List<double>();
@@ -27,10 +26,9 @@ namespace OakStatisticalAnalysis
                 trainingSet.ForEach(x =>
                 {
                     currentPointer = x;
-                    result += tS.Count(y => GetKNearestNeighbourFromTrainingSet(y) == y.Class)
-                        / (_testSet.Count * 1.0);
+                    results.Add(tS.Count(y => GetKNearestNeighbourFromTrainingSet(y) == y.Class)
+                        / (tS.Count * 1.0));
                 });
-                results.Add(result / tS.Count() * 1.0);
             });
 
             return results.Average();

@@ -18,14 +18,9 @@ namespace OakStatisticalAnalysis
         private Centroid[] backCentorids = new Centroid[kParam];
         private List<Sample> currentPointer;
         private int[] randomClastering;
-
-      
-        public double[][] GetMeans()
-        {
-            // return means;
-
-            return null;
-        }
+        bool isAnyMenasChanged = true;
+        bool areAllsCentroidsAsignes = true;
+        int  maxCount = 0;
 
         public List<List<Sample>> GetTrainingSet()
         {
@@ -43,21 +38,14 @@ namespace OakStatisticalAnalysis
             trainingSet = _trainingSet;
             trainingSet.ForEach(x =>
             {
-
-                var grouped = x.GroupBy(y => y.Class);
-                for(int i =0;i< grouped.Count();i++)
-                {
-                    listOfSetsByClass.Add(grouped.ElementAt(i).Select(q => q).ToList());
-                }
+                GroupByClass(x);
                 listOfSetsByClass.ForEach(p =>
                 {
-                    currentPointer = p;
+                    SetuCurrentPointer(p);
                     InitCentroids();
                     CalculateInitialMeans();
                     UpdateInitialSamples();
-                    bool isAnyMenasChanged = true;
-                    bool areAllsCentroidsAsignes = true;
-                    int maxCount = 0;
+                    
                     while (isAnyMenasChanged == true && areAllsCentroidsAsignes  == true && maxCount < 5)
                     {
                         CleanCentroids();
@@ -68,7 +56,6 @@ namespace OakStatisticalAnalysis
                         {
                             centroids.Clear();
                             centroids.AddRange(backCentorids.ToList());
-                           
                         }
                         maxCount++;
                         UpdateInfo();
@@ -78,6 +65,20 @@ namespace OakStatisticalAnalysis
             });
 
 
+        }
+
+        private void SetuCurrentPointer(List<Sample> p)
+        {
+            currentPointer = p;
+        }
+
+        private void GroupByClass(List<Sample> x)
+        {
+            var grouped = x.GroupBy(y => y.Class);
+            for (int i = 0; i < grouped.Count(); i++)
+            {
+                listOfSetsByClass.Add(grouped.ElementAt(i).Select(q => q).ToList());
+            }
         }
 
         private void UpdateInfo()
@@ -230,7 +231,5 @@ namespace OakStatisticalAnalysis
             return randomClastering;
         }
     }
-
-    
     
 }

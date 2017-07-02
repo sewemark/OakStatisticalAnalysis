@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using OakStatisticalAnalysis.Models;
 
 namespace OakStatisticalAnalysis
@@ -7,8 +6,6 @@ namespace OakStatisticalAnalysis
     public class KNNClassifier : IClassifier
     {
         private List<List<Sample>> trainingSet;
-
-   
 
         public List<List<Sample>> GetTrainingSet()
         {
