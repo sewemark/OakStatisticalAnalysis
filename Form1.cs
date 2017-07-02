@@ -70,13 +70,11 @@ namespace OakStatisticalAnalysis
 
         private void UpdateUI()
         {
-            parsedDatabaseContent.ForEach(x => {
+            parsedDatabaseContent.ForEach(x =>
+            {
                 x.Features = x.Features.Where((y, index) => featuresUI.Contains(index)).Select(y => y).ToList();
-                //x.Features.Clear();
-               //x.Features.AddRange(newFeatures);
             });
-           featureExtractionResultLabel.Text +=  " "+ String.Join(", ", featuresUI);
-
+           featureExtractionResultLabel.Text =  " "+ String.Join(", ", featuresUI);
         }
 
         private void ReadFromFile()
@@ -119,18 +117,9 @@ namespace OakStatisticalAnalysis
 
         }
 
-        private void label3_Click(object sender, EventArgs e)
+        public SplitterConfig GetCurrentConfig()
         {
-
-        }
-
-        private void selectClassifierComboBox_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-        public SpitterConfig GetCurrentConfig()
-        {
-            return new SpitterConfig()
+            return new SplitterConfig()
             {
                 Ratio = Convert.ToDouble(trainTestRatioTextBox.Text),
                 BootstrapBags = Convert.ToInt32(bootstrapBagsNumberTextBox.Text),
@@ -138,13 +127,5 @@ namespace OakStatisticalAnalysis
                 CrossValidationKParam = Convert.ToInt32(crossvalidationNumOfPartsTextBox.Text)
             };
         }
-    }
-
-    public class SpitterConfig
-    {
-        public double Ratio { get; set; }
-        public int BootstrapBags { get; set; }
-        public int KParam { get; set; }
-        public int CrossValidationKParam { get; set; }
     }
 }

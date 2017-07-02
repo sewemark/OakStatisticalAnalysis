@@ -6,7 +6,7 @@ using OakStatisticalAnalysis.Utils;
 
 namespace OakStatisticalAnalysis
 {
-    internal class TestKNMClassifier2 : ITestClassifier
+    internal class TestKNMClassifier : ITestClassifier
     {
         private List<Sample> testSet;
         private List<List<Sample>> trainingSet;
@@ -16,30 +16,29 @@ namespace OakStatisticalAnalysis
         public double Test(IClassifier classifier, List<List<Sample>> _testSet)
         {
             double result = 0;
-            var kk =classifier as KNMClassifier2;
+            var kk =classifier as KNMClassifier;
             centroids = kk.GetCentroid();
             trainingSet = classifier.GetTrainingSet();
             kParam = 3;
             _testSet.ForEach(tS =>
             {
                 currentPointer = tS;
-                    var properClassification = tS.Count(y => {
-                        var nn = GetKNearestNeighbourFromTrainingSet(y);
-                        return nn == y.Class;
-                        });
+                tS.ForEach(x =>
+                {
+                    var properClassification = tS.Count(y => GetKNearestNeighbourFromTrainingSet(y) == y.Class);
                     result += properClassification
                         / (tS.Count * 1.0);
+                });
             });
-           return  result / _testSet.Count; 
+            return result / trainingSet.Select(x => x.Count).Sum();
         }
 
 
         private string GetKNearestNeighbourFromTrainingSet(Sample sample)
         {
-            var distnaces = centroids.Select(x => MathUtil.CalculateDistnace(x.Mod.ToList(), sample.Features));
             var closestCentroid = centroids.OrderBy(x => MathUtil.CalculateDistnace(x.Mod.ToList(), sample.Features))
-                .Take(kParam);
-            return closestCentroid.Where(x=>x.AcerNum>x.QNum).Count()  > closestCentroid.Where(x => x.QNum > x.AcerNum).Count() ? "Acer" : "Quercus";
+                .FirstOrDefault();
+            return closestCentroid.QNum > closestCentroid.AcerNum ? "Acer" : "Quercus";
 
         }
 

@@ -8,10 +8,7 @@ namespace OakStatisticalAnalysis
     {
         private List<List<Sample>> trainingSet;
 
-        public void Classify()
-        {
-
-        }
+   
 
         public List<List<Sample>> GetTrainingSet()
         {

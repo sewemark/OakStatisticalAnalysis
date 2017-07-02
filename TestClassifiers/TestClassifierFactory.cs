@@ -12,17 +12,17 @@ namespace OakStatisticalAnalysis
             classifierSelectingRules.Add("NNbasic", new TestNNClassifier());
             classifierSelectingRules.Add("NMbasic", new TestNMClassifier());
             classifierSelectingRules.Add("kNNbasic", new TestKNNClassifier());
-            classifierSelectingRules.Add("kNMbasic", new TestKNMClassifier2());
+            classifierSelectingRules.Add("kNMbasic", new TestKNMClassifierAlfaVersion());
 
             classifierSelectingRules.Add("NNbootstrap", new TestNNClassifier());
             classifierSelectingRules.Add("NMbootstrap", new TestNMClassifier());
             classifierSelectingRules.Add("kNNbootstrap", new TestKNNClassifier());
-            classifierSelectingRules.Add("kNMbootstrap", new TestKNMClassifier2());
+            classifierSelectingRules.Add("kNMbootstrap", new TestKNMClassifierAlfaVersion());
 
             classifierSelectingRules.Add("NNcrossvalidation", new TestNNClassifierCrossValidation());
             classifierSelectingRules.Add("NMcrossvalidation", new TestNMClassifierCrossValidation());
             classifierSelectingRules.Add("kNNcrossvalidation", new TestKNNClassifierCrossValidation());
-            classifierSelectingRules.Add("kNMcrossvalidation", new TestKNMClassifier2());
+            classifierSelectingRules.Add("kNMcrossvalidation", new TestKNMClassifierAlfaVersion());
         }
 
         public ITestClassifier Select(string classifierName, string methodName)

@@ -9,11 +9,11 @@ namespace OakStatisticalAnalysis.Splitter
 {
     public class CorssValidationSplitter : ITrainTestSetsSplitter
     {
-        private SpitterConfig _config;
+        private SplitterConfig _config;
         private List<List<Sample>> trainingSet = new List<List<Sample>>();
         private List<List<Sample>> testSets = new List<List<Sample>>();
 
-        public TrainTestStruct Split(List<Sample> database, SpitterConfig config)
+        public TrainTestStruct Split(List<Sample> database, SplitterConfig config)
         {
             _config= config;
             var elementCount = database.Count / config.CrossValidationKParam;

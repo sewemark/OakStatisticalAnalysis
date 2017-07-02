@@ -26,5 +26,4 @@ namespace OakStatisticalAnalysis
                                         .Select(samples);
         }
     }
-   
 }

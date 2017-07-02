@@ -1,9 +1,6 @@
-﻿using MathNet.Numerics.LinearAlgebra;
-using MathNet.Numerics.LinearAlgebra.Double;
-using OakStatisticalAnalysis.Models;
+﻿using OakStatisticalAnalysis.Models;
 using OakStatisticalAnalysis.Rules.FisherCalculatoionStrategies;
 using OakStatisticalAnalysis.Utils;
-using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -16,6 +13,7 @@ namespace OakStatisticalAnalysis.Rules
         private int numOfFeatures;
         private List<Sample> samples;
         private TwoDimensionsFisherCalculator fisherCalculator;
+
         public ManyDimensionsFeaturesSelectingRule(int _numOfFeatures)
         {
             numOfFeatures = _numOfFeatures;
@@ -34,14 +32,14 @@ namespace OakStatisticalAnalysis.Rules
             int dimensions = _dimensions;
             var permutations = Permutations.Get(dimensions, samples.ElementAt(0).Features.Count());
             int permIndex = 0;
-            double LD = 0;
+            double currentResult = 0;
             for (int currentPermutation = 0; currentPermutation < permutations.Count; currentPermutation++)
             {
                 var permArray = permutations.ElementAt(currentPermutation);
                 double tmpLD = fisherCalculator.Calc(permArray);
-                if (tmpLD > LD)
+                if (tmpLD > currentResult)
                 {
-                    LD = tmpLD;
+                    currentResult = tmpLD;
                     permIndex = currentPermutation;
                 }
             }

@@ -6,7 +6,7 @@ using OakStatisticalAnalysis.Utils;
 
 namespace OakStatisticalAnalysis
 {
-    internal class KNMClassifier2 : IClassifier
+    internal class KNMClassifierAlfaVersion : IClassifier
     {
         private List<List<Sample>> trainingSet;
         private List<Sample> adjuctesTrainingSet = new List<Sample>();
@@ -19,11 +19,7 @@ namespace OakStatisticalAnalysis
         private List<Sample> currentPointer;
         private int[] randomClastering;
 
-        public void Classify()
-        {
-
-        }
-
+      
         public double[][] GetMeans()
         {
             // return means;

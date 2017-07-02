@@ -16,11 +16,6 @@ namespace OakStatisticalAnalysis
         private double[][] oldCentroids = new double[kParam][];
         private List<Sample> currentPointer;
 
-        public void Classify()
-        {
-
-        }
-
         public double[][] GetMeans()
         {
             // return means;

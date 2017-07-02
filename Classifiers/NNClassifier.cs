@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Collections.Generic;
 using OakStatisticalAnalysis.Models;
 
 namespace OakStatisticalAnalysis
@@ -8,9 +6,7 @@ namespace OakStatisticalAnalysis
     public class NNClassifier : IClassifier
     {
         private List<List<Sample>> trainingSet;
-        public void Classify()
-        {
-        }
+  
 
         public List<List<Sample>> GetTrainingSet()
         {
@@ -21,7 +17,5 @@ namespace OakStatisticalAnalysis
         {
             trainingSet = _trainingSet;
         }
-
     }
-
 }

@@ -27,6 +27,7 @@ namespace OakStatisticalAnalysis.Rules.FisherCalculatoionStrategies
             numOfFeatures = _numOfFeatures;
 
         }
+
         private void Init()
         {
             projetctedClassFateures = new List<Matrix<double>>();
@@ -36,6 +37,7 @@ namespace OakStatisticalAnalysis.Rules.FisherCalculatoionStrategies
             convariances = new List<Matrix<double>>();
             transposed = new List<Matrix<double>>();
         }
+
         public double Calc(int[] currentTestingFeatures)
         {
             Init();
@@ -103,7 +105,6 @@ namespace OakStatisticalAnalysis.Rules.FisherCalculatoionStrategies
 
         public void ProjectFeatureSpace(int[] currentTestingFeatures)
         {
-            currentTestingFeatures2 = currentTestingFeatures;
             lookup = samples
                         .GroupBy(x => x.Class)
                         .ToDictionary(y => y.Key, y => y

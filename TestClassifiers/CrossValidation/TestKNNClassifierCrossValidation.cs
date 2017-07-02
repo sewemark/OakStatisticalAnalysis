@@ -2,10 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using OakStatisticalAnalysis.Utils;
-
 namespace OakStatisticalAnalysis
 {
-    public class TestKNNClassifier : ITestClassifier
+    public class TestKNNClassifierCrossValidation : ITestClassifier
     {
         private List<Sample> testSet;
         private List<List<Sample>> trainingSet;
@@ -15,23 +14,35 @@ namespace OakStatisticalAnalysis
 
         public void SetKParam(int k)
         {
-            kParam = k; 
+            kParam = k;
         }
 
         public double Test(IClassifier classifier, List<List<Sample>> _testSet)
         {
-            double result = 0;
+
             trainingSet = classifier.GetTrainingSet();
-            _testSet.ForEach(tS =>
+            for (int i = 0; i < _testSet.Count; i++)
             {
-                trainingSet.ForEach(x =>
+                currentPointer = trainingSet.ElementAt(i);
+                _testSet.ElementAt(i).ForEach(x =>
                 {
-                    currentPointer = x;
-                    result += tS.Count(y => GetKNearestNeighbourFromTrainingSet(y) == y.Class)
-                        / (_testSet.Count * 1.0);
+
+                    var qq = GetKNearestNeighbourFromTrainingSet(x);
+                    results.Add(qq == x.Class ? 1 : 0);
                 });
-                results.Add(result / tS.Count() * 1.0);
-            });
+
+            }
+            //for(int i=0;i< _testSet.Count;i++)
+            //{
+            //    currentPointer = trainingSet.ElementAt(i);
+            //    _testSet.ElementAt(i).ForEach(x =>
+            //    {
+
+            //        result += tS.Count(y => GetKNearestNeighbourFromTrainingSet(y) == y.Class)
+            //            / (_testSet.Count * 1.0);
+            //    });
+            //    results.Add(result / tS.Count() * 1.0);
+            //});
 
             return results.Average();
         }

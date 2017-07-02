@@ -11,7 +11,7 @@ namespace OakStatisticalAnalysis
         private List<Sample> testSet = new List<Sample>();
         private List<Sample> trainningSet;
         private List<List<Sample>> lista;
-        private SpitterConfig config;
+        private SplitterConfig config;
 
         public BootstrapTrainTestSetsSplitter()
         {
@@ -52,7 +52,7 @@ namespace OakStatisticalAnalysis
            
         }
 
-        public TrainTestStruct Split(List<Sample> database, SpitterConfig _config)
+        public TrainTestStruct Split(List<Sample> database, SplitterConfig _config)
         {
             trainningSet = database;
             config = _config;
