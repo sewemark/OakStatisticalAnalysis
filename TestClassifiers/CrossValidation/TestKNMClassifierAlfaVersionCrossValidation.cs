@@ -17,9 +17,8 @@ namespace OakStatisticalAnalysis
         {
             kParam = classifier.GetConfig().KParam;
             double result = 0;
-            var kk = classifier as KNMClassifierAlfaVersion;
-            centroids = kk.GetCentroid();
-            var listOfCentorids = kk.GetListCentroid();
+            var currentClassifier = classifier as KNMClassifierAlfaVersion;
+            var listOfCentorids = currentClassifier.GetListCentroid();
             for(int i=0;i<_testSet.Count;i++)
             {
                 currentPointer = _testSet[i];

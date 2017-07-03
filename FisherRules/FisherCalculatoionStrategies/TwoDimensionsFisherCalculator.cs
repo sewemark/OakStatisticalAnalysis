@@ -71,7 +71,7 @@ namespace OakStatisticalAnalysis.Rules.FisherCalculatoionStrategies
         {
             double fisherUpperRes = 0;
             List<double> fisherUpper = mods.Aggregate((x, y) => {
-                return x.MinusTwoList(y).ToList();
+                return y.MinusTwoList(x).ToList();
             });
 
             fisherUpperRes = fisherUpper.Select(x => Math.Pow(x, 2)).Sum();
@@ -111,7 +111,6 @@ namespace OakStatisticalAnalysis.Rules.FisherCalculatoionStrategies
                           .Select(x => x.Features
                               .Where((m, index) => currentTestingFeatures
                                       .Contains(index))));
-            var test = lookup.ToList();
         }
 
         public void CopyProjectedLookupToMatrixes()

@@ -16,6 +16,7 @@ namespace OakStatisticalAnalysis
         private double[][] oldCentroids = new double[kParam][];
         private List<Sample> currentPointer;
         private ClassifierConfig config;
+
         public List<List<Sample>> GetTrainingSet()
         {
             return trainingSet;
@@ -110,9 +111,7 @@ namespace OakStatisticalAnalysis
 
         public void CalculateMeans()
         {
-
             var randomClastering = RandomPartition(kParam);
-
             for (int j = 0; j < currentPointer[0].Features.Count; j++)
             {
                 for (int i = 0; i < adjuctesTrainingSet.Count(); i++)
@@ -141,7 +140,7 @@ namespace OakStatisticalAnalysis
                     int whichCentroid = randomClastering[i];
                     var curentCentorid = centroids.ElementAt(whichCentroid);
                 
-                    var currentValue = (double)currentPointer[i].Features[j];
+                    var currentValue = currentPointer[i].Features[j];
                     curentCentorid.Mod[j] += currentValue;
                     curentCentorid.ModOccurencies[j] += 1;
                     curentCentorid.ClassLables.Add(currentPointer[i].Class);
