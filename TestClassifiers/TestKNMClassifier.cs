@@ -38,7 +38,7 @@ namespace OakStatisticalAnalysis
         {
             var closestCentroid = centroids.OrderBy(x => MathUtil.CalculateDistnace(x.Mod.ToList(), sample.Features))
                 .FirstOrDefault();
-            return closestCentroid.QNum > closestCentroid.AcerNum ? "Acer" : "Quercus";
+            return closestCentroid.QNum > closestCentroid.AcerNum ? "Quercus" : "Acer";
 
         }
 
