@@ -14,7 +14,7 @@ namespace OakStatisticalAnalysis.Rules
             rules.Add(1, new OneDimensionFeaturesSelectingRule());
             rules.Add(2, new ManyDimensionsFeaturesSelectingRule(2));
             rules.Add(3, new ManyDimensionsFeaturesSelectingRule(3));
-            rules.Add(4, new ManyDimensionsFeaturesSelectingRule(4));
+            rules.Add(4, new ManyDimensionsFeaturesSelectingRule(4));   
             rules.Add(5, new ManyDimensionsFeaturesSelectingRule(5));
             rules.Add(6, new ManyDimensionsFeaturesSelectingRule(6));
             rules.Add(7, new ManyDimensionsFeaturesSelectingRule(7));

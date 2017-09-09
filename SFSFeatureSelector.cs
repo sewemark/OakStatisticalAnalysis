@@ -29,6 +29,7 @@ namespace OakStatisticalAnalysis
                 {
                     permutationNumber[j] = j;
                 }
+
                 List<int[]> perm = CreatePerm(initialPerm, permutationNumber);
                 int permIndex = 0;
                 double LD = 0;

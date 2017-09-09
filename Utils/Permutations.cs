@@ -8,8 +8,23 @@ namespace OakStatisticalAnalysis.Utils
 {
     public class Permutations
     {
-       
 
+       public static IEnumerable<IEnumerable<T>> GetPermutations2<T>(IEnumerable<T> items, int count)
+        {
+            int i = 0;
+            foreach (var item in items)
+            {
+                if (count == 1)
+                    yield return new T[] { item };
+                else
+                {
+                    foreach (var result in GetPermutations2(items.Skip(i + 1), count - 1))
+                        yield return new T[] { item }.Concat(result);
+                }
+
+                ++i;
+            }
+        }
         public static List<int[]> Get(int size,int numOfDimensions)
         {
             int [] featuresCount =  Enumerable.Range(0, numOfDimensions).ToArray();
@@ -21,7 +36,10 @@ namespace OakStatisticalAnalysis.Utils
             int itemsPoolCount = featuresCount.Count();
 
             List<int[]> permutations = new List<int[]>();
-            for (int i = 0; i < Math.Pow(itemsPoolCount, size); i++)
+
+
+            var permutationsNumber = GetPermutatinNumber(size, numOfDimensions);
+            for (int i = 0; i < permutationsNumber; i++)
             {
                 int[] permutation = new int[size];
                 for (int j = 0; j < size; j++)
@@ -37,7 +55,8 @@ namespace OakStatisticalAnalysis.Utils
                 else
                 {
                     if (permutations.Exists(x => x.Except(permutation).Count() == 0))
-                    { }
+                    {
+                    }
                     else
                     {
                         permutations.Add(permutation);
@@ -45,6 +64,17 @@ namespace OakStatisticalAnalysis.Utils
                 }
             }
             return permutations;
+        }
+
+        private  static int GetPermutatinNumber(int size, int numOfDimensions)
+        {
+            int res = 1;
+            for(int i=0;i<size;i++)
+            {
+                res *= (numOfDimensions - i);
+            }
+
+            return res;
         }
 
         public static bool Duplicates(int[] x, int numElementsInX)
@@ -64,5 +94,14 @@ namespace OakStatisticalAnalysis.Utils
             return false;
         }
 
+        private static int Factory(int n)
+        {
+            int result = 1;
+            for (int i = 1; i <= n; i++)
+            {
+                result *= i;
+            }
+            return result;
+        }
     }
 }
