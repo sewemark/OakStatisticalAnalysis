@@ -5,15 +5,19 @@ using System.Linq;
 
 namespace OakStatisticalAnalysis.Rules.FisherCalculatoionStrategies
 {
-    
-    public  class OneDimensionsFisherCalculator
+    public interface IFisherCalculator
+    {
+       void UpdateSamples(List<Sample> samples);
+    }
+
+    public interface IOneDimensionsFisherCalculator: IFisherCalculator
+    {
+        double ComputeFisherFor1D(int index);
+    }
+
+    public  class OneDimensionsFisherCalculator: IOneDimensionsFisherCalculator
     {
         private List<Sample> samples;
-
-        public OneDimensionsFisherCalculator(List<Sample> _samples)
-        {
-            samples = _samples;
-        }
 
         public double ComputeFisherFor1D(int index)
         {
@@ -44,6 +48,11 @@ namespace OakStatisticalAnalysis.Rules.FisherCalculatoionStrategies
             double sBSqrt = Math.Sqrt(sB);
             double res = Math.Abs(mA - mB) / sASqrt + sBSqrt;
             return res;
+        }
+
+        public void UpdateSamples(List<Sample> samples)
+        {
+            this.samples = samples;
         }
     }
 }

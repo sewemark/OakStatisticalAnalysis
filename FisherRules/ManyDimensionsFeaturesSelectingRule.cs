@@ -10,17 +10,17 @@ namespace OakStatisticalAnalysis.Rules
     {
         private int numOfFeatures;
         private List<Sample> samples;
-        private TwoDimensionsFisherCalculator fisherCalculator;
+        private ITwoDimensionsFisherCalculator fisherCalculator;
 
-        public ManyDimensionsFeaturesSelectingRule(int _numOfFeatures)
+        public ManyDimensionsFeaturesSelectingRule(ITwoDimensionsFisherCalculator _fisherCalculator, int _numOfFeatures)
         {
             numOfFeatures = _numOfFeatures;
+            fisherCalculator = _fisherCalculator;
         }
 
         public List<int> Select(List<Sample> _samples)
         {
-            samples = _samples;
-            fisherCalculator = new TwoDimensionsFisherCalculator(numOfFeatures, samples);
+            fisherCalculator.UpdateSamples(_samples);
             return this.HandleManyDimensions(numOfFeatures);
         }
 

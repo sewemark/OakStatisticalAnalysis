@@ -10,11 +10,17 @@ namespace OakStatisticalAnalysis.Rules
 {
     public class OneDimensionFeaturesSelectingRule : IFeaturesSelectingRule
     {
-        private OneDimensionsFisherCalculator fisherCalcation;
+        private IOneDimensionsFisherCalculator fisherCalcation;
 
+        public OneDimensionFeaturesSelectingRule(IOneDimensionsFisherCalculator fisherCalcation)
+        {
+            this.fisherCalcation = fisherCalcation;
+        }
+        
         public List<int> Select(List<Sample> _samples)
         {
-            fisherCalcation = new OneDimensionsFisherCalculator(_samples);
+            fisherCalcation = new OneDimensionsFisherCalculator();
+            fisherCalcation.UpdateSamples(_samples);
             double FLD = 0, tmp;
             int max_ind = -1;
             for (int i = 0; i < _samples.ElementAt(0).Features.Count; i++)

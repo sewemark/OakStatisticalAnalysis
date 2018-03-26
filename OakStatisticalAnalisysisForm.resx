@@ -122,13 +122,13 @@
   </metadata>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="readFromFile.Size" type="System.Drawing.Size, System.Drawing">
-    <value>143, 26</value>
+    <value>121, 22</value>
   </data>
   <data name="readFromFile.Text" xml:space="preserve">
     <value>From file</value>
   </data>
   <data name="readDatabaseToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>122, 24</value>
+    <value>96, 20</value>
   </data>
   <data name="readDatabaseToolStripMenuItem.Text" xml:space="preserve">
     <value>Read Database</value>
@@ -137,7 +137,7 @@
     <value>0, 0</value>
   </data>
   <data name="menuStrip2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>802, 28</value>
+    <value>802, 24</value>
   </data>
   <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="menuStrip2.TabIndex" type="System.Int32, mscorlib">
@@ -195,7 +195,7 @@
     <value>3, 86</value>
   </data>
   <data name="featureExtractionResultLabel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>56, 17</value>
+    <value>43, 13</value>
   </data>
   <data name="featureExtractionResultLabel.TabIndex" type="System.Int32, mscorlib">
     <value>3</value>
@@ -246,7 +246,7 @@
     <value>3, 20</value>
   </data>
   <data name="featureNumberLabel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>109, 17</value>
+    <value>82, 13</value>
   </data>
   <data name="featureNumberLabel.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
@@ -294,7 +294,7 @@
     <value>126, 17</value>
   </data>
   <data name="featureNumberComboBox.Size" type="System.Drawing.Size, System.Drawing">
-    <value>121, 24</value>
+    <value>121, 21</value>
   </data>
   <data name="featureNumberComboBox.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
@@ -343,7 +343,7 @@
     <value>110, 18</value>
   </data>
   <data name="label7.Size" type="System.Drawing.Size, System.Drawing">
-    <value>15, 17</value>
+    <value>13, 13</value>
   </data>
   <data name="label7.TabIndex" type="System.Int32, mscorlib">
     <value>8</value>
@@ -367,7 +367,7 @@
     <value>136, 15</value>
   </data>
   <data name="kParamTextBox.Size" type="System.Drawing.Size, System.Drawing">
-    <value>44, 22</value>
+    <value>44, 20</value>
   </data>
   <data name="kParamTextBox.TabIndex" type="System.Int32, mscorlib">
     <value>8</value>
@@ -430,7 +430,7 @@
     <value>17, 16</value>
   </data>
   <data name="selectClassifierComboBox.Size" type="System.Drawing.Size, System.Drawing">
-    <value>82, 24</value>
+    <value>82, 21</value>
   </data>
   <data name="selectClassifierComboBox.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
@@ -502,7 +502,7 @@
     <value>200, 39</value>
   </data>
   <data name="label5.Size" type="System.Drawing.Size, System.Drawing">
-    <value>20, 17</value>
+    <value>15, 13</value>
   </data>
   <data name="label5.TabIndex" type="System.Int32, mscorlib">
     <value>6</value>
@@ -532,7 +532,7 @@
     <value>6, 39</value>
   </data>
   <data name="label3.Size" type="System.Drawing.Size, System.Drawing">
-    <value>138, 17</value>
+    <value>104, 13</value>
   </data>
   <data name="label3.TabIndex" type="System.Int32, mscorlib">
     <value>5</value>
@@ -556,7 +556,7 @@
     <value>150, 36</value>
   </data>
   <data name="trainTestRatioTextBox.Size" type="System.Drawing.Size, System.Drawing">
-    <value>44, 22</value>
+    <value>44, 20</value>
   </data>
   <data name="trainTestRatioTextBox.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -586,7 +586,7 @@
     <value>13, 14</value>
   </data>
   <data name="label9.Size" type="System.Drawing.Size, System.Drawing">
-    <value>111, 17</value>
+    <value>84, 13</value>
   </data>
   <data name="label9.TabIndex" type="System.Int32, mscorlib">
     <value>10</value>
@@ -610,7 +610,7 @@
     <value>214, 89</value>
   </data>
   <data name="bootstrapBagsNumberTextBox.Size" type="System.Drawing.Size, System.Drawing">
-    <value>44, 22</value>
+    <value>44, 20</value>
   </data>
   <data name="bootstrapBagsNumberTextBox.TabIndex" type="System.Int32, mscorlib">
     <value>7</value>
@@ -640,7 +640,7 @@
     <value>6, 89</value>
   </data>
   <data name="label2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>148, 17</value>
+    <value>111, 13</value>
   </data>
   <data name="label2.TabIndex" type="System.Int32, mscorlib">
     <value>6</value>
@@ -670,7 +670,7 @@
     <value>6, 58</value>
   </data>
   <data name="label1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>182, 17</value>
+    <value>136, 13</value>
   </data>
   <data name="label1.TabIndex" type="System.Int32, mscorlib">
     <value>5</value>
@@ -694,7 +694,7 @@
     <value>214, 55</value>
   </data>
   <data name="bootstrapPercentageTextBox.Size" type="System.Drawing.Size, System.Drawing">
-    <value>44, 22</value>
+    <value>44, 20</value>
   </data>
   <data name="bootstrapPercentageTextBox.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -745,7 +745,7 @@
     <value>13, 11</value>
   </data>
   <data name="label6.Size" type="System.Drawing.Size, System.Drawing">
-    <value>148, 17</value>
+    <value>111, 13</value>
   </data>
   <data name="label6.TabIndex" type="System.Int32, mscorlib">
     <value>9</value>
@@ -769,7 +769,7 @@
     <value>211, 43</value>
   </data>
   <data name="crossvalidationNumOfPartsTextBox.Size" type="System.Drawing.Size, System.Drawing">
-    <value>44, 22</value>
+    <value>44, 20</value>
   </data>
   <data name="crossvalidationNumOfPartsTextBox.TabIndex" type="System.Int32, mscorlib">
     <value>8</value>
@@ -799,7 +799,7 @@
     <value>13, 46</value>
   </data>
   <data name="label4.Size" type="System.Drawing.Size, System.Drawing">
-    <value>195, 17</value>
+    <value>146, 13</value>
   </data>
   <data name="label4.TabIndex" type="System.Int32, mscorlib">
     <value>8</value>
@@ -847,7 +847,7 @@
     <value>308, 119</value>
   </data>
   <data name="radioButton1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>62, 21</value>
+    <value>50, 17</value>
   </data>
   <data name="radioButton1.TabIndex" type="System.Int32, mscorlib">
     <value>6</value>
@@ -877,7 +877,7 @@
     <value>308, 168</value>
   </data>
   <data name="radioButton2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>123, 21</value>
+    <value>95, 17</value>
   </data>
   <data name="radioButton2.TabIndex" type="System.Int32, mscorlib">
     <value>7</value>
@@ -907,7 +907,7 @@
     <value>308, 142</value>
   </data>
   <data name="radioButton3.Size" type="System.Drawing.Size, System.Drawing">
-    <value>89, 21</value>
+    <value>69, 17</value>
   </data>
   <data name="radioButton3.TabIndex" type="System.Int32, mscorlib">
     <value>8</value>
@@ -937,7 +937,7 @@
     <value>13, 15</value>
   </data>
   <data name="label10.Size" type="System.Drawing.Size, System.Drawing">
-    <value>84, 17</value>
+    <value>65, 13</value>
   </data>
   <data name="label10.TabIndex" type="System.Int32, mscorlib">
     <value>11</value>
@@ -988,7 +988,7 @@
     <value>15, 322</value>
   </data>
   <data name="label8.Size" type="System.Drawing.Size, System.Drawing">
-    <value>133, 17</value>
+    <value>99, 13</value>
   </data>
   <data name="label8.TabIndex" type="System.Int32, mscorlib">
     <value>9</value>
@@ -1015,7 +1015,7 @@
     <value>155, 322</value>
   </data>
   <data name="classificationResultLabel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>0, 17</value>
+    <value>0, 13</value>
   </data>
   <data name="classificationResultLabel.TabIndex" type="System.Int32, mscorlib">
     <value>10</value>

@@ -64,7 +64,7 @@ namespace OakStatisticalAnalysis
 
         private void ExtractFeaturesSFS(int numOfFeatures)
         {
-            featureExtractor = new SFSFeatureSelector(parsedDatabaseContent, featureSelectingRules);
+            featureExtractor = new SFSFeatureSelector(parsedDatabaseContent, featureSelectingRules, null);
             featuresUI = featureExtractor.Select(numOfFeatures);
         }
 
@@ -74,7 +74,7 @@ namespace OakStatisticalAnalysis
             {
                 x.Features = x.Features.Where((y, index) => featuresUI.Contains(index)).Select(y => y).ToList();
             });
-           featureExtractionResultLabel.Text =  " "+ String.Join(", ", featuresUI);
+           featureExtractionResultLabel.Text =  " " + String.Join(", ", featuresUI);
         }
 
         private void ReadFromFile()
@@ -136,5 +136,9 @@ namespace OakStatisticalAnalysis
             };
         }
 
+        private void OakStatisticalAnalisysisForm_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

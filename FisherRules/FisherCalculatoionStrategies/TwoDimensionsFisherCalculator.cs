@@ -8,7 +8,11 @@ using System;
 
 namespace OakStatisticalAnalysis.Rules.FisherCalculatoionStrategies
 {
-    public class TwoDimensionsFisherCalculator
+    public interface ITwoDimensionsFisherCalculator: IFisherCalculator
+    {
+        double Calc(int[] currentTestingFeatures);
+    }
+    public class TwoDimensionsFisherCalculator: ITwoDimensionsFisherCalculator
     {
         private int numOfFeatures;
         private List<Sample> samples;
@@ -20,10 +24,14 @@ namespace OakStatisticalAnalysis.Rules.FisherCalculatoionStrategies
         private List<Matrix<double>> transposed;
         private Dictionary<string, IEnumerable<IEnumerable<double>>> lookup;
 
-        public TwoDimensionsFisherCalculator(int _numOfFeatures, List<Sample> _samples)
+        public TwoDimensionsFisherCalculator(int _numOfFeatures)
         {
-            samples = _samples;
             numOfFeatures = _numOfFeatures;
+        }
+
+        public TwoDimensionsFisherCalculator(int _numOfFeatures, List<Sample> samples) : this(_numOfFeatures)
+        {
+            this.samples = samples;
         }
 
         private void Init()
@@ -140,5 +148,9 @@ namespace OakStatisticalAnalysis.Rules.FisherCalculatoionStrategies
             });
         }
 
+        public void UpdateSamples(List<Sample> samples)
+        {
+            this.samples = samples;
+        }
     }
 }

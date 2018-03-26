@@ -49,22 +49,22 @@
             this.label3 = new System.Windows.Forms.Label();
             this.trainTestRatioTextBox = new System.Windows.Forms.TextBox();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.label9 = new System.Windows.Forms.Label();
             this.bootstrapBagsNumberTextBox = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.bootstrapPercentageTextBox = new System.Windows.Forms.TextBox();
             this.panel4 = new System.Windows.Forms.Panel();
+            this.label6 = new System.Windows.Forms.Label();
             this.crossvalidationNumOfPartsTextBox = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.radioButton1 = new System.Windows.Forms.RadioButton();
             this.radioButton2 = new System.Windows.Forms.RadioButton();
             this.radioButton3 = new System.Windows.Forms.RadioButton();
             this.panel5 = new System.Windows.Forms.Panel();
+            this.label10 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.classificationResultLabel = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
-            this.label9 = new System.Windows.Forms.Label();
-            this.label10 = new System.Windows.Forms.Label();
             this.menuStrip2.SuspendLayout();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -219,6 +219,12 @@
             resources.ApplyResources(this.panel3, "panel3");
             this.panel3.Name = "panel3";
             // 
+            // label9
+            // 
+            resources.ApplyResources(this.label9, "label9");
+            this.label9.BackColor = System.Drawing.Color.LightSeaGreen;
+            this.label9.Name = "label9";
+            // 
             // bootstrapBagsNumberTextBox
             // 
             resources.ApplyResources(this.bootstrapBagsNumberTextBox, "bootstrapBagsNumberTextBox");
@@ -246,6 +252,12 @@
             this.panel4.Controls.Add(this.label4);
             resources.ApplyResources(this.panel4, "panel4");
             this.panel4.Name = "panel4";
+            // 
+            // label6
+            // 
+            resources.ApplyResources(this.label6, "label6");
+            this.label6.BackColor = System.Drawing.Color.LightSeaGreen;
+            this.label6.Name = "label6";
             // 
             // crossvalidationNumOfPartsTextBox
             // 
@@ -286,6 +298,12 @@
             resources.ApplyResources(this.panel5, "panel5");
             this.panel5.Name = "panel5";
             // 
+            // label10
+            // 
+            resources.ApplyResources(this.label10, "label10");
+            this.label10.BackColor = System.Drawing.Color.LightSeaGreen;
+            this.label10.Name = "label10";
+            // 
             // label8
             // 
             resources.ApplyResources(this.label8, "label8");
@@ -296,24 +314,6 @@
             resources.ApplyResources(this.classificationResultLabel, "classificationResultLabel");
             this.classificationResultLabel.BackColor = System.Drawing.Color.Chartreuse;
             this.classificationResultLabel.Name = "classificationResultLabel";
-            // 
-            // label6
-            // 
-            resources.ApplyResources(this.label6, "label6");
-            this.label6.BackColor = System.Drawing.Color.LightSeaGreen;
-            this.label6.Name = "label6";
-            // 
-            // label9
-            // 
-            resources.ApplyResources(this.label9, "label9");
-            this.label9.BackColor = System.Drawing.Color.LightSeaGreen;
-            this.label9.Name = "label9";
-            // 
-            // label10
-            // 
-            resources.ApplyResources(this.label10, "label10");
-            this.label10.BackColor = System.Drawing.Color.LightSeaGreen;
-            this.label10.Name = "label10";
             // 
             // OakStatisticalAnalisysisForm
             // 
@@ -331,6 +331,7 @@
             this.Controls.Add(this.menuStrip2);
             this.MainMenuStrip = this.menuStrip2;
             this.Name = "OakStatisticalAnalisysisForm";
+            this.Load += new System.EventHandler(this.OakStatisticalAnalisysisForm_Load);
             this.menuStrip2.ResumeLayout(false);
             this.menuStrip2.PerformLayout();
             this.panel1.ResumeLayout(false);

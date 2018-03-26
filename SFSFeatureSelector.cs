@@ -11,11 +11,13 @@ namespace OakStatisticalAnalysis
     {
         private List<Sample> samples;
         private IFeaturesSelectingRules featuresSelectorRules;
+        private ITwoDimensionsFisherCalculator fisherCalculator;
 
-        public SFSFeatureSelector(List<Sample> _samples, IFeaturesSelectingRules _featuresSelectorRules)
+        public SFSFeatureSelector(List<Sample> _samples, IFeaturesSelectingRules _featuresSelectorRules, ITwoDimensionsFisherCalculator _fisherCalculator)
         {
             samples = _samples;
             featuresSelectorRules = _featuresSelectorRules;
+            fisherCalculator = _fisherCalculator;
         }
 
         public List<int> Select(int numOfFeatures)

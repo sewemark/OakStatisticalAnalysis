@@ -32,13 +32,18 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Autofac, Version=4.6.2.0, Culture=neutral, PublicKeyToken=17863af14b0044da, processorArchitecture=MSIL">
+      <HintPath>packages\Autofac.4.6.2\lib\net45\Autofac.dll</HintPath>
+    </Reference>
     <Reference Include="MathNet.Numerics, Version=3.18.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>packages\MathNet.Numerics.3.18.0\lib\net40\MathNet.Numerics.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.IO.Compression.FileSystem" />
     <Reference Include="System.Numerics" />
+    <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -58,11 +63,11 @@
     <Compile Include="Classifiers\ClassifierFactory.cs" />
     <Compile Include="DatabaseContentParser.cs" />
     <Compile Include="FeatureSelector.cs" />
-    <Compile Include="Form1.cs">
+    <Compile Include="OakStatisticalAnalisysisForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <Compile Include="OakStatisticalAnalisysisForm.Designer.cs">
+      <DependentUpon>OakStatisticalAnalisysisForm.cs</DependentUpon>
     </Compile>
     <Compile Include="IClassifier.cs" />
     <Compile Include="Classifiers\ITestClassifier.cs" />
@@ -98,8 +103,8 @@
     <Compile Include="Utils\Extensions.cs" />
     <Compile Include="Utils\MathUtil.cs" />
     <Compile Include="Utils\Permutations.cs" />
-    <EmbeddedResource Include="Form1.resx">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <EmbeddedResource Include="OakStatisticalAnalisysisForm.resx">
+      <DependentUpon>OakStatisticalAnalisysisForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
