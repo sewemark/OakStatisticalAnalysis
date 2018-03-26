@@ -21,7 +21,6 @@ namespace OakStatisticalAnalysis
                 currentPointer = trainingSet.ElementAt(i);
                 _testSet.ElementAt(i).ForEach(x =>
                 {
-
                     var qq = GetNearestNeighbourFromTrainingSet(x);
                     results.Add(qq.Class == x.Class ? 1 : 0);
                 });

@@ -19,6 +19,7 @@ namespace OakStatisticalAnalysis
                 .Select(y => y.Take(Convert.ToInt32(Math.Floor(y.Count() * config.Ratio))));
             var test = database.GroupBy(x => x.Class)
                 .Select(y => y.Skip(Convert.ToInt32(Math.Floor(y.Count() * config.Ratio))));
+
             return new TrainTestStruct
             {
                 TrainingSets = new List<List<Sample>>() { train.SelectMany(x => x).ToList()},

@@ -19,13 +19,11 @@ namespace OakStatisticalAnalysis.Rules.FisherCalculatoionStrategies
         private List<Matrix<double>> convariances;
         private List<Matrix<double>> transposed;
         private Dictionary<string, IEnumerable<IEnumerable<double>>> lookup;
-        int[] currentTestingFeatures2;
 
         public TwoDimensionsFisherCalculator(int _numOfFeatures, List<Sample> _samples)
         {
             samples = _samples;
             numOfFeatures = _numOfFeatures;
-
         }
 
         private void Init()

@@ -27,7 +27,7 @@ namespace OakStatisticalAnalysis.Rules
         public List<int> HandleManyDimensions(int _dimensions)
         {
             int dimensions = _dimensions;
-            var permutations = Permutations.GetPermutations2(Enumerable.Range(0,64), 3)
+            var permutations = Permutations.GetPermutations2(Enumerable.Range(0,64), _dimensions)
                 .ToList();
             int permIndex = 0;
             double currentResult = 0;

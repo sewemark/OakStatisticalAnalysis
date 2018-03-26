@@ -1,6 +1,7 @@
 ﻿using OakStatisticalAnalysis.Models;
 using OakStatisticalAnalysis.Rules;
 using OakStatisticalAnalysis.Rules.FisherCalculatoionStrategies;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -36,13 +37,17 @@ namespace OakStatisticalAnalysis
                 for (int j = 0; j < perm.Count; j++)
                 {
                     double tmpLD = calculatr.Calc(perm[j]);
+                  
+
                     if (tmpLD > LD)
                     {
                         LD = tmpLD;
+                       
                         permIndex = j;
                     }
                 }
-                initialPerm.Add(permIndex);
+                var temp = perm.ElementAt(permIndex);
+                initialPerm.Add(temp[temp.Length-1]);
 
 
             }

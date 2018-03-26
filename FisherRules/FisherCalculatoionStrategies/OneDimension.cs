@@ -9,10 +9,12 @@ namespace OakStatisticalAnalysis.Rules.FisherCalculatoionStrategies
     public  class OneDimensionsFisherCalculator
     {
         private List<Sample> samples;
+
         public OneDimensionsFisherCalculator(List<Sample> _samples)
         {
             samples = _samples;
         }
+
         public double ComputeFisherFor1D(int index)
         {
             double mA = 0, mB = 0, sA = 0, sB = 0;
@@ -31,6 +33,7 @@ namespace OakStatisticalAnalysis.Rules.FisherCalculatoionStrategies
                     sB += currenValue * currenValue;
                 }
             }
+
             int countA = samples.Where(x => x.Class == SampleInfo.Get().ClassNames[0]).Count();
             int countB = samples.Where(x => x.Class == SampleInfo.Get().ClassNames[0]).Count();
             mA /= countA;

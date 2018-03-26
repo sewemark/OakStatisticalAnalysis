@@ -21,7 +21,7 @@ namespace OakStatisticalAnalysis.Splitter
             var grouped = database.GroupBy(x => x.Class);
             for (int i = 0; i < grouped.Count(); i++)
             {
-                var currentGrouped = grouped.ElementAt(i).Select(x => x);
+                    var currentGrouped = grouped.ElementAt(i).Select(x => x);
                 var elementCount = currentGrouped.Count() / config.CrossValidationKParam + 1;
 
                 for (int j = 0; j < currentGrouped.Count();j++)
