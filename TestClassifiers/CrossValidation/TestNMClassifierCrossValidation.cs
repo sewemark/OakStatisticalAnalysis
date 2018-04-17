@@ -8,6 +8,7 @@ namespace OakStatisticalAnalysis
     public class TestNMClassifierCrossValidation : ITestClassifier
     {
         private List<double> Avgs = new List<double>();
+
         public TestNMClassifierCrossValidation()
         {
 

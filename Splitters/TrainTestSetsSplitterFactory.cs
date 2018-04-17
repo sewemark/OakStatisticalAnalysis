@@ -2,9 +2,13 @@
 
 namespace OakStatisticalAnalysis
 {
-    internal class TrainTestSetsSplitterFactory
+    public interface ITrainTestSetsSplitterFactory
     {
-        public static ITrainTestSetsSplitter Get(string text)
+        ITrainTestSetsSplitter Get(string text);
+    }
+    public class TrainTestSetsSplitterFactory: ITrainTestSetsSplitterFactory
+    {
+        public  ITrainTestSetsSplitter Get(string text)
         {
             if (text.Equals("bootstrap"))
                 return new BootstrapTrainTestSetsSplitter();

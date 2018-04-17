@@ -3,7 +3,11 @@ using System.Collections.Generic;
 
 namespace OakStatisticalAnalysis
 {
-    internal class TestClassifierFactory
+    public interface ITestClassifierFactory
+    {
+        ITestClassifier Select(string classifierName, string methodName);
+    }
+    public class TestClassifierFactory: ITestClassifierFactory
     {
         private Dictionary<string, ITestClassifier> classifierSelectingRules
            = new Dictionary<string, ITestClassifier>();

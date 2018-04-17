@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using OakStatisticalAnalysis.Models;
 using System.Linq;
 using OakStatisticalAnalysis.Utils;
@@ -8,7 +7,6 @@ namespace OakStatisticalAnalysis
 {
     public class TestKNMClassifierAlfaVersion : ITestClassifier
     {
-        private List<Sample> testSet;
         private List<List<Sample>> trainingSet;
         private List<Sample> currentPointer;
         List<Centroid> centroids;

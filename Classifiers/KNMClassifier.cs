@@ -50,8 +50,6 @@ namespace OakStatisticalAnalysis
                 }
                 listOfCentroids.Add(centroids);
             });
-
-
         }
 
         private void UpdateInfo()
@@ -85,7 +83,6 @@ namespace OakStatisticalAnalysis
                 Centroid c = new Centroid(i, currentPointer[0].Features.Count);
                 centroids.Add(c);
             }
-            
         }
 
         public  void UpdateSamples()
@@ -148,8 +145,6 @@ namespace OakStatisticalAnalysis
             }
             centroids.ForEach(x => x.ZippValues());
         }
-           
-        
 
         public  int[] RandomPartition(int numOfClasters)
         {

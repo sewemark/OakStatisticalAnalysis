@@ -14,21 +14,31 @@ namespace OakStatisticalAnalysis
         private IFeatureSelector featureExtractor;
         private IFeaturesSelectingRules featureSelectingRules;
         private IClassifier currentClassifier;
-
+        private IClassifierFactory factory;
+        private ITestClassifierFactory testClassifierFactory;
+        private ITrainTestSetsSplitterFactory trainTestSetsSplitterFactory;
+        private ISFSFeatureSelector sfsFeatureSelector;
         private List<Sample> parsedDatabaseContent;
         private List<int> featuresUI = new List<int>();
         private TrainTestStruct trainTestStruct;
         private string[] databaseContent;
 
-        public OakStatisticalAnalisysisForm()
+        public OakStatisticalAnalisysisForm(IDatabaseContentParser _dbContentParser, 
+                                            IFeaturesSelectingRules _featureSelectingRules,
+                                            IFeatureSelector _featureExtractor,
+                                            IClassifierFactory _classifierFactory,
+                                            ITestClassifierFactory _testClassifierFactory,
+                                            ITrainTestSetsSplitterFactory _trainTestSetsSplitterFactory,
+                                            ISFSFeatureSelector _sfsFeatureSelector)
         {
+            this.dbContentParser = _dbContentParser;
+            this.featureSelectingRules = _featureSelectingRules;
+            this.featureExtractor = _featureExtractor;
+            this.factory = _classifierFactory;
+            this.trainTestSetsSplitterFactory = _trainTestSetsSplitterFactory;
+            this.testClassifierFactory = _testClassifierFactory;
+            this.sfsFeatureSelector = _sfsFeatureSelector;
             InitializeComponent();
-            InitDependencies();
-        }
-
-        public void InitDependencies()
-        {
-            featureSelectingRules = new FeaturesSelectingRules(RulesFactory.GetRules());
         }
 
         private void ReadFromFileButtonClick(object sender, EventArgs e)
@@ -39,8 +49,7 @@ namespace OakStatisticalAnalysis
 
         private void ParseContent()
         {
-            dbContentParser = new DatabaseContentParser(databaseContent);
-            parsedDatabaseContent = dbContentParser.ParseContent();
+            parsedDatabaseContent = dbContentParser.ParseContent(databaseContent);
             SampleInfo.Init(parsedDatabaseContent);
         }
 
@@ -58,14 +67,12 @@ namespace OakStatisticalAnalysis
 
         private void ExtractFeatures(int numOfFeatures)
         {
-            featureExtractor = new FeatureSelector(parsedDatabaseContent, featureSelectingRules);
-            featuresUI = featureExtractor.Select(numOfFeatures);
+            featuresUI = this.featureExtractor.Select(parsedDatabaseContent, numOfFeatures);
         }
 
         private void ExtractFeaturesSFS(int numOfFeatures)
         {
-            featureExtractor = new SFSFeatureSelector(parsedDatabaseContent, featureSelectingRules, null);
-            featuresUI = featureExtractor.Select(numOfFeatures);
+            featuresUI = this.sfsFeatureSelector.Select(parsedDatabaseContent, numOfFeatures);
         }
 
         private void UpdateUI()
@@ -96,24 +103,20 @@ namespace OakStatisticalAnalysis
 
         private void TrainButtonClick(object sender, EventArgs e)
         {
-            var selectedRadioButton = this.Controls.OfType<RadioButton>()
-                                          .FirstOrDefault(r => r.Checked);
-            var splitter = TrainTestSetsSplitterFactory.Get(selectedRadioButton.Text);
+            var selectedRadioButton = this.Controls.OfType<RadioButton>().FirstOrDefault(r => r.Checked);
+            var splitter = this.trainTestSetsSplitterFactory.Get(selectedRadioButton.Text);
             trainTestStruct = splitter.Split(parsedDatabaseContent,GetCurrentConfig());
-            ClassifierFactory factory = new ClassifierFactory();
             currentClassifier = factory.Select(selectClassifierComboBox.SelectedItem.ToString());
             currentClassifier.Train(trainTestStruct.TrainingSets, GetCurrentClassifierConfig());
         }
 
         private void ExecuteTestButtonClick(object sender, EventArgs e)
         {
-            var selectedRadioButton = this.Controls.OfType<RadioButton>()
-                                        .FirstOrDefault(r => r.Checked);
-            TestClassifierFactory factory = new TestClassifierFactory();
-            var testClassifier = factory.Select(selectClassifierComboBox.SelectedItem.ToString(), selectedRadioButton.Text);
+            var selectedRadioButton = this.Controls.OfType<RadioButton>().FirstOrDefault(r => r.Checked);
+            var testClassifier = testClassifierFactory.Select(selectClassifierComboBox.SelectedItem.ToString(), selectedRadioButton.Text);
             var result = testClassifier.Test(currentClassifier,trainTestStruct.TestSet);
             classificationResultLabel.Text += 
-                "\n" + selectClassifierComboBox.SelectedItem.ToString() + " " + result.ToString();
+                             "\n" + selectClassifierComboBox.SelectedItem.ToString() + " " + result.ToString();
 
         }
 

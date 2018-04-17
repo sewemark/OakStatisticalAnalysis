@@ -10,7 +10,7 @@ namespace OakStatisticalAnalysis.Rules.FisherCalculatoionStrategies
 {
     public interface ITwoDimensionsFisherCalculator: IFisherCalculator
     {
-        double Calc(int[] currentTestingFeatures);
+        double Calc(int[] currentTestingFeatures, int numOfFeatures);
     }
     public class TwoDimensionsFisherCalculator: ITwoDimensionsFisherCalculator
     {
@@ -24,14 +24,7 @@ namespace OakStatisticalAnalysis.Rules.FisherCalculatoionStrategies
         private List<Matrix<double>> transposed;
         private Dictionary<string, IEnumerable<IEnumerable<double>>> lookup;
 
-        public TwoDimensionsFisherCalculator(int _numOfFeatures)
-        {
-            numOfFeatures = _numOfFeatures;
-        }
-
-        public TwoDimensionsFisherCalculator(int _numOfFeatures, List<Sample> samples) : this(_numOfFeatures)
-        {
-            this.samples = samples;
+        public TwoDimensionsFisherCalculator(){
         }
 
         private void Init()
@@ -44,8 +37,9 @@ namespace OakStatisticalAnalysis.Rules.FisherCalculatoionStrategies
             transposed = new List<Matrix<double>>();
         }
 
-        public double Calc(int[] currentTestingFeatures)
+        public double Calc(int[] currentTestingFeatures, int numOfFeatures)
         {
+            this.numOfFeatures = currentTestingFeatures.Length;
             Init();
             ProjectFeatureSpace(currentTestingFeatures);
             CopyProjectedLookupToMatrixes();
@@ -96,7 +90,6 @@ namespace OakStatisticalAnalysis.Rules.FisherCalculatoionStrategies
             }
             return det;
         }
-
      
         public void NormalizeMods()
         {

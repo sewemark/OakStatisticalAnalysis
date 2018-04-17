@@ -227,7 +227,6 @@ namespace OakStatisticalAnalysis
             return listOfCentroids;
         }
 
-
         public ClassifierConfig GetConfig()
         {
             return config;

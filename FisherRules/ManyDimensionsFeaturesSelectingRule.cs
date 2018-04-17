@@ -9,7 +9,6 @@ namespace OakStatisticalAnalysis.Rules
     public class ManyDimensionsFeaturesSelectingRule : IFeaturesSelectingRule
     {
         private int numOfFeatures;
-        private List<Sample> samples;
         private ITwoDimensionsFisherCalculator fisherCalculator;
 
         public ManyDimensionsFeaturesSelectingRule(ITwoDimensionsFisherCalculator _fisherCalculator, int _numOfFeatures)
@@ -28,13 +27,13 @@ namespace OakStatisticalAnalysis.Rules
         {
             int dimensions = _dimensions;
             var permutations = Permutations.GetPermutations2(Enumerable.Range(0,64), _dimensions)
-                .ToList();
+                                           .ToList();
             int permIndex = 0;
             double currentResult = 0;
             for (int currentPermutation = 0; currentPermutation < permutations.Count; currentPermutation++)
             {
                 var permArray = permutations.ElementAt(currentPermutation);
-                double tmpLD = fisherCalculator.Calc(permArray.ToArray());
+                double tmpLD = fisherCalculator.Calc(permArray.ToArray(), _dimensions);
                 if (tmpLD > currentResult)
                 {
                     currentResult = tmpLD;

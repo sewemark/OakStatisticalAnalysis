@@ -29,15 +29,12 @@ namespace OakStatisticalAnalysis
             return results.Average();
         }
 
-
         private string GetKNearestNeighbourFromTrainingSet(Sample sample)
         {
-            var rr = currentPointer.OrderBy(x => MathUtil.CalculateDistnace(sample.Features, x.Features))
+            return currentPointer.OrderBy(x => MathUtil.CalculateDistnace(sample.Features, x.Features))
                         .Take(kParam).GroupBy(grp => grp.Class)
                         .OrderBy(y => y.Count())
                         .First().Select(x => x.Class).First();
-
-            return rr;
         }
     }
 }

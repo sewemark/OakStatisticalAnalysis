@@ -7,19 +7,17 @@ namespace OakStatisticalAnalysis
 {
     public interface IDatabaseContentParser
     {
-        List<Sample> ParseContent();
+        List<Sample> ParseContent(string[] content);
     }
 
     public class DatabaseContentParser : IDatabaseContentParser
     {
-        private string[] content;
 
-        public DatabaseContentParser(string [] _content)
+        public DatabaseContentParser()
         {
-            content = _content;
         }
 
-        public List<Sample> ParseContent()
+        public List<Sample> ParseContent(string[] content)
         {
             List<Sample> records = new List<Sample>(); 
             for(int i =0;i<content.Length;i++)
@@ -45,14 +43,13 @@ namespace OakStatisticalAnalysis
 
     public class DatabaseContentParserOther : IDatabaseContentParser
     {
-        private string[] content;
+    
 
-        public DatabaseContentParserOther(string[] _content)
+        public DatabaseContentParserOther()
         {
-            content = _content;
         }
 
-        public List<Sample> ParseContent()
+        public List<Sample> ParseContent(string[] content)
         {
             List<Sample> records = new List<Sample>();
             double[][] rawData = new double[20][];

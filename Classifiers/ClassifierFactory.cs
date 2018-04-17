@@ -2,7 +2,11 @@
 
 namespace OakStatisticalAnalysis
 {
-    public class ClassifierFactory
+    public interface IClassifierFactory
+    {
+        IClassifier Select(string classifierName);
+    }
+    public class ClassifierFactory: IClassifierFactory
     {
         private Dictionary<string, IClassifier> classifierSelectingRules = new Dictionary<string, IClassifier>();
 

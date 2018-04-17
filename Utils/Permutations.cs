@@ -44,7 +44,6 @@ namespace OakStatisticalAnalysis.Utils
                 int[] permutation = new int[size];
                 for (int j = 0; j < size; j++)
                 {
-                    // Pick the appropriate item from the item pool given j and i
                     int itemPoolIndex = (int)Math.Floor((double)(i % (int)Math.Pow(itemsPoolCount, j + 1)) / (int)Math.Pow(itemsPoolCount, j));
                     permutation[j] = featuresCount[itemPoolIndex];
                 }

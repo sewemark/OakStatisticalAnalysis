@@ -1,32 +1,31 @@
 ﻿using OakStatisticalAnalysis.Models;
-using OakStatisticalAnalysis.Rules;
 using OakStatisticalAnalysis.Rules.FisherCalculatoionStrategies;
-using System;
 using System.Collections.Generic;
 using System.Linq;
 
 namespace OakStatisticalAnalysis
 {
-    public class SFSFeatureSelector : IFeatureSelector
+    public interface ISFSFeatureSelector
+    {
+        List<int> Select(List<Sample> _samples, int numOfFeatures);
+    }
+    public class SFSFeatureSelector : ISFSFeatureSelector
     {
         private List<Sample> samples;
-        private IFeaturesSelectingRules featuresSelectorRules;
         private ITwoDimensionsFisherCalculator fisherCalculator;
-
-        public SFSFeatureSelector(List<Sample> _samples, IFeaturesSelectingRules _featuresSelectorRules, ITwoDimensionsFisherCalculator _fisherCalculator)
+       
+        public SFSFeatureSelector(ITwoDimensionsFisherCalculator _fisherCalculator)
         {
-            samples = _samples;
-            featuresSelectorRules = _featuresSelectorRules;
             fisherCalculator = _fisherCalculator;
         }
 
-        public List<int> Select(int numOfFeatures)
+        public List<int> Select(List<Sample> _samples, int numOfFeatures)
         {
-
+            samples = _samples;
+            this.fisherCalculator.UpdateSamples(_samples);
             List<int> initialPerm = new List<int>();
             for (int i = 0; i < numOfFeatures; i++)
             {
-                TwoDimensionsFisherCalculator calculatr = new TwoDimensionsFisherCalculator(i + 1, samples);
                 int[] permutationNumber = new int[64];
                 for (int j = 0; j < 64; j++)
                 {
@@ -38,7 +37,7 @@ namespace OakStatisticalAnalysis
                 double LD = 0;
                 for (int j = 0; j < perm.Count; j++)
                 {
-                    double tmpLD = calculatr.Calc(perm[j]);
+                    double tmpLD = fisherCalculator.Calc(perm[j], numOfFeatures);
                   
 
                     if (tmpLD > LD)
